@@ -50,13 +50,6 @@
     }
 
     /* Light Mode Overrides */
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme="dark"]) { --is-light: 1; }
-    }
-    [data-theme="light"], :root:not([data-theme="dark"]) {
-      /* These apply if data-theme is light OR if system is light (and not forced dark) */
-    }
-    
     @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
       --bg: #F9F7F2; --surface: #F0EDE4; --surface2: #E8E3D8;
       --navy: #1A1E2C; --cream: #F5F1E8;
@@ -115,11 +108,58 @@
       background-size: 40px 40px; background-attachment: fixed;
     }
 
-    /* ── MICRO ANIMATIONS ── */
+    /* ── MICRO ANIMATIONS (PAUSE ON SCROLL) ── */
     .micro-anim * { animation-play-state: paused !important; }
     .micro-anim.is-playing * { animation-play-state: running !important; }
 
-    /* 1. Gauge */
+    /* KPI 1: Intermediary Bypass (Concept 1A) */
+    .anim-bypass { width: 24px; height: 16px; overflow: visible; margin-left: 6px; }
+    .bp-node { fill: var(--gold); }
+    .bp-node-mid { animation: fadeMid 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .bp-path-old { fill: none; stroke: var(--risk-danger); stroke-width: 1.5; stroke-dasharray: 2 3; opacity: 0.6; animation: fadeOld 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .bp-path-new { fill: none; stroke: var(--teal); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawNew 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    
+    @keyframes fadeMid { 0%, 15% { opacity: 1; } 40%, 85% { opacity: 0.15; } 100% { opacity: 1; } }
+    @keyframes fadeOld { 0%, 15% { opacity: 0.6; } 40%, 85% { opacity: 0; } 100% { opacity: 0.6; } }
+    @keyframes drawNew { 0%, 15% { stroke-dashoffset: 24; } 40%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 24; } }
+
+    /* KPI 2: Predictive Mitigation Bar */
+    .anim-mitigate { width: 24px; height: 16px; display: flex; align-items: flex-end; justify-content: space-between; position: relative; }
+    .mit-limit { position: absolute; top: 4px; left: 0; right: 0; height: 1px; background: var(--gold); border-bottom: 1px dashed var(--bg); opacity: 0.6; }
+    .mit-bar { width: 6px; background: var(--teal); border-radius: 1px 1px 0 0; }
+    .mit-bar.b1 { height: 6px; } .mit-bar.b2 { height: 10px; }
+    .mit-bar.b3 { height: 14px; transform-origin: bottom; animation: mitigateRisk 3s ease-in-out infinite; }
+    @keyframes mitigateRisk { 
+      0%, 20% { transform: scaleY(1); background: var(--risk-danger); } 
+      25% { transform: scaleY(1); background: var(--risk-warn); }
+      35%, 100% { transform: scaleY(0.5); background: var(--teal); } 
+    }
+
+    /* KPI 3: Balancing Fulcrum (Concept 2B) */
+    .anim-fulcrum { width: 24px; height: 16px; overflow: visible; display: flex; align-items: flex-end; justify-content: center; margin-left: 6px; }
+    .fulcrum-svg { width: 100%; height: 100%; overflow: visible; }
+    .fc-pivot { fill: var(--gold); }
+    .fc-board-group { transform-origin: 12px 11px; animation: balanceGroup 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .fc-board { stroke-width: 2; stroke-linecap: round; animation: colorBoard 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .fc-weight { animation: slideWeight 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+    @keyframes balanceGroup {
+      0%, 15% { transform: rotate(-20deg); }
+      40%, 85% { transform: rotate(0deg); }
+      100% { transform: rotate(-20deg); }
+    }
+    @keyframes colorBoard {
+      0%, 15% { stroke: var(--risk-danger); }
+      40%, 85% { stroke: var(--teal); }
+      100% { stroke: var(--risk-danger); }
+    }
+    @keyframes slideWeight {
+      0%, 15% { transform: translateX(0px); fill: var(--risk-danger); }
+      40%, 85% { transform: translateX(7px); fill: var(--teal); }
+      100% { transform: translateX(0px); fill: var(--risk-danger); }
+    }
+
+    /* Experience: Gauge */
     .anim-gauge { width: 22px; height: 12px; margin-left: 6px; display: flex; align-items: flex-end; }
     .gauge-svg { width: 100%; height: 100%; overflow: visible; }
     .gauge-track { fill: none; stroke-width: 1.5; }
@@ -130,7 +170,7 @@
     .gauge-base { fill: var(--gauge-base-c); }
     @keyframes oscillateNeedle { 0%, 100% { transform: rotate(-80deg); } 30% { transform: rotate(-50deg); } 50% { transform: rotate(-65deg); } 75% { transform: rotate(-45deg); } }
 
-    /* 2. Org Pulse */
+    /* Experience: Org Pulse */
     .anim-org { position: relative; width: 16px; height: 12px; margin-left: 4px; }
     .org-top { position: absolute; top: 0; left: 6px; width: 4px; height: 4px; background: var(--gold); }
     .org-line { position: absolute; top: 4px; left: 2px; width: 12px; height: 4px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); border-right: 1px solid var(--gold); opacity: 0.5; }
@@ -138,14 +178,7 @@
     .org-bot1 { left: 0; } .org-bot2 { left: 12px; animation-delay: 0.75s; }
     @keyframes pulseOrg { 0% { opacity: 0.2; transform: translateY(2px); } 100% { opacity: 1; transform: translateY(0); } }
 
-    /* 3. Line Chart */
-    .anim-line-chart { width: 24px; height: 16px; margin-left: 6px; overflow: visible; }
-    .lc-path { fill: none; stroke: var(--gold); stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; animation: drawPath 3s ease-out infinite; }
-    .lc-dot { fill: var(--gold); opacity: 0; animation: showDot 3s ease-out infinite; }
-    @keyframes drawPath { 0% { stroke-dashoffset: 40; } 40%, 100% { stroke-dashoffset: 0; } }
-    @keyframes showDot { 0%, 35% { opacity: 0; transform: scale(0.5); transform-origin: 22px 3px; } 40%, 100% { opacity: 1; transform: scale(1); transform-origin: 22px 3px; } }
-
-    /* 4. Sector P&L Bars (Replaces Ticker) */
+    /* Experience: Sector Bars */
     .anim-sector-bars { display: flex; align-items: flex-end; gap: 2px; height: 14px; margin-left: 6px; width: 22px;}
     .sec-bar { width: 4px; border-radius: 1px 1px 0 0; background: var(--gold); transform-origin: bottom; }
     .sec-bar.b1 { height: 8px; animation: pnlBar 2.5s ease-in-out infinite alternate; }
@@ -154,7 +187,7 @@
     .sec-bar.b4 { height: 10px; animation: pnlBar 3s ease-in-out infinite alternate-reverse; }
     @keyframes pnlBar { 0% { transform: scaleY(0.4); } 100% { transform: scaleY(1.1); } }
 
-    /* 5. SWIFT Globe (Restored Flat Orbit) */
+    /* Experience: SWIFT Globe */
     .anim-swift { width: 16px; height: 16px; border: 1px solid var(--gold-ring); border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; margin-left: 4px;}
     .swift-lat { width: 100%; height: 5px; border-top: 1px solid var(--gold-grid); border-bottom: 1px solid var(--gold-grid); position: absolute; top: 4px; }
     .swift-lng { width: 6px; height: 100%; border-left: 1px solid var(--gold-grid); border-right: 1px solid var(--gold-grid); border-radius: 50%; position: absolute; }
@@ -193,20 +226,24 @@
     .section-label { display: flex; align-items: center; margin-bottom: 48px; }
     .section-title { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-lt); }
 
-    /* About Grid */
+    /* About Grid & KPIs */
     .about-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; }
-    @media (min-width: 768px) { .about-grid { grid-template-columns: 200px 1fr; gap: 64px; } }
+    @media (min-width: 1024px) { .about-grid { grid-template-columns: 280px 1fr; gap: 64px; } }
     .about-card { background: var(--surface2); border-top: 3px solid var(--teal); padding: 24px; }
     .card-row { margin-bottom: 14px; padding-bottom: 14px; }
     .card-row:last-child { margin-bottom: 0; padding-bottom: 0; }
     .card-label { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-lt); margin-bottom: 3px; }
     .card-val { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--ink); }
 
-    .kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-    @media (min-width: 768px) { .kpi-row { grid-template-columns: 1fr; } }
-    .kpi-box { background: var(--surface2); padding: 16px; }
-    .kpi-val { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--display-fg); line-height: 1; margin-bottom: 8px; animation: kpiPulse 2.8s ease-in-out infinite;}
-    .kpi-lbl { font-family: var(--sans); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-lt); line-height: 1.4; }
+    /* KPI Layout for 3 Boxes */
+    .kpi-row { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+    @media (min-width: 500px) { .kpi-row { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .kpi-row { grid-template-columns: 1fr; } } 
+    
+    .kpi-box { background: var(--surface2); padding: 16px; display: flex; flex-direction: column; justify-content: space-between;}
+    .kpi-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .kpi-val { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--display-fg); line-height: 1; animation: kpiPulse 2.8s ease-in-out infinite;}
+    .kpi-lbl { font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--ink-lt); line-height: 1.4; }
     @keyframes kpiPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.72; } }
 
     .about-text p { font-family: var(--sans); font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--ink-md); margin-bottom: 20px; }
@@ -319,20 +356,58 @@
             <div class="card-row"><div class="card-label">Focus</div><div class="card-val">Risk · Treasury · Analytics</div></div>
             <div class="card-row"><div class="card-label">Location</div><div class="card-val">Buffalo, NY</div></div>
           </div>
+          
           <div class="kpi-row">
-            <div class="kpi-box" style="border-left: 3px solid var(--gold);">
-              <div class="kpi-val" id="kpi-fx">$15.0M</div>
-              <div class="kpi-lbl">Annual FX Savings (Citi)</div>
+            <div class="kpi-box" style="border-left: 3px solid var(--teal);">
+              <div class="kpi-header">
+                <div class="kpi-val" id="kpi-fx">$15.0M</div>
+                <div class="micro-anim anim-bypass" title="Direct Settlement Bypass">
+                  <svg viewBox="0 0 24 16">
+                    <path d="M 2 13 L 12 3 L 22 13" class="bp-path-old"></path>
+                    <path d="M 2 13 L 22 13" class="bp-path-new"></path>
+                    <circle cx="2" cy="13" r="2" class="bp-node"></circle>
+                    <circle cx="12" cy="3" r="2" class="bp-node bp-node-mid"></circle>
+                    <circle cx="22" cy="13" r="2" class="bp-node"></circle>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-lbl">Annual FX Settlement Savings</div>
             </div>
+
+            <div class="kpi-box" style="border-left: 3px solid var(--gold);">
+              <div class="kpi-header">
+                <div class="kpi-val" id="kpi-key">$1.5M</div>
+                <div class="micro-anim anim-mitigate" title="Predictive Intervention">
+                  <div class="mit-limit"></div>
+                  <div class="mit-bar b1"></div>
+                  <div class="mit-bar b2"></div>
+                  <div class="mit-bar b3"></div>
+                </div>
+              </div>
+              <div class="kpi-lbl">Proactive Credit Exposure Mitigated</div>
+            </div>
+
             <div class="kpi-box" style="border-left: 3px solid var(--salmon);">
-              <div class="kpi-val" id="kpi-key">$1.5M</div>
-              <div class="kpi-lbl">Auto-Downgrade (KeyBank)</div>
+              <div class="kpi-header">
+                <div class="kpi-val" id="kpi-liq">$5.0B</div>
+                <div class="micro-anim anim-fulcrum" title="Balance Sheet Optimization">
+                  <svg class="fulcrum-svg" viewBox="0 0 24 16">
+                    <polygon points="12,11 15,16 9,16" class="fc-pivot"></polygon>
+                    <g class="fc-board-group">
+                      <line x1="2" y1="11" x2="22" y2="11" class="fc-board"></line>
+                      <rect x="2" y="5" width="6" height="5" rx="1" class="fc-weight"></rect>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-lbl">Balance Sheet Liquidity Optimized</div>
             </div>
           </div>
+
         </div>
         <div class="about-text">
-          <p>I spent 13 years at <strong>Citi</strong> doing the kind of work most people never see: building the infrastructure that keeps billion-dollar operations moving. From FX settlements to liquidity forecasting, equity derivatives to Treasury automation — I was the person who figured out how the pieces fit together and made sure they actually worked.</p>
-          <p>Now at <strong>KeyBank</strong>, I bring that same lens to portfolio management: finding the gaps, building the systems, and making sure the right people have the right information at the right time. I operate at the intersection of business and analytics, translating between the people who make decisions and the data that should inform them.</p>
+          <p>I spent 13 years at <strong>Citi</strong> doing the kind of work most people never see: building the infrastructure that keeps billion-dollar operations moving. From navigating international liquidity crises to executing balance sheet optimization initiatives that recovered $10B in positioning, I was the person who figured out how the pieces fit together and made sure they actually worked.</p>
+          <p>Now at <strong>KeyBank</strong>, I bring that same lens to portfolio management: finding the gaps, building predictive risk models, and ensuring the right people have the right information at the right time. I operate at the intersection of business and analytics, translating between the people who make decisions and the data that must inform them.</p>
           <div class="pull-quote">I'm not the loudest voice in the room.<br>I'm the one who built the deck<br>everyone's presenting from.</div>
         </div>
       </div>
@@ -385,8 +460,8 @@
               </svg>
             </div>
           </div>
-          <p class="exp-desc">Managing risk strategy, automation, and systems design across the commercial banking portfolio. Building the infrastructure and analytical frameworks the team relies on for decision-making.</p>
-          <div class="exp-tags"><span class="exp-tag">Risk Strategy</span><span class="exp-tag">Salesforce</span><span class="exp-tag">Process Design</span><span class="exp-tag">Portfolio Analytics</span></div>
+          <p class="exp-desc">Managing risk strategy, automation, and systems design across the commercial banking portfolio. Built predictive models to proactively close or reduce credit lines before high-risk customers reach max utilization, actively mitigating millions in daily exposure.</p>
+          <div class="exp-tags"><span class="exp-tag">Risk Strategy</span><span class="exp-tag">Predictive Modeling</span><span class="exp-tag">Salesforce</span><span class="exp-tag">Portfolio Analytics</span></div>
         </div>
       </div>
 
@@ -411,15 +486,9 @@
           <div class="exp-title">VP, Liquidity Management</div>
           <div class="exp-company">
             Citibank
-            <div class="micro-anim">
-              <svg class="anim-line-chart" viewBox="0 0 24 16">
-                <polyline class="lc-path" points="1,14 7,9 13,11 22,3"></polyline>
-                <circle class="lc-dot" cx="22" cy="3" r="1.5"></circle>
-              </svg>
-            </div>
           </div>
-          <p class="exp-desc">Key player in Citi's 2023 banking crisis response, surfacing real-time exposure data through custom dashboards. Led cash strategy across multiple entities, automated data pipelines, and authored the annual Funding &amp; Liquidity Plan aligning capital strategy with international regulation.</p>
-          <div class="exp-tags"><span class="exp-tag">LCR / NSFR</span><span class="exp-tag">Power BI</span><span class="exp-tag">Tableau</span><span class="exp-tag">CCAR / 2052a</span><span class="exp-tag">VBA</span></div>
+          <p class="exp-desc">Key player in Citi's banking crisis response. Executed massive balance sheet optimization initiatives that improved liquidity capture across targeted sub-entities, successfully optimizing regulatory ratios and cementing $10B in improved liquidity positioning.</p>
+          <div class="exp-tags"><span class="exp-tag">LCR / NSFR</span><span class="exp-tag">Balance Sheet Optimization</span><span class="exp-tag">Tableau</span><span class="exp-tag">CCAR / 2052a</span></div>
         </div>
       </div>
 
@@ -436,7 +505,7 @@
               <div class="sec-bar b4"></div>
             </div>
           </div>
-          <p class="exp-desc">Managed daily P&amp;L for complex derivative trades, overseeing a team of 6 during high-volatility periods including COVID-19 market swings. Designed dashboards using PowerBI, KNIME, and MicroStrategy for proactive issue identification.</p>
+          <p class="exp-desc">Managed daily P&amp;L for complex index and sector derivative trades, overseeing a team of 6 during high-volatility periods including COVID-19 market swings. Designed dashboards using PowerBI, KNIME, and MicroStrategy for proactive issue identification.</p>
           <div class="exp-tags"><span class="exp-tag">P&amp;L</span><span class="exp-tag">Derivatives</span><span class="exp-tag">KNIME</span><span class="exp-tag">Power BI</span></div>
         </div>
       </div>
@@ -454,7 +523,7 @@
               <div class="swift-node2"></div>
             </div>
           </div>
-          <p class="exp-desc">Progressed from Intermediate Analyst to AVP, leading Interbank and Corporate FX settlements teams (25 staff) managing high-value global flows across 250+ institutional clients. Drove process redesign cutting settlement errors and saving $1M+ annually.</p>
+          <p class="exp-desc">Led Interbank and Corporate FX settlements teams (25 staff) managing high-value global flows. Spearheaded the migration of a major client from Misys trade mapping to direct SWIFT settlement, eliminating manual mapping layers and driving $30M in annual operational savings.</p>
           <div class="exp-tags"><span class="exp-tag">FX</span><span class="exp-tag">CLS</span><span class="exp-tag">SWIFT</span><span class="exp-tag">Team Leadership</span></div>
         </div>
       </div>
@@ -597,33 +666,36 @@
     }
 
     // ── KPI COUNTERS ──
-    function animateKPI(el, startVal, endVal, decimals, duration) {
+    function animateKPI(el, startVal, endVal, decimals, duration, suffix) {
       const range = endVal - startVal; let startTime = null;
       function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
       function step(timestamp) {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
-        el.textContent = '$' + (startVal + range * easeOut(progress)).toFixed(decimals) + 'M';
+        el.textContent = '$' + (startVal + range * easeOut(progress)).toFixed(decimals) + suffix;
         if (progress < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     }
 
-    const kpiFx = document.getElementById('kpi-fx'), kpiKey = document.getElementById('kpi-key');
+    const kpiFx = document.getElementById('kpi-fx'), kpiKey = document.getElementById('kpi-key'), kpiLiq = document.getElementById('kpi-liq');
     if (!prefersReducedMotion) {
       const kpiObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-          if (entry.target.id === 'kpi-fx') animateKPI(entry.target, 15.0, 30.0, 1, 2000);
-          else if (entry.target.id === 'kpi-key') animateKPI(entry.target, 1.5, 3.0, 1, 2000);
+          if (entry.target.id === 'kpi-fx') animateKPI(entry.target, 15.0, 30.0, 1, 2000, 'M');
+          else if (entry.target.id === 'kpi-key') animateKPI(entry.target, 1.5, 3.0, 1, 2000, 'M');
+          else if (entry.target.id === 'kpi-liq') animateKPI(entry.target, 5.0, 10.0, 1, 2000, 'B');
           kpiObserver.unobserve(entry.target);
         });
       }, { threshold: 0.6 });
       if (kpiFx) kpiObserver.observe(kpiFx);
       if (kpiKey) kpiObserver.observe(kpiKey);
+      if (kpiLiq) kpiObserver.observe(kpiLiq);
     } else {
       if (kpiFx) kpiFx.textContent = '$30.0M';
       if (kpiKey) kpiKey.textContent = '$3.0M';
+      if (kpiLiq) kpiLiq.textContent = '$10.0B';
     }
   </script>
 </body>
