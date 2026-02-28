@@ -1,0 +1,67 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Navy background -->
+  <rect width="1200" height="630" fill="#181D34"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="g" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+
+  <!-- Top colour stripe: Gold | Salmon | Teal (matches bottom) -->
+  <rect x="0"   y="0" width="360" height="7" fill="#C09838"/>
+  <rect x="360" y="0" width="360" height="7" fill="#CC6050"/>
+  <rect x="720" y="0" width="480" height="7" fill="#50A0A0"/>
+
+  <!-- Name — 3-line stacked, condensed weight -->
+  <text x="104" y="238"
+        font-family="'Arial Narrow','Arial',sans-serif"
+        font-weight="700" font-size="86"
+        fill="#F0EBE0" letter-spacing="-1.5">Robert</text>
+  <text x="104" y="335"
+        font-family="'Arial Narrow','Arial',sans-serif"
+        font-weight="700" font-size="86"
+        fill="#F0EBE0" letter-spacing="-1.5">Perry</text>
+  <text x="104" y="432"
+        font-family="'Arial Narrow','Arial',sans-serif"
+        font-weight="700" font-size="86"
+        fill="#F0EBE0" letter-spacing="-1.5">Morris</text>
+
+  <!-- Teal separator line under name -->
+  <rect x="104" y="452" width="440" height="2" fill="#50A0A0" opacity="0.40"/>
+
+  <!-- Role in teal mono -->
+  <text x="104" y="488"
+        font-family="'Courier New','Courier',monospace"
+        font-weight="500" font-size="14.5"
+        fill="#50A0A0" letter-spacing="3.5">PORTFOLIO MANAGEMENT  ·  RISK STRATEGY</text>
+
+  <!-- Tagline -->
+  <text x="104" y="536"
+        font-family="'Arial',sans-serif"
+        font-weight="300" font-size="23"
+        fill="#EDE8DC" fill-opacity="0.60"
+        font-style="italic">Turning data into strategy, chaos into control.</text>
+
+  <!-- Credential pills -->
+  <rect x="104" y="563" width="95" height="24" rx="3" fill="#50A0A0" fill-opacity="0.18" stroke="#50A0A0" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="151" y="580" font-family="'Courier New',monospace" font-size="11" fill="#50A0A0" text-anchor="middle" letter-spacing="1">KeyBank</text>
+
+  <rect x="208" y="563" width="100" height="24" rx="3" fill="#C09838" fill-opacity="0.14" stroke="#C09838" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="258" y="580" font-family="'Courier New',monospace" font-size="11" fill="#C09838" text-anchor="middle" letter-spacing="0.5">Citi · 13y</text>
+
+  <!-- Domain — bottom right -->
+  <text x="1110" y="605"
+        font-family="'Courier New',monospace"
+        font-size="14.5" fill="#EDE8DC" fill-opacity="0.32"
+        text-anchor="end" letter-spacing="1.5">robmorris.me</text>
+
+  <!-- Bottom stripe: Gold | Salmon | Teal -->
+  <rect x="0"   y="623" width="360" height="7" fill="#C09838"/>
+  <rect x="360" y="623" width="360" height="7" fill="#CC6050"/>
+  <rect x="720" y="623" width="480" height="7" fill="#50A0A0"/>
+
+</svg>
