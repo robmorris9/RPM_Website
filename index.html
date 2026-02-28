@@ -108,16 +108,33 @@
       background-size: 40px 40px; background-attachment: fixed;
     }
 
-    /* ── MICRO ANIMATIONS (PAUSE ON SCROLL) ── */
+    /* ── MICRO ANIMATIONS (SMART PAUSE / SNAP TO RESOLVED STATE) ── */
+    
+    /* Default: pause ambient animations when not in view */
     .micro-anim * { animation-play-state: paused !important; }
     .micro-anim.is-playing * { animation-play-state: running !important; }
 
-    /* KPI 1: Intermediary Bypass (Concept 1A) */
-    .anim-bypass { width: 24px; height: 16px; overflow: visible; margin-left: 6px; }
+    /* For data-story KPIs, remove animation entirely when paused so they gracefully transition to their resolved base states */
+    .micro-anim:not(.is-playing) .bp-node-mid,
+    .micro-anim:not(.is-playing) .bp-path-old,
+    .micro-anim:not(.is-playing) .bp-path-new,
+    .micro-anim:not(.is-playing) .mit-bar.b3,
+    .micro-anim:not(.is-playing) .fc-board-group,
+    .micro-anim:not(.is-playing) .fc-board,
+    .micro-anim:not(.is-playing) .fc-weight,
+    .micro-anim:not(.is-playing) .lc-path,
+    .micro-anim:not(.is-playing) .lc-dot {
+      animation: none !important;
+    }
+
+    /* KPI 1: Intermediary Bypass */
+    .anim-bypass { width: 24px; height: 16px; overflow: visible; margin-left: 6px;}
     .bp-node { fill: var(--gold); }
-    .bp-node-mid { animation: fadeMid 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-    .bp-path-old { fill: none; stroke: var(--risk-danger); stroke-width: 1.5; stroke-dasharray: 2 3; opacity: 0.6; animation: fadeOld 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-    .bp-path-new { fill: none; stroke: var(--teal); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 24; stroke-dashoffset: 24; animation: drawNew 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    
+    /* Base States = Final/Resolved. Keyframes apply only when playing. */
+    .bp-node-mid { opacity: 0.15; transition: opacity 0.5s ease; animation: fadeMid 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .bp-path-old { fill: none; stroke: var(--risk-danger); stroke-width: 1.5; stroke-dasharray: 2 3; opacity: 0; transition: opacity 0.5s ease; animation: fadeOld 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .bp-path-new { fill: none; stroke: var(--teal); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 24; stroke-dashoffset: 0; transition: stroke-dashoffset 0.5s ease; animation: drawNew 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
     
     @keyframes fadeMid { 0%, 15% { opacity: 1; } 40%, 85% { opacity: 0.15; } 100% { opacity: 1; } }
     @keyframes fadeOld { 0%, 15% { opacity: 0.6; } 40%, 85% { opacity: 0; } 100% { opacity: 0.6; } }
@@ -126,41 +143,33 @@
     /* KPI 2: Predictive Mitigation Bar */
     .anim-mitigate { width: 24px; height: 16px; display: flex; align-items: flex-end; justify-content: space-between; position: relative; }
     .mit-limit { position: absolute; top: 4px; left: 0; right: 0; height: 1px; background: var(--gold); border-bottom: 1px dashed var(--bg); opacity: 0.6; }
-    .mit-bar { width: 6px; background: var(--teal); border-radius: 1px 1px 0 0; }
+    .mit-bar { width: 6px; border-radius: 1px 1px 0 0; background: var(--teal); }
     .mit-bar.b1 { height: 6px; } .mit-bar.b2 { height: 10px; }
-    .mit-bar.b3 { height: 14px; transform-origin: bottom; animation: mitigateRisk 3s ease-in-out infinite; }
+    
+    /* Base State = Safe/Teal */
+    .mit-bar.b3 { height: 14px; transform-origin: bottom; transform: scaleY(0.5); background: var(--teal); transition: transform 0.5s ease, background 0.5s ease; animation: mitigateRisk 3s ease-in-out infinite; }
     @keyframes mitigateRisk { 
       0%, 20% { transform: scaleY(1); background: var(--risk-danger); } 
       25% { transform: scaleY(1); background: var(--risk-warn); }
       35%, 100% { transform: scaleY(0.5); background: var(--teal); } 
     }
 
-    /* KPI 3: Balancing Fulcrum (Concept 2B) */
-    .anim-fulcrum { width: 24px; height: 16px; overflow: visible; display: flex; align-items: flex-end; justify-content: center; margin-left: 6px; }
+    /* KPI 3: Balancing Fulcrum */
+    .anim-fulcrum { width: 24px; height: 16px; overflow: visible; display: flex; align-items: flex-end; justify-content: center; }
     .fulcrum-svg { width: 100%; height: 100%; overflow: visible; }
     .fc-pivot { fill: var(--gold); }
-    .fc-board-group { transform-origin: 12px 11px; animation: balanceGroup 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-    .fc-board { stroke-width: 2; stroke-linecap: round; animation: colorBoard 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-    .fc-weight { animation: slideWeight 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    
+    /* Base States = Balanced/Teal */
+    .fc-board-group { transform-origin: 12px 11px; transform: rotate(0deg); transition: transform 0.5s ease; animation: balanceGroup 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .fc-board { stroke-width: 2; stroke-linecap: round; stroke: var(--teal); transition: stroke 0.5s ease; animation: colorBoard 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .fc-weight { transform: translateX(7px); fill: var(--teal); transition: transform 0.5s ease, fill 0.5s ease; animation: slideWeight 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    
+    @keyframes balanceGroup { 0%, 15% { transform: rotate(-20deg); } 40%, 85% { transform: rotate(0deg); } 100% { transform: rotate(-20deg); } }
+    @keyframes colorBoard { 0%, 15% { stroke: var(--risk-danger); } 40%, 85% { stroke: var(--teal); } 100% { stroke: var(--risk-danger); } }
+    @keyframes slideWeight { 0%, 15% { transform: translateX(0px); fill: var(--risk-danger); } 40%, 85% { transform: translateX(7px); fill: var(--teal); } 100% { transform: translateX(0px); fill: var(--risk-danger); } }
 
-    @keyframes balanceGroup {
-      0%, 15% { transform: rotate(-20deg); }
-      40%, 85% { transform: rotate(0deg); }
-      100% { transform: rotate(-20deg); }
-    }
-    @keyframes colorBoard {
-      0%, 15% { stroke: var(--risk-danger); }
-      40%, 85% { stroke: var(--teal); }
-      100% { stroke: var(--risk-danger); }
-    }
-    @keyframes slideWeight {
-      0%, 15% { transform: translateX(0px); fill: var(--risk-danger); }
-      40%, 85% { transform: translateX(7px); fill: var(--teal); }
-      100% { transform: translateX(0px); fill: var(--risk-danger); }
-    }
-
-    /* Experience: Gauge */
-    .anim-gauge { width: 22px; height: 12px; margin-left: 6px; display: flex; align-items: flex-end; }
+    /* Experience: Gauge (Ambient) */
+    .anim-gauge { width: 22px; height: 12px; display: flex; align-items: flex-end; }
     .gauge-svg { width: 100%; height: 100%; overflow: visible; }
     .gauge-track { fill: none; stroke-width: 1.5; }
     .gauge-track.safe { stroke: var(--risk-safe); stroke-dasharray: 45 100; stroke-dashoffset: 0; }
@@ -170,16 +179,23 @@
     .gauge-base { fill: var(--gauge-base-c); }
     @keyframes oscillateNeedle { 0%, 100% { transform: rotate(-80deg); } 30% { transform: rotate(-50deg); } 50% { transform: rotate(-65deg); } 75% { transform: rotate(-45deg); } }
 
-    /* Experience: Org Pulse */
-    .anim-org { position: relative; width: 16px; height: 12px; margin-left: 4px; }
+    /* Experience: Org Pulse (Runs once on view) */
+    .anim-org { position: relative; width: 16px; height: 12px; }
     .org-top { position: absolute; top: 0; left: 6px; width: 4px; height: 4px; background: var(--gold); }
     .org-line { position: absolute; top: 4px; left: 2px; width: 12px; height: 4px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); border-right: 1px solid var(--gold); opacity: 0.5; }
     .org-bot1, .org-bot2 { position: absolute; top: 8px; width: 4px; height: 4px; background: var(--gold); opacity: 0.2; animation: pulseOrg 1.5s ease-out forwards; }
     .org-bot1 { left: 0; } .org-bot2 { left: 12px; animation-delay: 0.75s; }
     @keyframes pulseOrg { 0% { opacity: 0.2; transform: translateY(2px); } 100% { opacity: 1; transform: translateY(0); } }
 
-    /* Experience: Sector Bars */
-    .anim-sector-bars { display: flex; align-items: flex-end; gap: 2px; height: 14px; margin-left: 6px; width: 22px;}
+    /* Experience: Line Chart (Snaps to full line and dot when paused) */
+    .anim-line-chart { width: 24px; height: 16px; overflow: visible; display: flex; align-items: center; }
+    .lc-path { fill: none; stroke: var(--gold); stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 30; stroke-dashoffset: 0; transition: stroke-dashoffset 0.5s ease; animation: drawPath 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    .lc-dot { fill: var(--teal); opacity: 1; transform: scale(1); transform-origin: 22px 4px; transition: opacity 0.5s ease, transform 0.5s ease; animation: showDot 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    @keyframes drawPath { 0%, 15% { stroke-dashoffset: 30; } 45%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 30; } }
+    @keyframes showDot { 0%, 40% { opacity: 0; transform: scale(0); } 45%, 85% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0); } }
+
+    /* Experience: Sector Bars (Ambient) */
+    .anim-sector-bars { display: flex; align-items: flex-end; gap: 2px; height: 14px; width: 22px;}
     .sec-bar { width: 4px; border-radius: 1px 1px 0 0; background: var(--gold); transform-origin: bottom; }
     .sec-bar.b1 { height: 8px; animation: pnlBar 2.5s ease-in-out infinite alternate; }
     .sec-bar.b2 { height: 12px; background: var(--risk-safe); animation: pnlBar 1.8s ease-in-out infinite alternate-reverse; }
@@ -187,8 +203,8 @@
     .sec-bar.b4 { height: 10px; animation: pnlBar 3s ease-in-out infinite alternate-reverse; }
     @keyframes pnlBar { 0% { transform: scaleY(0.4); } 100% { transform: scaleY(1.1); } }
 
-    /* Experience: SWIFT Globe */
-    .anim-swift { width: 16px; height: 16px; border: 1px solid var(--gold-ring); border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; margin-left: 4px;}
+    /* Experience: SWIFT Globe (Ambient) */
+    .anim-swift { width: 16px; height: 16px; border: 1px solid var(--gold-ring); border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; }
     .swift-lat { width: 100%; height: 5px; border-top: 1px solid var(--gold-grid); border-bottom: 1px solid var(--gold-grid); position: absolute; top: 4px; }
     .swift-lng { width: 6px; height: 100%; border-left: 1px solid var(--gold-grid); border-right: 1px solid var(--gold-grid); border-radius: 50%; position: absolute; }
     .swift-node, .swift-node2 { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: absolute; z-index: 2; }
@@ -235,7 +251,6 @@
     .card-label { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-lt); margin-bottom: 3px; }
     .card-val { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--ink); }
 
-    /* KPI Layout for 3 Boxes */
     .kpi-row { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
     @media (min-width: 500px) { .kpi-row { grid-template-columns: 1fr 1fr; } }
     @media (min-width: 1024px) { .kpi-row { grid-template-columns: 1fr; } } 
@@ -486,6 +501,12 @@
           <div class="exp-title">VP, Liquidity Management</div>
           <div class="exp-company">
             Citibank
+            <div class="micro-anim anim-line-chart" title="Liquidity Trend">
+              <svg viewBox="0 0 24 16" width="24" height="16" style="overflow: visible;">
+                <polyline class="lc-path" points="2,14 8,9 14,12 22,4"></polyline>
+                <circle class="lc-dot" cx="22" cy="4" r="2"></circle>
+              </svg>
+            </div>
           </div>
           <p class="exp-desc">Key player in Citi's banking crisis response. Executed massive balance sheet optimization initiatives that improved liquidity capture across targeted sub-entities, successfully optimizing regulatory ratios and cementing $10B in improved liquidity positioning.</p>
           <div class="exp-tags"><span class="exp-tag">LCR / NSFR</span><span class="exp-tag">Balance Sheet Optimization</span><span class="exp-tag">Tableau</span><span class="exp-tag">CCAR / 2052a</span></div>
