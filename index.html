@@ -79,14 +79,19 @@
       50% { transform: rotate(-65deg); }      /* Back deeper */
       75% { transform: rotate(-45deg); }      /* Edge of green, but safe */
     }
-
-    /* 2. Citi CoS: Org Chart / Building Blocks */
+/* 2. Citi CoS: Org Chart / Building Blocks */
     .anim-org { position: relative; width: 16px; height: 12px; margin-left: 4px;}
     .org-top { position: absolute; top: 0; left: 6px; width: 4px; height: 4px; background: var(--gold); }
     .org-line { position: absolute; top: 4px; left: 2px; width: 12px; height: 4px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); border-right: 1px solid var(--gold); opacity: 0.5; }
-    .org-bot1 { position: absolute; top: 8px; left: 0; width: 4px; height: 4px; background: var(--gold); animation: pulseOrg 1.5s infinite alternate; }
-    .org-bot2 { position: absolute; top: 8px; left: 12px; width: 4px; height: 4px; background: var(--gold); animation: pulseOrg 1.5s infinite alternate 0.75s; }
-    @keyframes pulseOrg { 0% { opacity: 0.2; transform: translateY(1px); } 100% { opacity: 1; transform: translateY(0); } }
+    
+    /* Changed to run once (forwards) with a slight stagger */
+    .org-bot1 { position: absolute; top: 8px; left: 0; width: 4px; height: 4px; background: var(--gold); opacity: 0.2; animation: pulseOrg 1.5s ease-out forwards; }
+    .org-bot2 { position: absolute; top: 8px; left: 12px; width: 4px; height: 4px; background: var(--gold); opacity: 0.2; animation: pulseOrg 1.5s ease-out 0.75s forwards; }
+    
+    @keyframes pulseOrg { 
+      0% { opacity: 0.2; transform: translateY(2px); } 
+      100% { opacity: 1; transform: translateY(0); } 
+    }
 
     /* 3. Citi Liquidity: % Line Chart */
     .anim-line-chart { width: 24px; height: 16px; margin-left: 6px; overflow: visible; }
@@ -106,21 +111,20 @@
       0%, 35% { opacity: 0; transform: scale(0.5); transform-origin: 22px 3px; }
       40%, 100% { opacity: 1; transform: scale(1); transform-origin: 22px 3px; }
     }
-
-    /* 4. Citi Product Control: Stock Ticker */
+/* 4. Citi Product Control: Stock Ticker */
     .anim-ticker { width: 75px; height: 14px; overflow: hidden; white-space: nowrap; font-family: var(--mono); font-size: 10px; color: var(--gold); position: relative; background: var(--gold-bg); border: 1px solid var(--gold-line); display: flex; align-items: center; margin-left: 4px;}
-    .ticker-text { display: inline-block; animation: scrollTicker 16s linear infinite; font-weight: 500;}
-    @keyframes scrollTicker { 0% { transform: translateX(75px); } 100% { transform: translateX(-100%); } }
-
-    /* 5. Citi FX: SWIFT Network Globe (Flat Orbit) */
-    .anim-swift { width: 16px; height: 16px; border: 1px solid var(--gold-ring); border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; margin-left: 4px;}
-    .swift-lat { width: 100%; height: 5px; border-top: 1px solid var(--gold-grid); border-bottom: 1px solid var(--gold-grid); position: absolute; top: 4px; }
-    .swift-lng { width: 6px; height: 100%; border-left: 1px solid var(--gold-grid); border-right: 1px solid var(--gold-grid); border-radius: 50%; position: absolute; }
-    .swift-node  { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: absolute; z-index: 2; animation: swiftOrbit 3s linear infinite; }
-    .swift-node2 { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: absolute; z-index: 2; animation: swiftOrbit 3s linear infinite -1.5s; }
-    @keyframes swiftOrbit {
-      0%   { transform: rotate(0deg)   translateX(9px); }
-      100% { transform: rotate(360deg) translateX(9px); }
+    
+    /* Removed 'infinite linear' and added 'forwards' with a braking curve */
+    .ticker-text { 
+      display: inline-block; 
+      animation: scrollTicker 7s cubic-bezier(0.1, 0.7, 0.1, 1) forwards; 
+      font-weight: 500;
+    }
+    
+    /* calc() perfectly frames the final phrase within the 75px box */
+    @keyframes scrollTicker { 
+      0% { transform: translateX(75px); } 
+      100% { transform: translateX(calc(-100% + 70px)); } 
     }
 
 
