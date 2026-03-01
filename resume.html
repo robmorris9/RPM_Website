@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robert Perry Morris | Resume</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --navy:    #181D34;
+      --ink:     #1A1E2C;
+      --ink-md:  rgba(26,30,44,0.68);
+      --ink-lt:  rgba(26,30,44,0.42);
+      --rule:    rgba(26,30,44,0.13);
+      --rule-dk: rgba(26,30,44,0.22);
+      --bg:      #FFFFFF;
+      --surface: #F5F3EE;
+      --mono: "IBM Plex Mono", "Courier New", monospace;
+      --cond: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+      --sans: "IBM Plex Sans", Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: white;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 10pt;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── SCREEN WRAPPER ── */
+    @media screen {
+      body { background: #DDDBD6; padding: 0.5in 0; }
+      .page {
+        background: white;
+        max-width: 8.5in;
+        margin: 0 auto 0.5in;
+        padding: 0.65in 0.7in;
+        box-shadow: 0 6px 48px rgba(0,0,0,0.18);
+      }
+    }
+
+    /* ── PRINT ── */
+    @page {
+      size: letter;
+      margin: 0.6in 0.65in;
+      /* Attempt to suppress browser-injected URL/date from print footer */
+      @bottom-left   { content: ''; }
+      @bottom-center { content: ''; }
+      @bottom-right  { content: ''; }
+      @top-left      { content: ''; }
+      @top-center    { content: ''; }
+      @top-right     { content: ''; }
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .page { max-width: 100%; padding: 0; margin: 0; box-shadow: none; }
+      .page-1 { page-break-after: always; break-after: page; }
+    }
+
+    /* ── TOP / BOTTOM STRIPE ── */
+    .top-stripe { height: 5px; background: var(--navy); }
+    .bottom-bar  { margin-top: 20px; height: 5px; background: var(--navy); }
+
+    /* ── CAREER ARC BANNER (page 1) ── */
+    .career-arc {
+      display: flex;
+      align-items: stretch;
+      margin-top: 20px;
+      background: var(--navy);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .arc-block { flex: 1; padding: 15px 20px 13px; }
+    .arc-block.arc-citi { border-right: 1px solid rgba(255,255,255,0.15); }
+    .arc-years {
+      font-family: var(--mono);
+      font-size: 7pt;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 3px;
+    }
+    .arc-detail {
+      font-family: var(--sans);
+      font-size: 7pt;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.5;
+    }
+    .arc-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-family: var(--mono);
+      font-size: 16pt;
+      color: rgba(255,255,255,0.2);
+      flex-shrink: 0;
+    }
+
+    /* ── PAGE 1 HEADER ── */
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 24px 0 18px;
+      border-bottom: 2.5px solid var(--navy);
+    }
+    .resume-name {
+      font-family: var(--cond);
+      font-size: 46pt;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 0.88;
+      letter-spacing: -1.5px;
+      margin-bottom: 9px;
+    }
+    .resume-tagline {
+      font-family: var(--sans);
+      font-size: 10pt;
+      font-weight: 300;
+      color: var(--ink-md);
+    }
+    .header-right { text-align: right; }
+    .contact-item {
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      color: var(--ink-md);
+      letter-spacing: 0.4px;
+      line-height: 1.9;
+    }
+    .contact-item a { color: inherit; text-decoration: none; }
+
+    /* ── KPI BAR ── */
+    .kpi-bar {
+      display: flex;
+      border: 2px solid var(--navy);
+      margin: 16px 0 0;
+    }
+    .kpi-cell {
+      flex: 1;
+      padding: 14px 16px 12px;
+      border-right: 2px solid var(--navy);
+      text-align: center;
+    }
+    .kpi-cell:last-child { border-right: none; }
+    .kpi-number {
+      font-family: var(--mono);
+      font-size: 19pt;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .kpi-label {
+      font-family: var(--sans);
+      font-size: 6.5pt;
+      font-weight: 500;
+      color: var(--ink-md);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.5;
+    }
+
+    /* ── TWO-COL LAYOUT (PAGE 1) ── */
+    .two-col { display: flex; gap: 30px; align-items: flex-start; margin-top: 20px; }
+    .col-left  { width: 2.05in; flex-shrink: 0; }
+    .col-right { flex: 1; }
+
+    /* ── ABOUT CARD ── */
+    .about-card {
+      border: 1.5px solid var(--navy);
+      border-top: 4px solid var(--navy);
+      padding: 14px 14px 10px;
+    }
+    .card-row { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+    .card-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .card-label {
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-lt);
+      margin-bottom: 1px;
+    }
+    .card-val {
+      font-family: var(--sans);
+      font-size: 9pt;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ── BIO TEXT ── */
+    .bio-text {
+      font-family: var(--sans);
+      font-size: 9.5pt;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.78;
+      margin-bottom: 13px;
+    }
+    .bio-text strong { font-weight: 600; color: var(--navy); }
+
+    .pull-quote {
+      font-family: var(--cond);
+      font-size: 13.5pt;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.35;
+      border-left: 3.5px solid var(--navy);
+      padding-left: 14px;
+      margin-top: 16px;
+    }
+
+    /* ── PAGE 2 HEADER ── */
+    .p2-header {
+      padding: 18px 0 13px;
+      border-bottom: 2.5px solid var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .p2-name {
+      font-family: var(--cond);
+      font-size: 18pt;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .p2-subtitle {
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      color: var(--ink-lt);
+      letter-spacing: 1px;
+    }
+
+    /* ── PAGE 2 TWO-COL ── */
+    .p2-layout { display: flex; gap: 24px; padding-top: 12px; }
+    .p2-left  { width: 2.05in; flex-shrink: 0; }
+    .p2-right { flex: 1; }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: var(--mono);
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      margin-top: 14px;
+    }
+    .section-title:first-child { margin-top: 0; }
+
+    /* ── SKILLS ── */
+    .skill-category { margin-bottom: 9px; }
+    .skill-cat-name {
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .skill-tag {
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      color: var(--ink-md);
+      border: 1px solid var(--rule-dk);
+      padding: 2px 7px;
+      background: var(--surface);
+    }
+
+    /* ── LEADERSHIP ── */
+    .lead-items { display: flex; flex-direction: column; gap: 8px; }
+    .lead-item  { display: flex; gap: 10px; align-items: flex-start; }
+    .lead-badge {
+      font-family: var(--mono);
+      font-size: 6.5pt;
+      font-weight: 600;
+      color: white;
+      background: var(--navy);
+      width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      border-radius: 50%;
+    }
+    .lead-title {
+      font-family: var(--cond);
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1px;
+    }
+    .lead-desc {
+      font-family: var(--sans);
+      font-size: 7.5pt;
+      font-weight: 300;
+      color: var(--ink-md);
+      line-height: 1.55;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-entry { margin-bottom: 11px; padding-bottom: 11px; border-bottom: 1px solid var(--rule); }
+    .exp-entry:last-child { border-bottom: none; margin-bottom: 0; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1px; }
+    .exp-title {
+      font-family: var(--cond);
+      font-size: 12.5pt;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .exp-dates {
+      font-family: var(--mono);
+      font-size: 7pt;
+      color: var(--ink-lt);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+    .exp-company {
+      font-family: var(--mono);
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-md);
+      margin-bottom: 6px;
+    }
+    .exp-desc {
+      font-family: var(--sans);
+      font-size: 8pt;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.65;
+      margin-bottom: 5px;
+    }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .exp-tag {
+      font-family: var(--mono);
+      font-size: 6pt;
+      letter-spacing: 0.8px;
+      color: var(--ink-lt);
+      border: 1px solid var(--rule);
+      padding: 1px 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       PAGE 1 — PROFILE & ABOUT
+  ════════════════════════════════════════ -->
+  <div class="page page-1">
+    <div class="top-stripe"></div>
+
+    <div class="resume-header">
+      <div class="header-left">
+        <div class="resume-name">Robert<br>Perry Morris</div>
+        <div class="resume-tagline">Turning data into strategy, chaos into control.</div>
+      </div>
+      <div class="header-right">
+        <div class="contact-item"><a href="tel:5852056387">585.205.6387</a></div>
+        <div class="contact-item"><a href="mailto:robmorris9@gmail.com">robmorris9@gmail.com</a></div>
+        <div class="contact-item"><a href="https://www.linkedin.com/in/robert-p-morris/">linkedin.com/in/robert-p-morris</a></div>
+        <div class="contact-item">robmorris.me &nbsp;·&nbsp; Buffalo, NY</div>
+      </div>
+    </div>
+
+    <div class="kpi-bar">
+      <div class="kpi-cell">
+        <div class="kpi-number">$29M</div>
+        <div class="kpi-label">Annual FX Settlement<br>Savings</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="kpi-number">$2.9M</div>
+        <div class="kpi-label">Proactive Credit Exposure<br>Mitigated</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="kpi-number">$10B</div>
+        <div class="kpi-label">Balance Sheet Liquidity<br>Optimized</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="col-left">
+        <div class="about-card">
+          <div class="card-row">
+            <div class="card-label">Function</div>
+            <div class="card-val">Portfolio Management</div>
+          </div>
+          <div class="card-row">
+            <div class="card-label">Employer</div>
+            <div class="card-val">KeyBank</div>
+          </div>
+          <div class="card-row">
+            <div class="card-label">Prior</div>
+            <div class="card-val">Citibank · 13 yrs</div>
+          </div>
+          <div class="card-row">
+            <div class="card-label">Focus</div>
+            <div class="card-val">Risk · Treasury · Analytics</div>
+          </div>
+          <div class="card-row">
+            <div class="card-label">Location</div>
+            <div class="card-val">Buffalo, NY</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-right">
+        <div class="bio-text">Thirteen years at <strong>Citi</strong> means thirteen years of doing the work most people never see: building the infrastructure that keeps billion-dollar operations moving. From navigating international liquidity crises to executing balance sheet optimization initiatives that recovered $10B in positioning, the pieces fit together because someone made sure they did. And that someone is me, Robert Morris. Pleased to meet you.</div>
+        <div class="bio-text">At <strong>KeyBank</strong>, that same lens applies to portfolio management: finding the gaps, building predictive risk models, and ensuring the right people have the right information at the right time. At the intersection of business and analytics, the role is translating between the people who make decisions and the data that must inform them.</div>
+        <div class="pull-quote">The kind of hire most leadership teams spend a quarter defining and a decade trying to keep.</div>
+      </div>
+    </div>
+
+    <!-- Career Arc Banner -->
+    <div class="career-arc">
+      <div class="arc-block arc-citi">
+        <div class="arc-years">2012 — 2024</div>
+        <svg style="height:28px;width:auto;display:block;margin-bottom:4px;" xmlns="http://www.w3.org/2000/svg" viewBox="-44.4 -19.308575 384.8 115.85145"><path d="M36.4004 62.2148l-.2138.207c-3.4466 3.5115-7.4358 5.3725-11.5464 5.3725-8.5802 0-14.8086-6.4367-14.8086-15.318 0-8.8654 6.2284-15.3113 14.8086-15.3113 4.1106 0 8.0998 1.8687 11.5464 5.3896l.2138.213 5.5181-6.6722-.1475-.181c-4.589-5.423-10.0952-8.0628-16.8644-8.0628-6.7927 0-13.002 2.286-17.4772 6.4086C2.5672 38.7247 0 45.0209 0 52.4762c0 7.4517 2.5672 13.7634 7.4294 18.229 4.4751 4.1417 10.6845 6.4151 17.4772 6.4151 6.7692 0 12.2754-2.6384 16.8644-8.0635l.1475-.1684zm11.0941 13.9975h9.7483V28.6247h-9.7483zm47.9329-10.3476c-2.6007 1.5836-5.0212 2.3797-7.1947 2.3797-3.1494 0-4.5727-1.6623-4.5727-5.3649V37.6294h9.928v-8.9613H83.66v-14.807l-9.5547 5.1133v9.6937h-8.2426v8.9613h8.2426v26.8608c0 7.3183 4.335 12.3177 10.806 12.4476 4.394.0861 7.0428-1.2227 8.6515-2.1797l.0943-.07 2.3469-9.1756zm8.0738 10.3476h9.7547V28.6247h-9.7547zM268.7307 10.518v45.3935l3.0368-4.7266c-.0025.021 13.643-19.7385 15.3916-22.258h6.0814c-1.2946 1.7392-12.0232 16.5044-12.0232 16.5044S295.1925 74.5532 296 76.2123h-5.9719c-.3285-.6795-12.3341-26.0956-12.3341-26.0956l-8.9633 12.5588v13.5368h-5.5637v-62.517c.4866-.2794 4.2541-2.4392 5.5637-3.1773zm-45.704 24.0463c2.8698-4.2904 7.3663-6.656 12.6272-6.656 10.49 0 16.0493 6.6903 16.0493 19.3505v28.9535h-5.5775V48.4576c0-10.771-3.7401-15.7709-11.8421-15.7709-7.7545 0-12.3847 5.8981-12.3847 15.771v27.7546h-5.562V28.9269h5.562v7.3327zm-34.196-6.656c10.7946 0 16.0422 4.9363 16.0422 15.0937v33.2103h-5.5642v-6.8987l-1.0827 1.1939c-4.0948 4.5177-8.7948 6.7268-14.3913 6.7268-4.3853 0-14.5889-1.4514-14.5889-14.9127 0-11.003 9.0829-14.9084 17.5916-14.9084 4.2723 0 8.4926.9838 11.5555 2.7l.9158.5076v-6.7884c0-7.5264-3.6758-11.338-10.9395-11.338-4.4793 0-8.522 1.1305-12.6671 3.4668-.3658-.8403-1.6514-3.683-2.0093-4.4938 4.3323-2.2833 9.682-3.5591 15.1378-3.5591zm-14.129 33.95c0 7.0685 3.6625 10.964 10.3165 10.964 5.6636 0 10.6936-2.6756 14.1856-7.5414l.1049-.167V54.747l-.309-.179c-3.5515-2.0246-7.1888-2.8412-12.535-2.8412-7.3594 0-11.763 3.7865-11.763 10.1315zM131.7396 10.518v25.295l1.0773-1.1794c4.0975-4.5259 8.6332-6.7253 13.848-6.7253 10.4356 0 16.4254 8.698 16.4254 23.868 0 15.4643-6.803 25.458-17.3358 25.458-5.132 0-9.2414-1.991-12.932-6.2592l-1.0829-1.2603v6.4975h-5.5523v-62.517c.4727-.2794 4.2471-2.4392 5.5523-3.1773zm.1322 29.415l-.1322.1745v24.6143l.0994.151c3.069 4.7495 8.069 7.5895 13.3905 7.5895 8.2181 0 12.384-6.9268 12.384-20.5852 0-12.2014-4.6155-19.1904-12.6622-19.1904-4.8776 0-9.2785 2.437-13.0795 7.2462" fill="white"/><path d="M119.0948 20.1809C110.1713 7.5412 95.3518 0 80.2742 0 65.2027 0 50.3804 7.5412 41.4716 20.1809l-.457.6504h11.236l.1245-.135c7.6475-7.893 17.6305-12.0672 27.8991-12.0672 10.27 0 20.251 4.1741 27.9132 12.0673l.1243.1349h11.2325z" fill="white" fill-rule="evenodd"/></svg>
+        <div class="arc-detail">Analyst through VP &nbsp;·&nbsp; 13 Years &nbsp;·&nbsp; FX, Equity Derivatives, Liquidity, Risk &amp; Treasury</div>
+      </div>
+      <div class="arc-arrow">→</div>
+      <div class="arc-block arc-key">
+        <div class="arc-years">2025 — Present</div>
+        <svg style="height:22px;width:auto;display:block;margin-bottom:4px;" xmlns="http://www.w3.org/2000/svg" viewBox="-37.5 -11.03525 325 66.2115"><path d="M194.47 22.711c-.85.01-1.67-.24-2.36-.73l-1.29 1.22c.48.61.75 1.35.77 2.12 0 2.13-1.73 3.86-3.86 3.86s-3.86-1.73-3.86-3.86c-.01-.76.24-1.51.69-2.12l-1.29-1.22c-.67.44-1.44.7-2.24.73-1.02.02-2-.36-2.73-1.07-.72-.74-1.13-1.74-1.13-2.77 0-2.13 1.73-3.86 3.86-3.86.84.02 1.66.31 2.32.83l1.29-1.24c-.46-.68-.7-1.49-.69-2.31 0-2.13 1.73-3.86 3.86-3.86 1.03-.01 2.02.4 2.75 1.13.71.72 1.11 1.7 1.1 2.72-.02.83-.29 1.64-.77 2.31l1.29 1.24c.66-.56 1.5-.85 2.36-.81 2.12-.21 4.01 1.33 4.23 3.46.22 2.13-1.33 4.01-3.46 4.23-.26.03-.51.03-.77 0m51.48-8.57h-40.24c-.63-1.2-1.48-2.26-2.52-3.13-1.56-1.35-3.64-1.92-5.66-1.56l-.35.08.04-.37c.24-2.1-.46-4.2-1.93-5.73-3.71-4.2-10.12-4.6-14.32-.89-.31.28-.61.57-.89.89-1.4 1.56-2.08 3.64-1.89 5.73l.06.37-.36-.08c-2.07-.35-4.18.22-5.79 1.56-4.26 3.55-4.84 9.89-1.29 14.15.39.47.82.9 1.29 1.29 1.61 1.35 3.72 1.92 5.79 1.56l.36-.07-.05.37c-.19 2.09.49 4.16 1.89 5.73 3.71 4.2 10.13 4.59 14.33.88.31-.27.6-.57.88-.88 1.47-1.52 2.17-3.62 1.93-5.73l-.05-.37.36.07c2.02.36 4.1-.22 5.66-1.56 1.25-1.16 2.2-2.6 2.77-4.21h20.51c1.16-.06 2.16.83 2.22 1.99v.09c0 1.21-.99 2.18-2.19 2.18h-1.9v10.94h8.16v-8.73c0-1.2.97-2.17 2.17-2.18h.05c1.25-.04 2.31.92 2.39 2.17v8.78h8.07v-10.93h-1.8c-1.2.03-2.19-.91-2.23-2.11v-.05c.01-1.17.97-2.12 2.14-2.11h2.32c2.22.01 4.04-1.78 4.05-4.01v-.02c0-2.24-1.81-4.06-4.05-4.07" fill="white"/><path d="M16.5 9.351l-9.22 10.73V9.351H0v27.97h7.28v-8.62l2.98-3.13 7.52 11.75h9.05L15.2 20.361l10.34-11.01H16.5m22.55 15.71c-.12-2.27-1.73-4.16-3.96-4.16-2.35 0-3.92 1.69-4.31 4.15zm-8.26 3.72c.12 2.79 1.72 4.62 4.55 4.62 1.6.09 3.1-.79 3.8-2.23h6.23c-1.21 4.73-5.56 6.74-10.1 6.74-6.62 0-11.12-4-11.12-10.81 0-6.23 4.97-10.69 10.97-10.69 7.29 0 10.94 5.48 10.62 12.38zm18.96 15.36h-3.13v-5.4h2.28c1.52 0 2.66-.86 2.66-2.27 0-1.09-1.29-4.23-1.69-5.33l-5.25-14.15h7.08l3.86 13.24h.08l3.86-13.24h6.77l-8.02 22.13c-1.62 4.5-3.99 5.02-8.5 5.02zm37.16-22.13c2.22-1.01 3.66-3.21 3.69-5.64 0-5.84-5.29-7.09-10.11-7.01H67.4v27.98h13.43c6 0 10.89-2.04 10.89-8.7.12-3.06-1.87-5.8-4.81-6.63zm-12.22-7.02h5.64c1.53 0 2.98.68 2.98 2.7s-1.72 2.66-2.98 2.66h-5.64zm5.84 16.49h-5.84v-6.42h5.84c2.19 0 3.92.82 3.92 3.29 0 2.31-1.61 3.13-3.92 3.13zm26.44 3.92c.05.66.18 1.31.39 1.93h6.65c-.78-1.61-.78-3.49-.78-5.21v-8.91c0-5.76-4.66-6.81-9.48-6.81-2.23-.07-4.44.41-6.43 1.41-1.96 1.11-3.17 3.19-3.17 5.44l.01.01h6.23c.32-1.75 1.49-2.57 3.33-2.57 1.38 0 3.22.59 3.22 2.12 0 1.24-.62 1.64-1.76 1.88-4.63.97-11.83.46-11.83 7.08 0 4.22 3.08 6.15 6.94 6.15 2.42-.02 4.96-.72 6.68-2.52zm-4.24-6.5c1.45-.39 3.18-.51 4.12-1.09.16 4.19-.9 6-4.07 6l-.01-.02c-1.49 0-2.78-.71-2.78-2.31s1.29-2.19 2.74-2.58zm34.04-4.62v13.05h-6.63v-9.84c0-2.79.31-5.6-3.33-5.6-2.51 0-3.6 2.12-3.6 4.35v11.09h-6.66v-20.34h6.43v2.79h.08c1.22-2.08 3.96-3.37 6.38-3.37 6.78-.01 7.33 4.93 7.33 7.87zm9.97 13.04h-6.66V9.351h6.66v14.42l6.07-6.78h7.71l-7.44 7.68 8.39 12.65h-8.04l-4.97-8.18-1.72 1.68z" fill="white"/></svg>
+        <div class="arc-detail">Portfolio Management &nbsp;·&nbsp; Business Banking Risk Strategy &nbsp;·&nbsp; Predictive Modeling</div>
+      </div>
+    </div>
+
+    <div class="bottom-bar"></div>
+  </div><!-- /page-1 -->
+
+
+  <!-- ════════════════════════════════════════
+       PAGE 2 — EXPERIENCE, SKILLS & LEADERSHIP
+  ════════════════════════════════════════ -->
+  <div class="page page-2">
+    <div class="top-stripe"></div>
+
+    <div class="p2-header">
+      <div class="p2-name">Robert Perry Morris</div>
+      <div class="p2-subtitle">Portfolio Management · Risk Strategy · Buffalo, NY</div>
+    </div>
+
+    <div class="p2-layout">
+
+      <!-- LEFT: Skills + Leadership -->
+      <div class="p2-left">
+
+        <div class="section-title">Skills</div>
+
+        <div class="skill-category">
+          <div class="skill-cat-name">Regulatory &amp; Risk</div>
+          <div class="skill-tags">
+            <span class="skill-tag">CCAR</span>
+            <span class="skill-tag">2052a</span>
+            <span class="skill-tag">LCR / NSFR</span>
+            <span class="skill-tag">ALCO</span>
+            <span class="skill-tag">Liquidity Risk</span>
+            <span class="skill-tag">P&amp;L / Product Control</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-name">Markets &amp; Operations</div>
+          <div class="skill-tags">
+            <span class="skill-tag">FX Settlements</span>
+            <span class="skill-tag">CLS Clearing</span>
+            <span class="skill-tag">SWIFT</span>
+            <span class="skill-tag">Nostro Funding</span>
+            <span class="skill-tag">Equity Derivatives</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-name">Tools &amp; Technology</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">VBA</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Excel / PowerQuery</span>
+            <span class="skill-tag">KNIME</span>
+            <span class="skill-tag">Generative AI</span>
+            <span class="skill-tag">Confluence</span>
+            <span class="skill-tag">Jira</span>
+            <span class="skill-tag">Salesforce</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-name">Strategic</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Cash Forecasting</span>
+            <span class="skill-tag">Stress Testing</span>
+            <span class="skill-tag">Process Automation</span>
+            <span class="skill-tag">Cross-Functional Leadership</span>
+            <span class="skill-tag">Regulatory Reporting</span>
+            <span class="skill-tag">Stakeholder Management</span>
+          </div>
+        </div>
+
+        <div class="section-title">Leadership &amp; Culture</div>
+
+        <div class="lead-items">
+          <div class="lead-item">
+            <div class="lead-badge">01</div>
+            <div>
+              <div class="lead-title">Citi Buffalo Pride</div>
+              <div class="lead-desc">Co-founded the employee resource group, now 300+ members strong.</div>
+            </div>
+          </div>
+          <div class="lead-item">
+            <div class="lead-badge">02</div>
+            <div>
+              <div class="lead-title">AI Accelerator</div>
+              <div class="lead-desc">Early adopter and advocate for integrating generative AI into banking workflows.</div>
+            </div>
+          </div>
+          <div class="lead-item">
+            <div class="lead-badge">03</div>
+            <div>
+              <div class="lead-title">25+ Workshops</div>
+              <div class="lead-desc">Facilitated cross-functional productivity workshops across Citi Buffalo operations.</div>
+            </div>
+          </div>
+          <div class="lead-item">
+            <div class="lead-badge">04</div>
+            <div>
+              <div class="lead-title">Site Ambassador</div>
+              <div class="lead-desc">Represented Citi's Buffalo campus, bridging local teams with enterprise leadership.</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /p2-left -->
+
+      <!-- RIGHT: Experience -->
+      <div class="p2-right">
+
+        <div class="section-title">Experience</div>
+
+        <div class="exp-entry">
+          <div class="exp-header">
+            <div class="exp-title">Portfolio Management</div>
+            <div class="exp-dates">2025 – Present</div>
+          </div>
+          <div class="exp-company">KeyBank</div>
+          <div class="exp-desc">Managing risk strategy, automation, and systems design across the business banking portfolio. Built predictive models to proactively close or reduce credit lines before high-risk customers reach max utilization, actively mitigating millions in daily exposure.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Risk Strategy</span>
+            <span class="exp-tag">Predictive Modeling</span>
+            <span class="exp-tag">Salesforce</span>
+            <span class="exp-tag">Portfolio Analytics</span>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-header">
+            <div class="exp-title">VP, Non-Trading Market Risk Solutions</div>
+            <div class="exp-dates">2024</div>
+          </div>
+          <div class="exp-company">Citibank</div>
+          <div class="exp-desc">Operated as Chief of Staff, driving cross-functional coordination across Treasury, Finance, Risk, and Tech. Spearheaded the Treasury Management Notebook in Confluence, was among the first in the division to operationalize generative AI in live banking workflows, and automated cash rebalancing in forecasting platforms.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Treasury</span>
+            <span class="exp-tag">GenAI</span>
+            <span class="exp-tag">CCAR</span>
+            <span class="exp-tag">Confluence</span>
+            <span class="exp-tag">Cross-Functional</span>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-header">
+            <div class="exp-title">VP, Liquidity Management</div>
+            <div class="exp-dates">2021</div>
+          </div>
+          <div class="exp-company">Citibank</div>
+          <div class="exp-desc">Key player in Citi's banking crisis response. Executed massive balance sheet optimization initiatives that improved liquidity capture across targeted sub-entities, successfully optimizing regulatory ratios and cementing $10B in improved liquidity positioning.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">LCR / NSFR</span>
+            <span class="exp-tag">Balance Sheet Optimization</span>
+            <span class="exp-tag">Tableau</span>
+            <span class="exp-tag">CCAR / 2052a</span>
+          </div>
+        </div>
+
+        <div class="exp-entry">
+          <div class="exp-header">
+            <div class="exp-title">AVP, FX Processing &amp; Equity Derivatives</div>
+            <div class="exp-dates">2012–2019</div>
+          </div>
+          <div class="exp-company">Citibank</div>
+          <div class="exp-desc">Led two high-throughput functions across Citibank Buffalo. In FX Trade Processing, managed Interbank and Corporate settlements teams (25 staff) through high-value global flows, driving a SWIFT migration that eliminated manual mapping layers and delivered $29M in annual savings. In Equity Derivatives Product Control, managed daily P&amp;L for complex index and sector trades, overseeing a team of 6 through COVID-19 volatility, with dashboards built in PowerBI and KNIME for proactive risk identification.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">FX</span>
+            <span class="exp-tag">CLS · SWIFT</span>
+            <span class="exp-tag">P&amp;L</span>
+            <span class="exp-tag">Derivatives</span>
+            <span class="exp-tag">KNIME · Power BI</span>
+            <span class="exp-tag">Team Leadership</span>
+          </div>
+        </div>
+
+      </div><!-- /p2-right -->
+    </div><!-- /p2-layout -->
+
+    <div class="bottom-bar"></div>
+  </div><!-- /page-2 -->
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => window.print(), 600);
+    });
+  </script>
+
+</body>
+</html>
