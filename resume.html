@@ -635,8 +635,31 @@
   </div><!-- /page-2 -->
 
   <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => window.print(), 600);
+    // Detect iOS / iPadOS (includes modern iPads that report MacIntel)
+    var isAppleHandheld = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    var vp = document.querySelector('meta[name=viewport]');
+
+    // Restore viewport after print dialog is dismissed
+    window.addEventListener('afterprint', function() {
+      if (vp) vp.setAttribute('content', 'width=device-width, initial-scale=1.0');
+    });
+
+    window.addEventListener('load', function() {
+      // On Apple handheld devices, set viewport to letter-width (8.5in @ 96dpi = 816px)
+      // BEFORE calling print() so Safari renders at the correct column width.
+      // Give fonts/layout extra time to settle on mobile first.
+      var settle = isAppleHandheld ? 1000 : 500;
+      setTimeout(function() {
+        if (isAppleHandheld && vp) {
+          vp.setAttribute('content', 'width=816, initial-scale=1');
+          // Brief pause for reflow to complete before print snapshot is taken
+          setTimeout(function() { window.print(); }, 400);
+        } else {
+          window.print();
+        }
+      }, settle);
     });
   </script>
 

@@ -20,6 +20,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
+  <script>
+    /* Pre-render theme init — must run before first paint to prevent FOUC.
+       Sets data-theme + is-light-theme from sessionStorage or OS preference
+       before any CSS-dependent content is displayed. */
+    (function() {
+      var s = sessionStorage.getItem('rpm-theme');
+      var h = document.documentElement;
+      if (s) h.setAttribute('data-theme', s);
+      var dark = s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (!dark) h.classList.add('is-light-theme');
+    })();
+  </script>
+
   <style>
     /* ── BASE & TOKENS ── */
     :root {
