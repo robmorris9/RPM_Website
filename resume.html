@@ -62,9 +62,19 @@
       @top-right     { content: ''; }
     }
     @media print {
-      body { background: white; padding: 0; }
-      .page { max-width: 100%; padding: 0; margin: 0; box-shadow: none; }
+      body { background: white; padding: 0; width: 8.5in; }
+      .page { max-width: 100%; width: 100%; padding: 0; margin: 0; box-shadow: none; }
       .page-1 { page-break-after: always; break-after: page; }
+      /* Force columns to hold on iOS Safari — prevents mobile-viewport reflow */
+      .two-col { display: flex !important; flex-wrap: nowrap !important; }
+      .col-left { width: 2.05in !important; min-width: 2.05in !important; flex-shrink: 0 !important; }
+      .p2-layout { display: flex !important; flex-wrap: nowrap !important; }
+      .p2-left { width: 2.05in !important; min-width: 2.05in !important; flex-shrink: 0 !important; }
+      /* Prevent career arc from wrapping */
+      .career-arc { display: flex !important; flex-wrap: nowrap !important; }
+      .arc-block { flex: 1 !important; min-width: 0 !important; }
+      /* Prevent content breaks mid-entry */
+      .exp-entry, .kpi-bar, .about-card, .career-arc { break-inside: avoid; page-break-inside: avoid; }
     }
 
     /* ── TOP / BOTTOM STRIPE ── */
