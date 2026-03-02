@@ -1,23 +1,18 @@
 module.exports = async function handler(req, res) {
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   try {
-    // Grab the data sent from your frontend
     const { systemInstruction, contents } = req.body;
-    
-    // Pull the API key from Vercel's secure environment variables
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-      console.error('API key is missing from environment variables.');
       return res.status(500).json({ error: 'Server configuration error' });
     }
 
-    // Make the request to Google Gemini from the Vercel server
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+    // UPDATED: Changed model to gemini-2.5-flash-lite
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,12 +29,10 @@ module.exports = async function handler(req, res) {
       throw new Error('Failed to fetch from Gemini');
     }
 
-    // Send the successful response back to your frontend HTML
     const data = await response.json();
     return res.status(200).json(data);
 
   } catch (error) {
-    console.error('Chat Endpoint Error:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
