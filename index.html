@@ -61,10 +61,10 @@
 
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background: var(--bg); scroll-behavior: smooth; overflow-x: hidden; }
     
-    /* ADDED: overflow-wrap to fix Issue 1 (Text Overflow on Mobile) */
-    body { font-family: var(--sans); font-size: 16px; color: var(--ink); background: var(--bg); line-height: 1.7; overflow-x: hidden; overflow-wrap: break-word; word-wrap: break-word; }
+    /* FIX: Changed overflow-x: hidden to clip to prevent horizontal scroll bleeding WITHOUT breaking position: sticky */
+    html { background: var(--bg); scroll-behavior: smooth; }
+    body { font-family: var(--sans); font-size: 16px; color: var(--ink); background: var(--bg); line-height: 1.7; overflow-x: clip; overflow-wrap: break-word; word-wrap: break-word; }
     a { color: inherit; text-decoration: none; }
 
     /* ── STRIPES ── */
@@ -108,7 +108,6 @@
     .pl-btn.primary { background: var(--teal); color: #0B0F1C; }
     .pl-btn.primary:hover { background: var(--teal-lt); color: #0B0F1C; transform: translateY(-2px); }
 
-    /* Light Mode Visibility Fix: Make RobBot the heavy primary element by using the dark navy block and matching text to light background as requested. */
     .is-light-theme .pl-btn.primary { background: var(--navy); color: var(--bg); }
     .is-light-theme .pl-btn.primary:hover { background: #303750; color: var(--bg); }
     
@@ -123,11 +122,10 @@
     .pl-theme-toggle:hover { color: var(--teal); }
 
     /* ── RIGHT PANEL ── */
-    /* ADDED: max-width: 100% to ensure right panel doesn't overflow viewport on mobile */
     .panel-right { flex: 1; min-width: 0; max-width: 100%; padding-top: 60px; padding-bottom: 60px; display: flex; flex-direction: column; }
 
-    /* ADDED: translateZ(0) to fix Issue 2 (Nav Bar Disappearing on iOS Safari Scroll) */
-    .top-nav { position: sticky; top: 0; z-index: 150; background: rgba(11, 15, 28, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); -webkit-transform: translateZ(0); transform: translateZ(0); margin-bottom: 60px; padding: 20px 0; }
+    /* Sticky Navigation */
+    .top-nav { position: sticky; top: 0; z-index: 150; background: rgba(11, 15, 28, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); -webkit-transform: translateZ(0); transform: translateZ(0); margin-bottom: 60px; padding: 20px 0; transition: background 0.3s ease; }
     .is-light-theme .top-nav { background: rgba(249, 247, 242, 0.85); }
     .top-nav-list { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
     .top-nav-list::-webkit-scrollbar { display: none; }
@@ -147,7 +145,6 @@
     .skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
     .skill-tag { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--teal); background: rgba(80,160,160,0.1); padding: 6px 16px; border-radius: 99px; }
 
-    /* Updated Icon Grid Alignment - with Word Breaking */
     .skills-icon-grid { display: flex; flex-wrap: wrap; gap: 24px 32px; }
     .skill-icon-card { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 80px; }
     .skill-icon-card svg { width: 28px; height: 28px; color: var(--teal); opacity: 0.8; flex-shrink: 0; }
@@ -209,11 +206,19 @@
       .panel-left { position: relative; width: 100%; min-width: 0; height: auto; top: auto; padding: 40px 0 0 0; }
       .pl-name { font-size: 48px; }
       .panel-right { padding-top: 0; }
-      .top-nav { padding: 16px 0; margin-bottom: 40px; }
+      
+      /* FIX: Make top-nav edge-to-edge pinned app bar on mobile */
+      .top-nav { 
+        padding: 16px 24px; 
+        margin-bottom: 40px; 
+        margin-inline: -24px; /* Pulls nav out of the wrapper padding to reach edges */
+        width: 100vw; 
+        border-bottom: 1px solid var(--rule);
+      }
+      
       .exp-entry { grid-template-columns: 1fr; gap: 8px; margin-bottom: 48px; }
       .exp-dates { margin-bottom: 8px; }
       
-      /* New Mobile Grid Fixes */
       .skills-icon-grid { gap: 24px 16px; }
       .skill-icon-card { width: 72px; }
       .skill-icon-lbl { font-size: 12px; }
@@ -222,7 +227,6 @@
     /* Chat Panel */
     .chat-panel { position: fixed; bottom: 0; right: 0; width: 380px; height: 70vh; max-height: 580px; background: #181D34; border: 1px solid rgba(237,232,220,0.15); border-bottom: none; display: flex; flex-direction: column; transform: translateY(110%); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); z-index: 200; box-shadow: -4px -4px 40px rgba(0,0,0,0.5); }
     
-    /* ADDED: Mobile responsiveness for Chat Panel to prevent side-scrolling/clipping */
     @media (max-width: 400px) {
       .chat-panel { width: 100%; right: 0; border-left: none; border-right: none; }
     }
@@ -477,7 +481,7 @@ Key facts:
   let chatOpen = false;
   let chatHistory = []; 
   let chatBusy = false;
-  let errorCount = 0; // Tracks consecutive errors to serve progressive fallbacks
+  let errorCount = 0; 
 
   function toggleChat() {
     chatOpen = !chatOpen;
@@ -595,9 +599,11 @@ Key facts:
     });
   })();
 
-  // ── SCROLL SPY NAV ──
+  // ── FIX: UPDATED SCROLL SPY NAV ──
   const sectionsObj = document.querySelectorAll('main.panel-right section');
   const navLinksObj = document.querySelectorAll('.nav-link');
+  
+  // Adjusted margins to trigger "active" state more accurately when the section hits the upper portion of the screen
   const spyObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -608,7 +614,8 @@ Key facts:
         });
       }
     });
-  }, { root: null, rootMargin: '-10% 0px -50% 0px', threshold: 0 });
+  }, { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+  
   sectionsObj.forEach(sec => spyObserver.observe(sec));
 
   // ── MICRO ANIMATIONS OBSERVER ──
