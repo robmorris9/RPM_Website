@@ -106,6 +106,10 @@
     .pl-btn.primary { background: var(--teal); color: #0B0F1C; }
     .pl-btn.primary:hover { background: var(--teal-lt); color: #0B0F1C; transform: translateY(-2px); }
     
+    /* New Outline Button Style */
+    .pl-btn.outline { background: transparent; box-shadow: inset 0 0 0 1.5px var(--teal); color: var(--teal); }
+    .pl-btn.outline:hover { background: rgba(80, 160, 160, 0.1); }
+
     .btn-icon { margin-left: 2px; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
     .pl-btn:hover .btn-icon { transform: translate(2px, -2px); }
 
@@ -136,10 +140,11 @@
     .skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
     .skill-tag { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--teal); background: rgba(80,160,160,0.1); padding: 6px 16px; border-radius: 99px; }
 
-    .skills-icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 24px; }
-    .skill-icon-card { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    /* Updated Icon Grid Alignment */
+    .skills-icon-grid { display: flex; flex-wrap: wrap; gap: 24px 36px; }
+    .skill-icon-card { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 80px; }
     .skill-icon-card svg { width: 28px; height: 28px; color: var(--teal); opacity: 0.8; }
-    .skill-icon-lbl { font-family: var(--sans); font-size: 13px; color: var(--ink-md); }
+    .skill-icon-lbl { font-family: var(--sans); font-size: 13px; color: var(--ink-md); text-align: center; line-height: 1.3; }
 
     .exp-entry { display: grid; grid-template-columns: 100px 1fr; gap: 32px; margin-bottom: 60px; }
     .exp-dates { font-family: var(--mono); font-size: 13px; color: var(--ink-lt); padding-top: 4px; }
@@ -249,6 +254,10 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           Ask RobBot
         </button>
+        <a href="Robert Perry Morris _ Resume.pdf" target="_blank" class="pl-btn" id="resume-button-hero">
+          View Resume 
+          <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
         <a href="mailto:robmorris9@gmail.com" class="pl-btn">
           Email Me 
           <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
@@ -292,6 +301,8 @@
             <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><ellipse cx="10" cy="5" rx="7" ry="2.5"/><path d="M3 5v5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5V5"/><path d="M3 10v5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5v-5"/></svg><span class="skill-icon-lbl">SQL</span></div>
             <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="3.5" cy="10" r="2.2"/><circle cx="16.5" cy="4" r="2.2"/><circle cx="16.5" cy="16" r="2.2"/><line x1="5.5" y1="9.2" x2="14.5" y2="4.8" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="5.5" y1="10.8" x2="14.5" y2="15.2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg><span class="skill-icon-lbl">KNIME</span></div>
             <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 9.5a4 4 0 0 0-7.3-2.2A3 3 0 1 0 5.5 13H16a3 3 0 0 0 0-6z" stroke-linejoin="round"/></svg><span class="skill-icon-lbl">Salesforce</span></div>
+            <div class="skill-icon-card" aria-label="Jira"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.31 10.82L13.18 1.69a3.18 3.18 0 0 0-4.5 0L6.44 3.93l9.02 9.02-9.02 9.02 2.24 2.24a3.18 3.18 0 0 0 4.5 0l9.13-9.13a3.18 3.18 0 0 0 0-4.26z"/><path d="M8.13 14.77l-4.5-4.5 4.5-4.5-2.25-2.25a3.18 3.18 0 0 0-4.5 0L.49 4.41a3.18 3.18 0 0 0 0 4.5l6.53 6.53z"/></svg><span class="skill-icon-lbl">Jira</span></div>
+            <div class="skill-icon-card" aria-label="Confluence"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.18 10.2L12 0 1.82 10.2c-1.3 1.3-1.3 3.42 0 4.73l8.65 8.65c.84.84 2.2.84 3.05 0l8.65-8.65c1.31-1.31 1.31-3.43.01-4.73zM12 18.26L6.15 12.4 12 6.55l5.85 5.85L12 18.26z"/></svg><span class="skill-icon-lbl">Confluence</span></div>
             <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="3" cy="6" r="1.8"/><circle cx="3" cy="14" r="1.8"/><circle cx="10" cy="3" r="1.8"/><circle cx="10" cy="10" r="1.8"/><circle cx="10" cy="17" r="1.8"/><circle cx="17" cy="10" r="1.8"/><line x1="4.7" y1="6.2" x2="8.3" y2="3.8" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="6.8" x2="8.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="13.8" x2="8.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="14.2" x2="8.3" y2="16.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="3.5" x2="15.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="10" x2="15.2" y2="10" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="16.5" x2="15.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/></svg><span class="skill-icon-lbl">Gen AI</span></div>
           </div>
         </div>
@@ -386,12 +397,8 @@
         <div class="connect-heading">What's Next?</div>
         <p class="connect-sub">I'm always looking to connect on new opportunities, automation, and risk strategy. Check out the <strong>RobBot</strong> I built for this site, or feel free to reach out directly.</p>
         <div class="connect-btns">
-          <a href="tel:5852056387" class="pl-btn primary">
+          <a href="tel:5852056387" class="pl-btn outline">
             585.205.6387 
-            <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </a>
-          <a href="Robert Perry Morris _ Resume.pdf" target="_blank" class="pl-btn">
-            View Resume 
             <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
         </div>
@@ -476,7 +483,6 @@ Key facts:
     document.getElementById('chat-send').disabled = true;
 
     try {
-      // Look here! It now cleanly points to your Vercel backend.
       const res = await fetch(`/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -498,7 +504,6 @@ Key facts:
         chatHistory.push({ role: 'model', parts: [{ text: reply }] });
         appendMsg('assistant', reply);
         
-        // Reset the error counter if a message successfully goes through
         errorCount = 0; 
       } else {
         throw new Error('Empty response');
@@ -506,12 +511,11 @@ Key facts:
     } catch (e) {
       typingEl.remove();
       
-      // Select the message based on the errorCount, capping out at the final array index
       const messageIndex = Math.min(errorCount, fallbacks.length - 1);
       const fallbackMsg = fallbacks[messageIndex];
       appendMsg('assistant', fallbackMsg);
       
-      errorCount++; // Increment the counter for the next potential failure
+      errorCount++; 
     }
 
     chatBusy = false;
