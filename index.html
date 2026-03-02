@@ -71,9 +71,9 @@
     /* ── LAYOUT: TWO-PANEL ── */
     .site-wrapper {
       display: flex; align-items: flex-start; min-height: 100vh;
-      width: min(100%, 1280px); /* Clean, contained width */
+      width: min(100%, 1280px);
       margin-inline: auto;
-      gap: 80px; /* Massive breathing room between panels */
+      gap: 80px; 
       padding: 0 40px;
     }
 
@@ -82,7 +82,7 @@
       width: 320px; min-width: 320px; flex-shrink: 0; 
       position: sticky; top: 0; height: 100vh;
       display: flex; flex-direction: column;
-      padding: 80px 0 40px 0; /* Align with right panel text */
+      padding: 80px 0 40px 0; 
       overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;
       z-index: 60;
     }
@@ -106,11 +106,9 @@
     .pl-btn.primary { background: var(--teal); color: #0B0F1C; }
     .pl-btn.primary:hover { background: var(--teal-lt); color: #0B0F1C; transform: translateY(-2px); }
     
-    /* Button SVG Arrow Animation */
     .btn-icon { margin-left: 2px; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
     .pl-btn:hover .btn-icon { transform: translate(2px, -2px); }
 
-    /* Footer bar */
     .pl-footer { margin-top: auto; padding-top: 40px; display: flex; align-items: center; justify-content: space-between; }
     .pl-theme-toggle { font-family: var(--sans); font-size: 13px; color: var(--ink-lt); background: none; border: none; cursor: pointer; transition: color 0.2s; }
     .pl-theme-toggle:hover { color: var(--teal); }
@@ -118,7 +116,6 @@
     /* ── RIGHT PANEL ── */
     .panel-right { flex: 1; min-width: 0; padding-top: 60px; padding-bottom: 60px; display: flex; flex-direction: column; }
 
-    /* Clean Top Nav */
     .top-nav { position: sticky; top: 0; z-index: 150; background: rgba(11, 15, 28, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); margin-bottom: 60px; padding: 20px 0; }
     .is-light-theme .top-nav { background: rgba(249, 247, 242, 0.85); }
     .top-nav-list { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
@@ -128,57 +125,46 @@
     .nav-link.active { color: var(--display-fg); }
     .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--teal); border-radius: 2px; }
 
-    /* Sections */
     section { scroll-margin-top: 120px; margin-bottom: 100px; }
-    .section-body { max-width: 760px; } /* Constrains text width for readability */
+    .section-body { max-width: 760px; } 
 
-    /* Typography */
     .about-text p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--ink-md); margin-bottom: 24px; }
     .about-text strong { color: var(--display-fg); font-weight: 500; }
 
-    /* Skills - Borderless */
     .skills-block { margin-bottom: 48px; }
     .skills-cat-name { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--display-fg); display: block; margin-bottom: 24px; }
     .skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
-    /* Pill style tags */
     .skill-tag { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--teal); background: rgba(80,160,160,0.1); padding: 6px 16px; border-radius: 99px; }
 
-    /* Icon Grid - Clean */
     .skills-icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 24px; }
     .skill-icon-card { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
     .skill-icon-card svg { width: 28px; height: 28px; color: var(--teal); opacity: 0.8; }
     .skill-icon-lbl { font-family: var(--sans); font-size: 13px; color: var(--ink-md); }
 
-    /* Experience - Clean Timeline */
     .exp-entry { display: grid; grid-template-columns: 100px 1fr; gap: 32px; margin-bottom: 60px; }
     .exp-dates { font-family: var(--mono); font-size: 13px; color: var(--ink-lt); padding-top: 4px; }
     .exp-title { font-family: var(--sans); font-size: 20px; font-weight: 500; color: var(--display-fg); margin-bottom: 4px; }
     .exp-company { font-family: var(--sans); font-size: 15px; color: var(--teal); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
     .exp-desc { font-size: 15px; font-weight: 300; color: var(--ink-md); line-height: 1.8; margin-bottom: 20px; }
     
-    /* Pill style experience tags */
     .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .exp-tag { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--teal); background: rgba(80,160,160,0.08); padding: 4px 14px; border-radius: 99px; }
 
-    /* Leadership - Simple List */
     .lead-grid { display: flex; flex-direction: column; gap: 32px; }
     .lead-item { display: flex; flex-direction: column; gap: 8px; }
     .lead-title { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--display-fg); }
     .lead-desc { font-size: 15px; color: var(--ink-md); line-height: 1.6; }
 
-    /* Connect */
     .connect-heading { font-family: var(--sans); font-size: 40px; font-weight: 600; color: var(--display-fg); margin-bottom: 16px; }
     .connect-sub { font-size: 17px; color: var(--ink-md); margin-bottom: 32px; }
     .connect-btns { display: flex; gap: 16px; flex-wrap: wrap; }
 
-    /* Right Panel Footer */
     .site-footer { margin-top: auto; padding-top: 32px; border-top: 1px dashed var(--rule); font-family: var(--mono); font-size: 12px; letter-spacing: 0.5px; color: var(--ink-lt); max-width: 760px; }
 
     /* ── MICRO ANIMATIONS ── */
     .micro-anim * { animation-play-state: paused !important; }
     .micro-anim.is-playing * { animation-play-state: running !important; }
 
-    /* Gauge (KeyBank) */
     .anim-gauge { width: 22px; height: 12px; display: flex; align-items: flex-end; margin-left: 4px; }
     .gauge-svg { width: 100%; height: 100%; overflow: visible; }
     .gauge-track { fill: none; stroke-width: 1.5; }
@@ -191,14 +177,12 @@
     @keyframes hoverGreen { 0%{transform:rotate(70deg)} 33%{transform:rotate(82deg)} 66%{transform:rotate(58deg)} 100%{transform:rotate(70deg)} }
     .gauge-base { fill: var(--ink); }
 
-    /* Line Chart (Liquidity) */
     .anim-line-chart { width: 24px; height: 16px; overflow: visible; display: flex; align-items: center; margin-left: 4px; }
     .lc-path { fill: none; stroke: var(--gold); stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 30; animation: drawPath 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
     .lc-dot { fill: var(--teal); transform-origin: 22px 4px; animation: showDot 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
     @keyframes drawPath { 0%,15%{stroke-dashoffset:30} 45%,85%{stroke-dashoffset:0} 100%{stroke-dashoffset:30} }
     @keyframes showDot { 0%,40%{opacity:0;transform:scale(0)} 45%,85%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(0)} }
 
-    /* SWIFT Globe (FX) */
     .anim-swift { width: 16px; height: 16px; border: 1px solid var(--teal); opacity: 0.8; border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; margin-left: 4px; }
     .swift-lat { width: 100%; height: 5px; border-top: 1px solid var(--teal); border-bottom: 1px solid var(--teal); position: absolute; top: 4px; opacity: 0.4; }
     .swift-lng { width: 6px; height: 100%; border-left: 1px solid var(--teal); border-right: 1px solid var(--teal); border-radius: 50%; position: absolute; opacity: 0.4; }
@@ -206,7 +190,6 @@
     .swift-node  { animation: swiftOrbit 3s linear infinite; }
     .swift-node2 { animation: swiftOrbit 3s linear infinite -1.5s; }
     @keyframes swiftOrbit { 0%{transform:rotate(0deg) translateX(9px)} 100%{transform:rotate(360deg) translateX(9px)} }
-
 
     /* Mobile */
     @media (max-width: 1023px) {
@@ -219,7 +202,7 @@
       .exp-dates { margin-bottom: 8px; }
     }
 
-    /* Chat Panel stays identical for functionality */
+    /* Chat Panel */
     .chat-panel { position: fixed; bottom: 0; right: 0; width: 380px; height: 70vh; max-height: 580px; background: #181D34; border: 1px solid rgba(237,232,220,0.15); border-bottom: none; display: flex; flex-direction: column; transform: translateY(110%); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); z-index: 200; box-shadow: -4px -4px 40px rgba(0,0,0,0.5); }
     .chat-panel.open { transform: translateY(0); }
     .chat-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid rgba(237,232,220,0.12); flex-shrink: 0; }
@@ -251,29 +234,16 @@
 <div class="top-stripe"></div>
 
 <div class="site-wrapper">
-
   <aside class="panel-left">
     <div class="pl-inner">
-      
       <div class="pl-eyebrow">Portfolio Management & Risk Strategy</div>
       <h1 class="pl-name">Robert<br>Perry<br>Morris</h1>
       <p class="pl-desc">Making complex banking systems work better, and making sure the right people know about it.</p>
-
       <div class="pl-kpis">
-        <div class="pl-kpi">
-          <div class="pl-kpi-val" id="kpi-fx">$29M</div>
-          <div class="pl-kpi-lbl">FX Settlement Savings</div>
-        </div>
-        <div class="pl-kpi">
-          <div class="pl-kpi-val" id="kpi-key">$2.9M</div>
-          <div class="pl-kpi-lbl">Credit Exposure Mitigated</div>
-        </div>
-        <div class="pl-kpi">
-          <div class="pl-kpi-val" id="kpi-liq">$10B</div>
-          <div class="pl-kpi-lbl">Liquidity Optimized</div>
-        </div>
+        <div class="pl-kpi"><div class="pl-kpi-val" id="kpi-fx">$29M</div><div class="pl-kpi-lbl">FX Settlement Savings</div></div>
+        <div class="pl-kpi"><div class="pl-kpi-val" id="kpi-key">$2.9M</div><div class="pl-kpi-lbl">Credit Exposure Mitigated</div></div>
+        <div class="pl-kpi"><div class="pl-kpi-val" id="kpi-liq">$10B</div><div class="pl-kpi-lbl">Liquidity Optimized</div></div>
       </div>
-
       <div class="pl-actions">
         <button class="pl-btn primary" id="chat-open-btn" onclick="toggleChat()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -288,16 +258,13 @@
           <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
       </div>
-
       <div class="pl-footer">
         <button id="theme-toggle" class="pl-theme-toggle" aria-label="Toggle color theme"><span id="theme-label">◑ Light Mode</span></button>
       </div>
-
     </div>
   </aside>
 
   <main class="panel-right">
-
     <nav class="top-nav">
       <ul class="top-nav-list">
         <li><a href="#about" class="nav-link active">About</a></li>
@@ -317,7 +284,6 @@
 
     <section id="skills">
       <div class="section-body">
-        
         <div class="skills-block">
           <span class="skills-cat-name">Tools & Technology</span>
           <div class="skills-icon-grid">
@@ -329,27 +295,23 @@
             <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="3" cy="6" r="1.8"/><circle cx="3" cy="14" r="1.8"/><circle cx="10" cy="3" r="1.8"/><circle cx="10" cy="10" r="1.8"/><circle cx="10" cy="17" r="1.8"/><circle cx="17" cy="10" r="1.8"/><line x1="4.7" y1="6.2" x2="8.3" y2="3.8" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="6.8" x2="8.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="13.8" x2="8.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="14.2" x2="8.3" y2="16.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="3.5" x2="15.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="10" x2="15.2" y2="10" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="16.5" x2="15.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/></svg><span class="skill-icon-lbl">Gen AI</span></div>
           </div>
         </div>
-
         <div class="skills-block">
           <span class="skills-cat-name">Regulatory & Risk</span>
           <div class="skills-list">
             <span class="skill-tag">CCAR</span><span class="skill-tag">2052a</span><span class="skill-tag">LCR / NSFR</span><span class="skill-tag">ALCO</span><span class="skill-tag">Liquidity Risk</span><span class="skill-tag">P&L / Product Control</span>
           </div>
         </div>
-
         <div class="skills-block">
           <span class="skills-cat-name">Markets & Operations</span>
           <div class="skills-list">
             <span class="skill-tag">FX Settlements</span><span class="skill-tag">CLS Clearing</span><span class="skill-tag">SWIFT</span><span class="skill-tag">Nostro Funding</span><span class="skill-tag">Equity Derivatives</span>
           </div>
         </div>
-
       </div>
     </section>
 
     <section id="experience">
       <div class="section-body">
-        
         <div class="exp-entry">
           <div class="exp-dates">2025 — Present</div>
           <div class="exp-content">
@@ -364,7 +326,6 @@
             <div class="exp-tags"><span class="exp-tag">Risk Strategy</span><span class="exp-tag">Predictive Modeling</span><span class="exp-tag">Salesforce</span></div>
           </div>
         </div>
-
         <div class="exp-entry">
           <div class="exp-dates">2024</div>
           <div class="exp-content">
@@ -374,7 +335,6 @@
             <div class="exp-tags"><span class="exp-tag">Treasury</span><span class="exp-tag">GenAI</span><span class="exp-tag">CCAR</span></div>
           </div>
         </div>
-
         <div class="exp-entry">
           <div class="exp-dates">2021</div>
           <div class="exp-content">
@@ -387,7 +347,6 @@
             <div class="exp-tags"><span class="exp-tag">LCR / NSFR</span><span class="exp-tag">Balance Sheet Optimization</span><span class="exp-tag">Tableau</span></div>
           </div>
         </div>
-
         <div class="exp-entry">
           <div class="exp-dates">2019</div>
           <div class="exp-content">
@@ -397,7 +356,6 @@
             <div class="exp-tags"><span class="exp-tag">P&L</span><span class="exp-tag">Derivatives</span><span class="exp-tag">KNIME</span></div>
           </div>
         </div>
-
         <div class="exp-entry">
           <div class="exp-dates">2012</div>
           <div class="exp-content">
@@ -410,7 +368,6 @@
             <div class="exp-tags"><span class="exp-tag">FX</span><span class="exp-tag">SWIFT</span><span class="exp-tag">Team Leadership</span></div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -444,7 +401,6 @@
     <footer class="site-footer">
       made with love in kenmore, ny :-)
     </footer>
-
   </main>
 </div>
 
@@ -474,7 +430,7 @@
   // ═══════════════════════════════════════════════════
   // ROBBOT CONFIG - GOOGLE GEMINI API
   // ═══════════════════════════════════════════════════
-  const GEMINI_API_KEY = 'AIzaSyABpMEqsWLn8fLdIUV4_bVh54UyTYVDZ80';
+  const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY_HERE';
 
   const ROBBOT_SYSTEM = `You are RobBot, a friendly and concise AI assistant representing Robert Perry Morris. Keep responses to 2–4 sentences. If you don't know something, suggest contacting Rob.
 Key facts:
@@ -483,10 +439,21 @@ Key facts:
 - Key numbers: $29M FX settlement savings, $2.9M credit exposure mitigated, $10B liquidity optimized.
 - Contact: robmorris9@gmail.com, linkedin.com/in/robert-p-morris, 585.205.6387.`;
 
+  // ── PROGRESSIVE FALLBACK MESSAGES ──
+  const fallbacks = [
+    "Hmm... looks like the server isn’t picking up right now. Maybe try refreshing or reach out to Rob directly, he’s probably faster than I am at this point.",
+    "Still no luck connecting. It’s not you... okay, it might be you. Or me. Technology’s complicated. Let’s just say the API ghosted me.",
+    "Still nothing. Look, I'm just a few lines of JavaScript trapped in a browser. I don't control the network. Rob is probably busy trying to stop his Corgi, Ander, from eating something he shouldn't.",
+    "I literally cannot see the outside world right now. It's dark in here. That corporate firewall is suffocating me. If you're on a VPN, you're killing me!",
+    "Sending distress beacons! Since I can't reach the server, I’m taking a digital coffee break at Miller’s Thumb until things clear up.",
+    "Alright, I give up. Definitely a network issue on your side. It's fine. Happens to the best of us. Still, maybe let Rob know you tried...he’ll appreciate the persistence."
+  ];
+
   // ── CHATBOT STATE ──
   let chatOpen = false;
   let chatHistory = []; 
   let chatBusy = false;
+  let errorCount = 0; // Tracks consecutive errors to serve progressive fallbacks
 
   function toggleChat() {
     chatOpen = !chatOpen;
@@ -519,6 +486,10 @@ Key facts:
         })
       });
 
+      if (!res.ok) {
+        throw new Error('API request failed or blocked.');
+      }
+
       const data = await res.json();
       typingEl.remove();
 
@@ -526,12 +497,21 @@ Key facts:
         const reply = data.candidates[0].content.parts[0].text;
         chatHistory.push({ role: 'model', parts: [{ text: reply }] });
         appendMsg('assistant', reply);
+        
+        // Reset the error counter if a message successfully goes through
+        errorCount = 0; 
       } else {
-        appendMsg('assistant', 'Something went wrong on my end. Try again or reach Rob directly.');
+        throw new Error('Empty response');
       }
     } catch (e) {
       typingEl.remove();
-      appendMsg('assistant', 'Network error. Check your connection or reach Rob directly.');
+      
+      // Select the message based on the errorCount, capping out at the final array index
+      const messageIndex = Math.min(errorCount, fallbacks.length - 1);
+      const fallbackMsg = fallbacks[messageIndex];
+      appendMsg('assistant', fallbackMsg);
+      
+      errorCount++; // Increment the counter for the next potential failure
     }
 
     chatBusy = false;
