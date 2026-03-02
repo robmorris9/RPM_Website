@@ -3,21 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robert Perry Morris — Portfolio Management &amp; Risk Strategy</title>
+  <title>Robert Perry Morris — Portfolio Management & Risk Strategy</title>
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23181D34'/%3E%3Crect width='32' height='3' fill='%2350A0A0'/%3E%3Ctext x='16' y='27' font-family='Arial Narrow%2C sans-serif' font-weight='700' font-size='22' fill='%23C09838' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="og-image.png">
-  <meta property="og:image"       content="https://robmorris.me/og-image.png">
-  <meta name="twitter:image"      content="https://robmorris.me/og-image.png">
-  <meta property="og:type"        content="profile">
-  <meta property="og:title"       content="Robert Perry Morris — Portfolio Management &amp; Risk Strategy">
+  <meta property="og:title"       content="Robert Perry Morris — Portfolio Management & Risk Strategy">
   <meta property="og:description" content="13 years at Citi. Now at KeyBank. Finance, risk, and the infrastructure that connects them.">
-  <meta property="og:url"         content="https://robmorris.me">
-  <meta name="twitter:card"       content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <script>
     (function() {
@@ -32,481 +26,214 @@
   <style>
     /* ── TOKENS ── */
     :root {
-      --bg: #0B0F1C; --surface: #141830; --surface2: #1C2240;
+      --bg: #0B0F1C; --surface: #141830; --surface2: rgba(255,255,255,0.03);
       --navy: #181D34; --cream: #F0EBE0;
-      --ink: #EDE8DC; --ink-md: rgba(237,232,220,0.62); --ink-lt: rgba(237,232,220,0.36);
+      --ink: #EDE8DC; --ink-md: rgba(237,232,220,0.70); --ink-lt: rgba(237,232,220,0.45);
       --teal: #50A0A0; --teal-lt: #72BABA;
       --salmon: #CC6050; --gold: #C09838;
-      --rule: rgba(237,232,220,0.11); --rule-dk: rgba(237,232,220,0.06);
+      --rule: rgba(237,232,220,0.06); 
       --risk-safe: #50A0A0; --risk-warn: #C09838; --risk-danger: #CC6050;
       --display-fg: var(--cream);
-      --btn-text: var(--cream); --btn-border: rgba(255,255,255,0.30);
-      --btn-hover-bg: rgba(255,255,255,0.08); --btn-hover-bdr: rgba(255,255,255,0.80);
-      --btn-backdrop: blur(10px); --btn-shadow: 0 4px 15px rgba(0,0,0,0.20);
-      --teal-primary-hover: rgba(114,186,186,0.20); --btn-primary-hover-text: var(--cream);
-      --matrix-line: rgba(255,255,255,0.03);
-      --gold-bg: rgba(192,152,56,0.05); --gold-line: rgba(192,152,56,0.20);
-      --gold-ring: rgba(192,152,56,0.80); --gold-grid: rgba(192,152,56,0.30);
-      --gauge-needle-c: var(--cream); --gauge-base-c: var(--cream);
       --mono: "IBM Plex Mono", "Courier New", monospace;
       --cond: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
       --sans: "IBM Plex Sans", Arial, sans-serif;
     }
 
     @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
-      --bg: #F9F7F2; --surface: #F0EDE4; --surface2: #E8E3D8;
-      --navy: #1A1E2C; --cream: #F5F1E8;
-      --ink: #1A1E2C; --ink-md: rgba(26,30,44,0.62); --ink-lt: rgba(26,30,44,0.38);
+      --bg: #F9F7F2; --surface: #F0EDE4; --surface2: rgba(0,0,0,0.03);
+      --navy: #1A1E2C; --cream: #1A1E2C;
+      --ink: #1A1E2C; --ink-md: rgba(26,30,44,0.75); --ink-lt: rgba(26,30,44,0.50);
       --teal: #177777; --teal-lt: #219292;
       --salmon: #A83020; --gold: #986805;
-      --rule: rgba(0,0,0,0.08); --rule-dk: rgba(0,0,0,0.05);
-      --risk-safe: #2A5E2A; --risk-warn: #9A6E08; --risk-danger: #7A1A10;
+      --rule: rgba(0,0,0,0.06); 
       --display-fg: var(--ink);
-      --btn-text: var(--ink); --btn-border: rgba(26,30,44,0.22);
-      --btn-hover-bg: rgba(26,30,44,0.05); --btn-hover-bdr: rgba(26,30,44,0.55);
-      --btn-backdrop: none; --btn-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      --teal-primary-hover: rgba(23,119,119,0.14); --btn-primary-hover-text: var(--teal);
-      --matrix-line: rgba(0,0,0,0.04);
-      --gold-bg: rgba(152,104,5,0.06); --gold-line: rgba(152,104,5,0.22);
-      --gold-ring: rgba(152,104,5,0.70); --gold-grid: rgba(152,104,5,0.25);
-      --gauge-needle-c: var(--navy); --gauge-base-c: var(--navy);
     }}
 
     [data-theme="light"] {
-      --bg: #F9F7F2; --surface: #F0EDE4; --surface2: #E8E3D8;
-      --navy: #1A1E2C; --cream: #F5F1E8;
-      --ink: #1A1E2C; --ink-md: rgba(26,30,44,0.62); --ink-lt: rgba(26,30,44,0.38);
+      --bg: #F9F7F2; --surface: #F0EDE4; --surface2: rgba(0,0,0,0.03);
+      --navy: #1A1E2C; --cream: #1A1E2C;
+      --ink: #1A1E2C; --ink-md: rgba(26,30,44,0.75); --ink-lt: rgba(26,30,44,0.50);
       --teal: #177777; --teal-lt: #219292;
       --salmon: #A83020; --gold: #986805;
-      --rule: rgba(0,0,0,0.08); --rule-dk: rgba(0,0,0,0.05);
-      --risk-safe: #2A5E2A; --risk-warn: #9A6E08; --risk-danger: #7A1A10;
+      --rule: rgba(0,0,0,0.06); 
       --display-fg: var(--ink);
-      --btn-text: var(--ink); --btn-border: rgba(26,30,44,0.22);
-      --btn-hover-bg: rgba(26,30,44,0.05); --btn-hover-bdr: rgba(26,30,44,0.55);
-      --btn-backdrop: none; --btn-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      --teal-primary-hover: rgba(23,119,119,0.14); --btn-primary-hover-text: var(--teal);
-      --matrix-line: rgba(0,0,0,0.04);
-      --gold-bg: rgba(152,104,5,0.06); --gold-line: rgba(152,104,5,0.22);
-      --gold-ring: rgba(152,104,5,0.70); --gold-grid: rgba(152,104,5,0.25);
-      --gauge-needle-c: var(--navy); --gauge-base-c: var(--navy);
     }
 
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background: var(--bg); scroll-behavior: smooth; overflow-y: scroll; }
-    body { font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--bg); }
+    html { background: var(--bg); scroll-behavior: smooth; }
+    body { font-family: var(--sans); font-size: 16px; color: var(--ink); background: var(--bg); line-height: 1.7; }
     a { color: inherit; text-decoration: none; }
 
     /* ── STRIPES ── */
     .top-stripe    { height: 4px; background: linear-gradient(90deg, #50A0A0 0%, #50A0A0 40%, #CC6050 40%, #CC6050 70%, #C09838 70%, #C09838 100%); flex-shrink: 0; }
-    .bottom-stripe { height: 4px; background: linear-gradient(90deg, #C09838 0%, #C09838 30%, #CC6050 30%, #CC6050 60%, #50A0A0 60%, #50A0A0 100%); }
 
-    /* ── LAYOUT: TWO-PANEL — centered on wide screens ── */
+    /* ── LAYOUT: TWO-PANEL ── */
     .site-wrapper {
       display: flex; align-items: flex-start; min-height: 100vh;
-      width: min(100%, 1440px); margin-inline: auto;
+      width: min(100%, 1280px); /* Clean, contained width */
+      margin-inline: auto;
+      gap: 80px; /* Massive breathing room between panels */
+      padding: 0 40px;
     }
 
-    /* Left panel — always dark navy */
+    /* Left panel */
     .panel-left {
-      width: 360px; min-width: 360px; flex-shrink: 0;
+      width: 320px; min-width: 320px; flex-shrink: 0; 
       position: sticky; top: 0; height: 100vh;
       display: flex; flex-direction: column;
-      background: #181D34;
-      border-right: 1px solid rgba(237,232,220,0.10);
+      padding: 80px 0 40px 0; /* Align with right panel text */
       overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;
       z-index: 60;
     }
     .panel-left::-webkit-scrollbar { display: none; }
 
-    .pl-inner {
-      display: flex; flex-direction: column; flex: 1;
-      padding: 24px 28px 20px;
-    }
+    .pl-inner { display: flex; flex-direction: column; flex: 1; }
+    .pl-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 1px; color: var(--teal); margin-bottom: 16px; text-transform: uppercase; }
+    .pl-name { font-family: var(--sans); font-size: clamp(40px, 4.5vw, 56px); font-weight: 600; color: var(--display-fg); line-height: 1; letter-spacing: -1px; margin-bottom: 24px; }
+    .pl-desc { font-size: 15px; color: var(--ink-md); line-height: 1.6; margin-bottom: 40px; }
 
-    /* Left panel — hero block */
-    .pl-eyebrow {
-      font-family: var(--mono); font-size: 9px; font-weight: 500;
-      letter-spacing: 2.5px; text-transform: uppercase;
-      color: #50A0A0; margin-bottom: 16px;
-    }
-    .pl-name {
-      font-family: var(--cond); font-size: clamp(44px, 4.5vw, 72px);
-      font-weight: 700; color: #F0EBE0; line-height: 0.92;
-      letter-spacing: -1px; margin-bottom: 16px;
-    }
+    /* Clean KPIs */
+    .pl-kpis { display: flex; flex-direction: column; gap: 24px; margin-bottom: 48px; }
+    .pl-kpi { display: flex; flex-direction: column; gap: 4px; }
+    .pl-kpi-val { font-family: var(--mono); font-size: 24px; font-weight: 500; color: var(--display-fg); line-height: 1; }
+    .pl-kpi-lbl { font-family: var(--sans); font-size: 13px; color: var(--ink-lt); }
 
-    .pl-rule { border: none; border-top: 1px solid rgba(237,232,220,0.10); margin: 18px 0; }
+    /* Actions - Pill Buttons */
+    .pl-actions { display: flex; flex-direction: column; gap: 12px; }
+    .pl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); background: var(--surface2); border-radius: 99px; padding: 12px 24px; cursor: pointer; transition: all 0.2s ease; width: fit-content; }
+    .pl-btn:hover { background: rgba(80,160,160,0.15); color: var(--teal); }
+    .pl-btn.primary { background: var(--teal); color: #0B0F1C; }
+    .pl-btn.primary:hover { background: var(--teal-lt); color: #0B0F1C; transform: translateY(-2px); }
+    
+    /* Button SVG Arrow Animation */
+    .btn-icon { margin-left: 2px; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    .pl-btn:hover .btn-icon { transform: translate(2px, -2px); }
 
-    /* Left panel — KPI pair */
-    .pl-kpis { display: flex; flex-direction: column; gap: 8px; }
-
-    .pl-kpi-pair { display: flex; gap: 8px; }
-    .pl-kpi-pair .pl-kpi { flex: 1; flex-direction: column; align-items: flex-start; gap: 3px; padding: 9px 10px; }
-    .pl-kpi-pair .pl-kpi-val { font-size: 15px; }
-    .pl-kpi-pair .pl-kpi-lbl { max-width: none; font-size: 9.5px; }
-
-    .pl-kpi {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 10px 12px; border-left: 2px solid;
-      background: rgba(255,255,255,0.04);
-    }
-    .pl-kpi-left { display: flex; align-items: center; gap: 8px; }
-    .pl-kpi-val {
-      font-family: var(--mono); font-size: 17px; font-weight: 600;
-      color: #F0EBE0; line-height: 1;
-    }
-    .pl-kpi-lbl {
-      font-family: var(--sans); font-size: 10px; font-weight: 300;
-      color: rgba(237,232,220,0.45); line-height: 1.35; max-width: 140px;
-    }
-
-    /* Left panel — about card */
-    .pl-card { display: flex; flex-direction: column; gap: 8px; }
-    .pl-card-row { display: flex; gap: 10px; align-items: baseline; }
-    .pl-card-label {
-      font-family: var(--mono); font-size: 9px; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: rgba(237,232,220,0.35); white-space: nowrap; flex-shrink: 0;
-      min-width: 52px;
-    }
-    .pl-card-val {
-      font-family: var(--sans); font-size: 12px; font-weight: 400;
-      color: rgba(237,232,220,0.75);
-    }
-
-    /* Left panel — actions */
-    .pl-actions { display: flex; flex-direction: column; gap: 8px; }
-    .pl-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      font-family: var(--mono); font-size: 10px; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: rgba(237,232,220,0.75); border: 1px solid rgba(237,232,220,0.20);
-      padding: 9px 14px; background: transparent; cursor: pointer;
-      transition: all 0.2s ease; text-align: center;
-    }
-    .pl-btn:hover { color: #F0EBE0; border-color: rgba(237,232,220,0.55); background: rgba(255,255,255,0.05); }
-    .pl-btn.primary { background: #50A0A0; border-color: #50A0A0; color: #181D34; }
-    .pl-btn.primary:hover { background: #72BABA; border-color: #72BABA; }
-    .pl-btn.chat {
-      background: rgba(192,152,56,0.12); border-color: rgba(192,152,56,0.40);
-      color: #C09838;
-    }
-    .pl-btn.chat:hover { background: rgba(192,152,56,0.20); border-color: #C09838; color: #D4AA44; }
-
-    /* Left panel — footer bar */
-    .pl-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 14px; border-top: 1px solid rgba(237,232,220,0.10);
-    }
-    .pl-footer-mark {
-      font-family: var(--mono); font-size: 10px; font-weight: 600;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: rgba(237,232,220,0.25);
-    }
-    .pl-theme-toggle {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-family: var(--mono); font-size: 9px; font-weight: 500;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: rgba(237,232,220,0.35); background: none;
-      border: 1px solid rgba(237,232,220,0.15); padding: 4px 8px;
-      cursor: pointer; transition: color 0.15s, border-color 0.15s;
-    }
-    .pl-theme-toggle:hover { color: #50A0A0; border-color: #50A0A0; }
+    /* Footer bar */
+    .pl-footer { margin-top: auto; padding-top: 40px; display: flex; align-items: center; justify-content: space-between; }
+    .pl-theme-toggle { font-family: var(--sans); font-size: 13px; color: var(--ink-lt); background: none; border: none; cursor: pointer; transition: color 0.2s; }
+    .pl-theme-toggle:hover { color: var(--teal); }
 
     /* ── RIGHT PANEL ── */
-    .panel-right { flex: 1; min-width: 0; position: relative; }
+    .panel-right { flex: 1; min-width: 0; padding-top: 60px; padding-bottom: 60px; display: flex; flex-direction: column; }
 
-    /* ── TOP NAV (SCROLL SPY) ── */
-    .top-nav {
-      position: sticky; top: 0; z-index: 150;
-      background: var(--bg);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--rule);
-      padding: 0 40px;
-    }
-    .is-light-theme .top-nav { background: rgba(249,247,242,0.92); }
-    .top-nav-list {
-      display: flex; gap: 32px; list-style: none; margin: 0; padding: 0;
-      max-width: 800px; /* Aligns with section-body max-width */
-      overflow-x: auto; scrollbar-width: none;
-    }
+    /* Clean Top Nav */
+    .top-nav { position: sticky; top: 0; z-index: 150; background: rgba(11, 15, 28, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); margin-bottom: 60px; padding: 20px 0; }
+    .is-light-theme .top-nav { background: rgba(249, 247, 242, 0.85); }
+    .top-nav-list { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
     .top-nav-list::-webkit-scrollbar { display: none; }
-    .nav-link {
-      display: inline-block; padding: 18px 0 16px;
-      font-family: var(--mono); font-size: 11px; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--ink-lt);
-      border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
-      white-space: nowrap;
-    }
+    .nav-link { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink-lt); transition: color 0.2s; white-space: nowrap; position: relative; padding-bottom: 6px; }
     .nav-link:hover { color: var(--teal); }
-    .nav-link.active { color: var(--display-fg); border-bottom-color: var(--teal); }
+    .nav-link.active { color: var(--display-fg); }
+    .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--teal); border-radius: 2px; }
 
-    /* Section headers */
-    .sticky-header {
-      padding: 48px 40px 0;
-      font-family: var(--mono); font-size: 10px; font-weight: 500;
-      letter-spacing: 3px; text-transform: uppercase; color: var(--ink-lt);
-    }
+    /* Sections */
+    section { scroll-margin-top: 120px; margin-bottom: 100px; }
+    .section-body { max-width: 760px; } /* Constrains text width for readability */
+
+    /* Typography */
+    .about-text p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--ink-md); margin-bottom: 24px; }
+    .about-text strong { color: var(--display-fg); font-weight: 500; }
+
+    /* Skills - Borderless */
+    .skills-block { margin-bottom: 48px; }
+    .skills-cat-name { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--display-fg); display: block; margin-bottom: 24px; }
+    .skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
+    /* Pill style tags */
+    .skill-tag { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--teal); background: rgba(80,160,160,0.1); padding: 6px 16px; border-radius: 99px; }
+
+    /* Icon Grid - Clean */
+    .skills-icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 24px; }
+    .skill-icon-card { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .skill-icon-card svg { width: 28px; height: 28px; color: var(--teal); opacity: 0.8; }
+    .skill-icon-lbl { font-family: var(--sans); font-size: 13px; color: var(--ink-md); }
+
+    /* Experience - Clean Timeline */
+    .exp-entry { display: grid; grid-template-columns: 100px 1fr; gap: 32px; margin-bottom: 60px; }
+    .exp-dates { font-family: var(--mono); font-size: 13px; color: var(--ink-lt); padding-top: 4px; }
+    .exp-title { font-family: var(--sans); font-size: 20px; font-weight: 500; color: var(--display-fg); margin-bottom: 4px; }
+    .exp-company { font-family: var(--sans); font-size: 15px; color: var(--teal); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    .exp-desc { font-size: 15px; font-weight: 300; color: var(--ink-md); line-height: 1.8; margin-bottom: 20px; }
     
-    /* Section bodies */
-    .section-body { padding: 32px 40px 48px; border-bottom: 1px solid var(--rule); max-width: 800px; }
-    .section-body:last-of-type { border-bottom: none; }
+    /* Pill style experience tags */
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .exp-tag { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--teal); background: rgba(80,160,160,0.08); padding: 4px 14px; border-radius: 99px; }
 
-    /* ── MATRIX BG ── */
-    .matrix-bg { position: relative; z-index: 1; overflow: hidden; }
-    .matrix-bg::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: -1;
-      background-image: linear-gradient(var(--matrix-line) 1px, transparent 1px), linear-gradient(90deg, var(--matrix-line) 1px, transparent 1px);
-      background-size: 40px 40px; background-attachment: fixed;
-    }
+    /* Leadership - Simple List */
+    .lead-grid { display: flex; flex-direction: column; gap: 32px; }
+    .lead-item { display: flex; flex-direction: column; gap: 8px; }
+    .lead-title { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--display-fg); }
+    .lead-desc { font-size: 15px; color: var(--ink-md); line-height: 1.6; }
+
+    /* Connect */
+    .connect-heading { font-family: var(--sans); font-size: 40px; font-weight: 600; color: var(--display-fg); margin-bottom: 16px; }
+    .connect-sub { font-size: 17px; color: var(--ink-md); margin-bottom: 32px; }
+    .connect-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* Right Panel Footer */
+    .site-footer { margin-top: auto; padding-top: 32px; border-top: 1px dashed var(--rule); font-family: var(--mono); font-size: 12px; letter-spacing: 0.5px; color: var(--ink-lt); max-width: 760px; }
 
     /* ── MICRO ANIMATIONS ── */
     .micro-anim * { animation-play-state: paused !important; }
     .micro-anim.is-playing * { animation-play-state: running !important; }
-    .micro-anim:not(.is-playing) .bp-node-mid,
-    .micro-anim:not(.is-playing) .bp-path-old,
-    .micro-anim:not(.is-playing) .bp-path-new,
-    .micro-anim:not(.is-playing) .mit-bar.b3,
-    .micro-anim:not(.is-playing) .fc-board-group,
-    .micro-anim:not(.is-playing) .fc-board,
-    .micro-anim:not(.is-playing) .fc-weight,
-    .micro-anim:not(.is-playing) .lc-path,
-    .micro-anim:not(.is-playing) .lc-dot,
-    .micro-anim:not(.is-playing) .gauge-needle { animation: none !important; }
 
-    /* KPI 3: Fulcrum */
-    .anim-fulcrum { width: 22px; height: 14px; overflow: visible; display: flex; align-items: flex-end; justify-content: center; }
-    .fulcrum-svg { width: 100%; height: 100%; overflow: visible; }
-    .fc-pivot { fill: #C09838; }
-    .fc-board-group { transform-origin: 12px 11px; animation: balanceGroup 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
-    .fc-board { stroke-width: 2; stroke-linecap: round; stroke: #50A0A0; animation: colorBoard 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
-    .fc-weight { transform: translateX(7px); fill: #50A0A0; animation: slideWeight 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
-    @keyframes balanceGroup { 0%,15%{transform:rotate(-20deg)} 40%,85%{transform:rotate(0deg)} 100%{transform:rotate(-20deg)} }
-    @keyframes colorBoard { 0%,15%{stroke:#CC6050} 40%,85%{stroke:#50A0A0} 100%{stroke:#CC6050} }
-    @keyframes slideWeight { 0%,15%{transform:translateX(0);fill:#CC6050} 40%,85%{transform:translateX(7px);fill:#50A0A0} 100%{transform:translateX(0);fill:#CC6050} }
-
-    /* Experience: Gauge */
-    .anim-gauge { width: 22px; height: 12px; display: flex; align-items: flex-end; margin-left: 6px; }
+    /* Gauge (KeyBank) */
+    .anim-gauge { width: 22px; height: 12px; display: flex; align-items: flex-end; margin-left: 4px; }
     .gauge-svg { width: 100%; height: 100%; overflow: visible; }
     .gauge-track { fill: none; stroke-width: 1.5; }
     .gauge-track.danger { stroke: var(--risk-danger); stroke-dasharray: 30 100; }
     .gauge-track.warn   { stroke: var(--risk-warn);   stroke-dasharray: 40 100; stroke-dashoffset: -30; }
     .gauge-track.safe   { stroke: var(--risk-safe);   stroke-dasharray: 30 100; stroke-dashoffset: -70; }
-    .gauge-needle { transform-origin: 11px 11px; transform: rotate(70deg); transition: transform 0.8s ease; stroke: var(--gauge-needle-c); stroke-width: 1; stroke-linecap: round; }
+    .gauge-needle { transform-origin: 11px 11px; transform: rotate(70deg); transition: transform 0.8s ease; stroke: var(--ink); stroke-width: 1; stroke-linecap: round; }
     .micro-anim.is-playing .gauge-needle { animation: sweepOnce 2s cubic-bezier(0.4,0,0.2,1) forwards, hoverGreen 4s cubic-bezier(0.4,0,0.2,1) infinite 2s; }
     @keyframes sweepOnce { 0%{transform:rotate(-75deg)} 60%{transform:rotate(-10deg)} 100%{transform:rotate(70deg)} }
     @keyframes hoverGreen { 0%{transform:rotate(70deg)} 33%{transform:rotate(82deg)} 66%{transform:rotate(58deg)} 100%{transform:rotate(70deg)} }
-    .gauge-base { fill: var(--gauge-base-c); }
+    .gauge-base { fill: var(--ink); }
 
-    /* Experience: Org */
-    .anim-org { position: relative; width: 16px; height: 12px; }
-    .org-top { position: absolute; top: 0; left: 6px; width: 4px; height: 4px; background: var(--gold); }
-    .org-line { position: absolute; top: 4px; left: 2px; width: 12px; height: 4px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); border-right: 1px solid var(--gold); opacity: 0.5; }
-    .org-bot1, .org-bot2 { position: absolute; top: 8px; width: 4px; height: 4px; background: var(--gold); opacity: 0.2; animation: pulseOrg 1.5s ease-out forwards; }
-    .org-bot1 { left: 0; } .org-bot2 { left: 12px; animation-delay: 0.75s; }
-    @keyframes pulseOrg { 0%{opacity:0.2;transform:translateY(2px)} 100%{opacity:1;transform:translateY(0)} }
-
-    /* Experience: Line Chart */
-    .anim-line-chart { width: 24px; height: 16px; overflow: visible; display: flex; align-items: center; }
+    /* Line Chart (Liquidity) */
+    .anim-line-chart { width: 24px; height: 16px; overflow: visible; display: flex; align-items: center; margin-left: 4px; }
     .lc-path { fill: none; stroke: var(--gold); stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 30; animation: drawPath 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
-    .lc-dot { fill: var(--teal); animation: showDot 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
+    .lc-dot { fill: var(--teal); transform-origin: 22px 4px; animation: showDot 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
     @keyframes drawPath { 0%,15%{stroke-dashoffset:30} 45%,85%{stroke-dashoffset:0} 100%{stroke-dashoffset:30} }
     @keyframes showDot { 0%,40%{opacity:0;transform:scale(0)} 45%,85%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(0)} }
 
-    /* Experience: Sector Bars */
-    .anim-sector-bars { display: flex; align-items: flex-end; gap: 2px; height: 14px; width: 22px; }
-    .sec-bar { width: 4px; border-radius: 1px 1px 0 0; background: var(--gold); transform-origin: bottom; }
-    .sec-bar.b1 { height: 8px;  animation: pnlBar 2.5s ease-in-out infinite alternate; }
-    .sec-bar.b2 { height: 12px; background: var(--risk-safe); animation: pnlBar 1.8s ease-in-out infinite alternate-reverse; }
-    .sec-bar.b3 { height: 5px;  background: var(--risk-danger); animation: pnlBar 2.2s ease-in-out infinite alternate; }
-    .sec-bar.b4 { height: 10px; animation: pnlBar 3s ease-in-out infinite alternate-reverse; }
-    @keyframes pnlBar { 0%{transform:scaleY(0.4)} 100%{transform:scaleY(1.1)} }
-
-    /* Experience: SWIFT Globe */
-    .anim-swift { width: 16px; height: 16px; border: 1px solid var(--gold-ring); border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; }
-    .swift-lat { width: 100%; height: 5px; border-top: 1px solid var(--gold-grid); border-bottom: 1px solid var(--gold-grid); position: absolute; top: 4px; }
-    .swift-lng { width: 6px; height: 100%; border-left: 1px solid var(--gold-grid); border-right: 1px solid var(--gold-grid); border-radius: 50%; position: absolute; }
-    .swift-node, .swift-node2 { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: absolute; z-index: 2; }
+    /* SWIFT Globe (FX) */
+    .anim-swift { width: 16px; height: 16px; border: 1px solid var(--teal); opacity: 0.8; border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; margin-left: 4px; }
+    .swift-lat { width: 100%; height: 5px; border-top: 1px solid var(--teal); border-bottom: 1px solid var(--teal); position: absolute; top: 4px; opacity: 0.4; }
+    .swift-lng { width: 6px; height: 100%; border-left: 1px solid var(--teal); border-right: 1px solid var(--teal); border-radius: 50%; position: absolute; opacity: 0.4; }
+    .swift-node, .swift-node2 { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: absolute; top: 5px; left: 5px; z-index: 2; }
     .swift-node  { animation: swiftOrbit 3s linear infinite; }
     .swift-node2 { animation: swiftOrbit 3s linear infinite -1.5s; }
     @keyframes swiftOrbit { 0%{transform:rotate(0deg) translateX(9px)} 100%{transform:rotate(360deg) translateX(9px)} }
 
-    /* ── ABOUT (right panel) ── */
-    .about-text p { font-family: var(--sans); font-size: 16px; font-weight: 300; line-height: 1.85; color: var(--ink-md); margin-bottom: 20px; }
-    .about-text p:last-child { margin-bottom: 0; }
-    .about-text strong { color: var(--ink); font-weight: 600; }
 
-    /* ── SKILLS ── */
-    .skills-block { margin-bottom: 36px; }
-    .skills-block:last-child { margin-bottom: 0; }
-    .skills-cat { display: flex; align-items: baseline; gap: 16px; margin-bottom: 14px; }
-    .skills-cat-name { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); }
-    .skills-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-tag { font-family: var(--mono); font-size: 12px; color: var(--ink); background: var(--surface2); border: 1px solid var(--rule); padding: 5px 12px; letter-spacing: 0.5px; }
+    /* Mobile */
+    @media (max-width: 1023px) {
+      .site-wrapper { flex-direction: column; gap: 40px; padding: 0 24px; }
+      .panel-left { position: relative; width: 100%; min-width: 0; height: auto; top: auto; padding: 40px 0 0 0; }
+      .pl-name { font-size: 48px; }
+      .panel-right { padding-top: 0; }
+      .top-nav { padding: 16px 0; margin-bottom: 40px; }
+      .exp-entry { grid-template-columns: 1fr; gap: 8px; margin-bottom: 48px; }
+      .exp-dates { margin-bottom: 8px; }
+    }
 
-    /* Skills: icon grid for Tools section */
-    .skills-icon-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-icon-card {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 7px; padding: 12px 14px; background: var(--surface2);
-      border: 1px solid var(--rule); min-width: 72px; cursor: default;
-      transition: border-color 0.18s, background 0.18s;
-    }
-    .skill-icon-card:hover { border-color: var(--teal); background: rgba(80,160,160,0.06); }
-    .skill-icon-card svg { width: 20px; height: 20px; color: var(--teal); display: block; flex-shrink: 0; }
-    .skill-icon-lbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.5px; color: var(--ink-md); text-align: center; white-space: nowrap; }
-
-    /* ── EXPERIENCE ── */
-    .exp-entry { display: grid; grid-template-columns: 90px 1fr; gap: 0 36px; margin-bottom: 44px; }
-    .exp-entry:last-child { margin-bottom: 0; }
-    .exp-dates { font-family: var(--mono); font-size: 11px; color: var(--ink-lt); text-align: right; padding-top: 4px; line-height: 2; }
-    .exp-dates .year-end { color: var(--salmon); font-weight: 600; }
-    .exp-title { font-family: var(--cond); font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 4px; }
-    .exp-company { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
-    .exp-desc { font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--ink-md); line-height: 1.8; margin-bottom: 14px; }
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .exp-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 1px; color: var(--ink-lt); border: 1px solid var(--rule); padding: 3px 10px; }
-
-    /* ── LEADERSHIP ── */
-    .lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
-    .lead-item { background: var(--surface2); padding: 28px; }
-    .lead-badge { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 1px; margin-bottom: 12px; }
-    .lead-badge.badge-01 { background: #C09838; color: #0B0F1C; }
-    .lead-badge.badge-02 { background: #50A0A0; color: #0B0F1C; }
-    .lead-badge.badge-03 { background: #CC6050; color: #0B0F1C; }
-    .lead-badge.badge-04 { background: rgba(80,160,160,0.28); color: #72BABA; border: 1px solid rgba(80,160,160,0.45); }
-    .lead-title { font-family: var(--cond); font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-    .lead-desc { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--ink-md); line-height: 1.7; }
-
-    /* ── WHAT'S NEXT ── */
-    .wn-lead {
-      font-family: var(--sans); font-size: 17px; font-weight: 300;
-      color: var(--ink); line-height: 1.7; margin-bottom: 36px;
-    }
-    .wn-items { display: flex; flex-direction: column; gap: 0; margin-bottom: 36px; }
-    .wn-item {
-      display: grid; grid-template-columns: 160px 1fr; gap: 0 32px;
-      padding: 22px 0; border-top: 1px solid var(--rule);
-    }
-    .wn-item:last-child { border-bottom: 1px solid var(--rule); }
-    .wn-item-label {
-      font-family: var(--mono); font-size: 10px; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--teal);
-      padding-top: 3px;
-    }
-    .wn-item-desc {
-      font-family: var(--sans); font-size: 14px; font-weight: 300;
-      color: var(--ink-md); line-height: 1.8;
-    }
-    .wn-robbot-callout {
-      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-      padding: 18px 20px; background: rgba(192,152,56,0.06);
-      border: 1px solid rgba(192,152,56,0.22);
-    }
-    .wn-robbot-label {
-      font-family: var(--mono); font-size: 11px; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase; color: #C09838;
-    }
-    .wn-robbot-desc {
-      font-family: var(--sans); font-size: 13px; font-weight: 300;
-      color: var(--ink-md); flex: 1; min-width: 160px;
-    }
-    .wn-robbot-btn {
-      font-family: var(--mono); font-size: 10px; font-weight: 600;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      background: rgba(192,152,56,0.12); border: 1px solid rgba(192,152,56,0.40);
-      color: #C09838; padding: 8px 16px; cursor: pointer;
-      transition: all 0.2s ease; white-space: nowrap;
-    }
-    .wn-robbot-btn:hover { background: rgba(192,152,56,0.22); border-color: #C09838; }
-
-    /* ── CONNECT ── */
-    .connect-inner { max-width: 520px; }
-    .connect-heading { font-family: var(--cond); font-size: 48px; font-weight: 700; color: var(--display-fg); line-height: 1; margin-bottom: 14px; display: flex; align-items: center; min-height: 60px; }
-    .cursor { display: inline-block; color: var(--teal); animation: cursorBlink 1.1s step-end infinite; margin-left: 2px; }
-    @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .connect-sub { font-family: var(--sans); font-size: 15px; font-weight: 300; color: var(--ink-md); line-height: 1.7; margin-bottom: 36px; }
-    .connect-btns { display: flex; flex-wrap: wrap; gap: 10px; }
-    .con-btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-family: var(--mono); font-size: 11px; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--btn-text); border: 1px solid var(--btn-border);
-      padding: 10px 22px; background: transparent; cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .con-btn:hover { background: var(--btn-hover-bg); border-color: var(--btn-hover-bdr); box-shadow: var(--btn-shadow); }
-    .con-btn.primary { background: var(--teal); border-color: var(--teal); color: #0B0F1C; }
-    .con-btn.primary:hover { background: var(--teal-primary-hover); border-color: var(--teal-lt); color: var(--btn-primary-hover-text); }
-
-    /* ── FOOTER ── */
-    footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 40px; border-top: 1px solid var(--rule);
-    }
-    .footer-mark { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--ink-lt); }
-    .footer-url  { font-family: var(--mono); font-size: 11px; color: var(--ink-lt); letter-spacing: 1px; }
-
-    /* ── SCROLL REVEAL ── */
-    .exp-entry.anim-ready    { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1); }
-    .skills-block.anim-ready { opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1); }
-    .lead-item.anim-ready    { opacity: 0; transition: opacity 0.4s ease; }
-    .about-text.anim-ready   { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1); }
-    .wn-item.anim-ready      { opacity: 0; transform: translateY(10px); transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22,1,0.36,1); }
-    .is-visible { opacity: 1 !important; transform: translateY(0) !important; }
-
-    /* ── BACK TO TOP ── */
-    .back-to-top {
-      position: fixed; bottom: 28px; right: 28px;
-      display: inline-flex; align-items: center; gap: 5px;
-      font-family: var(--mono); font-size: 10px; font-weight: 500;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--ink-md); background: var(--surface); border: 1px solid var(--rule);
-      padding: 7px 13px; cursor: pointer;
-      transition: color 0.15s, border-color 0.15s, opacity 0.25s, transform 0.25s;
-      opacity: 0; transform: translateY(8px); pointer-events: none; z-index: 100;
-    }
-    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .back-to-top:hover { color: var(--teal); border-color: var(--teal); }
-
-    /* ── CHAT PANEL ── */
-    .chat-panel {
-      position: fixed; bottom: 0; right: 0;
-      width: 380px; height: 70vh; max-height: 580px;
-      background: #181D34; border: 1px solid rgba(237,232,220,0.15);
-      border-bottom: none; display: flex; flex-direction: column;
-      transform: translateY(110%); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
-      z-index: 200; box-shadow: -4px -4px 40px rgba(0,0,0,0.5);
-    }
+    /* Chat Panel stays identical for functionality */
+    .chat-panel { position: fixed; bottom: 0; right: 0; width: 380px; height: 70vh; max-height: 580px; background: #181D34; border: 1px solid rgba(237,232,220,0.15); border-bottom: none; display: flex; flex-direction: column; transform: translateY(110%); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); z-index: 200; box-shadow: -4px -4px 40px rgba(0,0,0,0.5); }
     .chat-panel.open { transform: translateY(0); }
-    .chat-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 18px; border-bottom: 1px solid rgba(237,232,220,0.12); flex-shrink: 0;
-    }
+    .chat-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid rgba(237,232,220,0.12); flex-shrink: 0; }
     .chat-header-left { display: flex; align-items: center; gap: 10px; }
     .chat-header-dot { width: 8px; height: 8px; border-radius: 50%; background: #C09838; animation: chatPulse 2s ease-in-out infinite; }
     @keyframes chatPulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .chat-header-title { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #C09838; }
     .chat-header-sub { font-family: var(--sans); font-size: 11px; color: rgba(237,232,220,0.35); }
-    .chat-close-btn {
-      background: none; border: none; cursor: pointer;
-      color: rgba(237,232,220,0.40); font-size: 18px; line-height: 1;
-      padding: 2px 6px; transition: color 0.15s;
-    }
-    .chat-close-btn:hover { color: rgba(237,232,220,0.80); }
-    .chat-messages {
-      flex: 1; overflow-y: auto; padding: 16px 18px;
-      display: flex; flex-direction: column; gap: 12px;
-      scrollbar-width: thin; scrollbar-color: rgba(237,232,220,0.15) transparent;
-    }
+    .chat-close-btn { background: none; border: none; cursor: pointer; color: rgba(237,232,220,0.40); font-size: 18px; line-height: 1; padding: 2px 6px; transition: color 0.15s; }
+    .chat-messages { flex: 1; overflow-y: auto; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; scrollbar-width: thin; scrollbar-color: rgba(237,232,220,0.15) transparent; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
     .chat-msg { max-width: 88%; }
     .chat-msg.assistant { align-self: flex-start; }
     .chat-msg.user { align-self: flex-end; }
-    .chat-bubble {
-      font-family: var(--sans); font-size: 13px; line-height: 1.6;
-      padding: 10px 14px; border-radius: 2px;
-    }
+    .chat-bubble { font-family: var(--sans); font-size: 13px; line-height: 1.6; padding: 10px 14px; border-radius: 4px; }
     .chat-msg.assistant .chat-bubble { background: rgba(255,255,255,0.06); color: rgba(237,232,220,0.85); border-left: 2px solid #50A0A0; }
     .chat-msg.user .chat-bubble { background: rgba(80,160,160,0.18); color: rgba(237,232,220,0.90); border-right: 2px solid #50A0A0; text-align: right; }
     .chat-typing { display: flex; gap: 4px; align-items: center; padding: 10px 14px; }
@@ -514,184 +241,56 @@
     .chat-dot:nth-child(2) { animation-delay: 0.2s; }
     .chat-dot:nth-child(3) { animation-delay: 0.4s; }
     @keyframes chatDot { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
-    .chat-input-area {
-      display: flex; align-items: flex-end; gap: 8px;
-      padding: 12px 18px; border-top: 1px solid rgba(237,232,220,0.12); flex-shrink: 0;
-    }
-    .chat-textarea {
-      flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(237,232,220,0.18);
-      color: #EDE8DC; font-family: var(--sans); font-size: 13px;
-      padding: 9px 12px; resize: none; line-height: 1.5; max-height: 120px;
-      outline: none; transition: border-color 0.15s;
-    }
-    .chat-textarea::placeholder { color: rgba(237,232,220,0.25); }
-    .chat-textarea:focus { border-color: rgba(80,160,160,0.50); }
-    .chat-send-btn {
-      background: #50A0A0; border: none; color: #181D34;
-      font-family: var(--mono); font-size: 16px; font-weight: 700;
-      width: 38px; height: 38px; cursor: pointer; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.15s;
-    }
-    .chat-send-btn:hover { background: #72BABA; }
-    .chat-send-btn:disabled { background: rgba(80,160,160,0.30); cursor: not-allowed; }
-
-    /* Mobile chat trigger */
-    .chat-mobile-trigger {
-      display: none;
-      position: fixed; bottom: 28px; left: 28px;
-      background: #181D34; border: 1px solid rgba(192,152,56,0.40);
-      color: #C09838; font-family: var(--mono); font-size: 10px;
-      font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 9px 14px; cursor: pointer; z-index: 100;
-      transition: all 0.2s;
-    }
-    .chat-mobile-trigger:hover { background: rgba(192,152,56,0.12); border-color: #C09838; }
-
-    /* ── LIGHT MODE ── */
-    .is-light-theme .kpi-box .micro-anim { display: none; }
-    .is-light-theme .top-nav { border-bottom: 1px solid rgba(0,0,0,0.10); }
-    .is-light-theme .con-btn svg * { stroke-width: 5 !important; }
-
-    /* ── ACCESSIBILITY / PRINT ── */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      .matrix-bg::before { background-attachment: scroll; }
-    }
-    @media print {
-      .panel-left, .back-to-top, .chat-panel, .chat-mobile-trigger, .top-nav { display: none !important; }
-      .panel-right { margin: 0; }
-      body { font-size: 12px; }
-      .section-body { padding: 20px 0; }
-    }
-
-    /* ── MOBILE / TABLET ── */
-    @media (max-width: 1023px) {
-      .site-wrapper { flex-direction: column; }
-
-      .panel-left {
-        position: relative; width: 100%; min-width: 0;
-        height: auto; overflow-y: visible; top: auto;
-        border-right: none; border-bottom: 1px solid rgba(237,232,220,0.12);
-      }
-
-      .pl-inner { padding: 20px 24px 16px; }
-
-      .pl-name { font-size: clamp(40px, 10vw, 64px); }
-
-      /* On mobile, collapse the card — redundant with right panel */
-      .pl-card { display: none; }
-
-      /* KPIs go horizontal on mobile */
-      .pl-kpi-pair { flex: 1; }
-      .pl-kpis-row { flex-direction: row; gap: 10px; }
-
-      /* Actions go horizontal */
-      .pl-actions { flex-direction: row; flex-wrap: wrap; }
-
-      /* Show mobile chat trigger */
-      .chat-mobile-trigger { display: block; }
-
-      /* Right panel fills full width */
-      .panel-right { width: 100%; }
-      
-      .top-nav { padding: 0 24px; }
-      .nav-link { padding: 14px 0 12px; font-size: 10px; }
-
-      .section-body { padding: 24px 24px 36px; }
-      .sticky-header { padding: 36px 24px 0; }
-
-      /* Experience on mobile: single column */
-      .exp-entry { grid-template-columns: 1fr; gap: 4px; }
-      .exp-dates { text-align: left; }
-
-      /* What's Next: single column */
-      .wn-item { grid-template-columns: 1fr; gap: 6px; }
-
-      /* Leadership: single column on small mobile */
-      .lead-grid { grid-template-columns: 1fr; }
-
-      footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
-
-      /* Chat panel full width on mobile */
-      .chat-panel { width: 100%; right: 0; left: 0; }
-
-      .back-to-top { right: 16px; bottom: 80px; }
-    }
+    .chat-input-area { display: flex; align-items: flex-end; gap: 8px; padding: 12px 18px; border-top: 1px solid rgba(237,232,220,0.12); flex-shrink: 0; }
+    .chat-textarea { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(237,232,220,0.18); color: #EDE8DC; font-family: var(--sans); font-size: 13px; padding: 9px 12px; resize: none; line-height: 1.5; max-height: 120px; outline: none; border-radius: 4px; }
+    .chat-send-btn { background: #50A0A0; border: none; color: #181D34; font-weight: 700; width: 38px; height: 38px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
 <body>
 
+<div class="top-stripe"></div>
+
 <div class="site-wrapper">
 
-  <aside class="panel-left" aria-label="Profile">
-    <div class="top-stripe"></div>
+  <aside class="panel-left">
     <div class="pl-inner">
-
-      <div style="margin-bottom: 4px;">
-        <div class="pl-eyebrow">Portfolio Management &amp; Risk Strategy</div>
-        <h1 class="pl-name">Robert<br>Perry<br>Morris</h1>
-      </div>
-
-      <hr class="pl-rule">
+      
+      <div class="pl-eyebrow">Portfolio Management & Risk Strategy</div>
+      <h1 class="pl-name">Robert<br>Perry<br>Morris</h1>
+      <p class="pl-desc">Making complex banking systems work better, and making sure the right people know about it.</p>
 
       <div class="pl-kpis">
-        <div class="pl-kpi-pair">
-          <div class="pl-kpi" style="border-color: #50A0A0;">
-            <div class="pl-kpi-val" id="kpi-fx">$29M</div>
-            <div class="pl-kpi-lbl">in FX Settlement Savings</div>
-          </div>
-          <div class="pl-kpi" style="border-color: #C09838;">
-            <div class="pl-kpi-val" id="kpi-key">$2.9M</div>
-            <div class="pl-kpi-lbl">in Credit Exposure Mitigated</div>
-          </div>
+        <div class="pl-kpi">
+          <div class="pl-kpi-val" id="kpi-fx">$29M</div>
+          <div class="pl-kpi-lbl">FX Settlement Savings</div>
         </div>
-
-        <div class="pl-kpi" style="border-color: #CC6050;">
-          <div>
-            <div class="pl-kpi-val" id="kpi-liq">$10B</div>
-            <div class="pl-kpi-lbl">in Balance Sheet Liquidity Optimized</div>
-          </div>
-          <div class="micro-anim anim-fulcrum" title="Balance Sheet Optimization">
-            <svg class="fulcrum-svg" viewBox="0 0 24 16" width="22" height="14">
-              <polygon points="12,11 15,16 9,16" class="fc-pivot"></polygon>
-              <g class="fc-board-group">
-                <line x1="2" y1="11" x2="22" y2="11" class="fc-board"></line>
-                <rect x="2" y="5" width="6" height="5" rx="1" class="fc-weight"></rect>
-              </g>
-            </svg>
-          </div>
+        <div class="pl-kpi">
+          <div class="pl-kpi-val" id="kpi-key">$2.9M</div>
+          <div class="pl-kpi-lbl">Credit Exposure Mitigated</div>
+        </div>
+        <div class="pl-kpi">
+          <div class="pl-kpi-val" id="kpi-liq">$10B</div>
+          <div class="pl-kpi-lbl">Liquidity Optimized</div>
         </div>
       </div>
-
-      <div style="flex: 1; min-height: 16px;"></div>
 
       <div class="pl-actions">
-        <a href="tel:5852056387" class="pl-btn primary">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.75 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-          585.205.6387
-        </a>
-        <div style="display:flex; gap:8px;">
-          <a href="mailto:robmorris9@gmail.com" class="pl-btn" style="flex:1;">Email</a>
-          <a href="https://www.linkedin.com/in/robert-p-morris/" target="_blank" class="pl-btn" style="flex:1;">LinkedIn ↗</a>
-        </div>
-        <a href="Robert Perry Morris _ Resume.pdf" target="_blank" class="pl-btn">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Resume PDF
-        </a>
-        <button class="pl-btn chat" id="chat-open-btn" onclick="toggleChat()">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <button class="pl-btn primary" id="chat-open-btn" onclick="toggleChat()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           Ask RobBot
         </button>
+        <a href="mailto:robmorris9@gmail.com" class="pl-btn">
+          Email Me 
+          <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/robert-p-morris/" target="_blank" class="pl-btn">
+          LinkedIn 
+          <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
       </div>
 
-      <hr class="pl-rule" style="margin-bottom: 14px;">
-
       <div class="pl-footer">
-        <span class="pl-footer-mark">RPM</span>
-        <button id="theme-toggle" class="pl-theme-toggle" aria-label="Toggle color theme">
-          <span id="theme-label">◑ Light</span>
-        </button>
+        <button id="theme-toggle" class="pl-theme-toggle" aria-label="Toggle color theme"><span id="theme-label">◑ Light Mode</span></button>
       </div>
 
     </div>
@@ -705,150 +304,43 @@
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#leadership" class="nav-link">Leadership</a></li>
-        <li><a href="#whats-next" class="nav-link">What's Next</a></li>
         <li><a href="#connect" class="nav-link">Connect</a></li>
       </ul>
     </nav>
 
     <section id="about">
-      <h2 class="sticky-header">About</h2>
       <div class="section-body about-text">
         <p>I'm the connective fiber between Tech, People Resources, Product, and Finance, all wrapped in a banking ecosystem. Thirteen years at <strong>Citi</strong> across FX, liquidity, equity derivatives, and risk gave me the infrastructure fluency to see how it all fits together. Now at <strong>KeyBank</strong>, I apply that to portfolio management and credit risk strategy.</p>
-        <p>My edge is finding the problem nobody's named yet. A predictive model that flags credit risk before customers max out. A SWIFT migration that saves $29M annually. I make complex systems work better, and I make sure the right people know about it.</p>
+        <p>My edge is finding the problem nobody's named yet. A predictive model that flags credit risk before customers max out. A SWIFT migration that saves $29M annually. I build scalable solutions, and I make sure they align with real business needs.</p>
       </div>
     </section>
 
-    <section id="skills" class="matrix-bg">
-      <h2 class="sticky-header">Skills</h2>
+    <section id="skills">
       <div class="section-body">
-
+        
         <div class="skills-block">
-          <div class="skills-cat"><span class="skills-cat-name">Regulatory &amp; Risk</span></div>
-          <div class="skills-list">
-            <span class="skill-tag">CCAR</span><span class="skill-tag">2052a</span><span class="skill-tag">LCR / NSFR</span><span class="skill-tag">ALCO</span><span class="skill-tag">Liquidity Risk</span><span class="skill-tag">P&amp;L / Product Control</span>
+          <span class="skills-cat-name">Tools & Technology</span>
+          <div class="skills-icon-grid">
+            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="10" width="3.5" height="8" rx="0.4"/><rect x="8.25" y="6" width="3.5" height="12" rx="0.4"/><rect x="14.5" y="2" width="3.5" height="16" rx="0.4"/></svg><span class="skill-icon-lbl">Power BI</span></div>
+            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="4" cy="4" r="1.5"/><circle cx="10" cy="4" r="1.5"/><circle cx="16" cy="4" r="1.5"/><circle cx="4" cy="10" r="1.5"/><circle cx="10" cy="10" r="2.2"/><circle cx="16" cy="10" r="1.5"/><circle cx="4" cy="16" r="1.5"/><circle cx="10" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg><span class="skill-icon-lbl">Tableau</span></div>
+            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><ellipse cx="10" cy="5" rx="7" ry="2.5"/><path d="M3 5v5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5V5"/><path d="M3 10v5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5v-5"/></svg><span class="skill-icon-lbl">SQL</span></div>
+            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="3.5" cy="10" r="2.2"/><circle cx="16.5" cy="4" r="2.2"/><circle cx="16.5" cy="16" r="2.2"/><line x1="5.5" y1="9.2" x2="14.5" y2="4.8" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="5.5" y1="10.8" x2="14.5" y2="15.2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg><span class="skill-icon-lbl">KNIME</span></div>
+            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 9.5a4 4 0 0 0-7.3-2.2A3 3 0 1 0 5.5 13H16a3 3 0 0 0 0-6z" stroke-linejoin="round"/></svg><span class="skill-icon-lbl">Salesforce</span></div>
+            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="3" cy="6" r="1.8"/><circle cx="3" cy="14" r="1.8"/><circle cx="10" cy="3" r="1.8"/><circle cx="10" cy="10" r="1.8"/><circle cx="10" cy="17" r="1.8"/><circle cx="17" cy="10" r="1.8"/><line x1="4.7" y1="6.2" x2="8.3" y2="3.8" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="6.8" x2="8.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="13.8" x2="8.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="14.2" x2="8.3" y2="16.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="3.5" x2="15.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="10" x2="15.2" y2="10" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="16.5" x2="15.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/></svg><span class="skill-icon-lbl">Gen AI</span></div>
           </div>
         </div>
 
         <div class="skills-block">
-          <div class="skills-cat"><span class="skills-cat-name">Markets &amp; Operations</span></div>
+          <span class="skills-cat-name">Regulatory & Risk</span>
+          <div class="skills-list">
+            <span class="skill-tag">CCAR</span><span class="skill-tag">2052a</span><span class="skill-tag">LCR / NSFR</span><span class="skill-tag">ALCO</span><span class="skill-tag">Liquidity Risk</span><span class="skill-tag">P&L / Product Control</span>
+          </div>
+        </div>
+
+        <div class="skills-block">
+          <span class="skills-cat-name">Markets & Operations</span>
           <div class="skills-list">
             <span class="skill-tag">FX Settlements</span><span class="skill-tag">CLS Clearing</span><span class="skill-tag">SWIFT</span><span class="skill-tag">Nostro Funding</span><span class="skill-tag">Equity Derivatives</span>
-          </div>
-        </div>
-
-        <div class="skills-block">
-          <div class="skills-cat"><span class="skills-cat-name">Tools &amp; Technology</span></div>
-          <div class="skills-icon-grid">
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                <rect x="2" y="10" width="3.5" height="8" rx="0.4"/>
-                <rect x="8.25" y="6" width="3.5" height="12" rx="0.4"/>
-                <rect x="14.5" y="2" width="3.5" height="16" rx="0.4"/>
-              </svg>
-              <span class="skill-icon-lbl">Power BI</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="currentColor">
-                <circle cx="4" cy="4" r="1.5"/><circle cx="10" cy="4" r="1.5"/><circle cx="16" cy="4" r="1.5"/>
-                <circle cx="4" cy="10" r="1.5"/><circle cx="10" cy="10" r="2.2"/><circle cx="16" cy="10" r="1.5"/>
-                <circle cx="4" cy="16" r="1.5"/><circle cx="10" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/>
-              </svg>
-              <span class="skill-icon-lbl">Tableau</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                <ellipse cx="10" cy="5" rx="7" ry="2.5"/>
-                <path d="M3 5v5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5V5"/>
-                <path d="M3 10v5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5v-5"/>
-              </svg>
-              <span class="skill-icon-lbl">SQL</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                <rect x="2" y="2" width="16" height="16" rx="1"/>
-                <line x1="2" y1="8" x2="18" y2="8"/>
-                <line x1="2" y1="14" x2="18" y2="14"/>
-                <line x1="8" y1="2" x2="8" y2="20"/>
-              </svg>
-              <span class="skill-icon-lbl">Excel</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="13 15 18 10 13 5"/>
-                <polyline points="7 5 2 10 7 15"/>
-                <line x1="11" y1="3" x2="9" y2="17"/>
-              </svg>
-              <span class="skill-icon-lbl">VBA</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="currentColor">
-                <circle cx="3.5" cy="10" r="2.2"/>
-                <circle cx="16.5" cy="4" r="2.2"/>
-                <circle cx="16.5" cy="16" r="2.2"/>
-                <line x1="5.5" y1="9.2" x2="14.5" y2="4.8" stroke="currentColor" stroke-width="1.2" fill="none"/>
-                <line x1="5.5" y1="10.8" x2="14.5" y2="15.2" stroke="currentColor" stroke-width="1.2" fill="none"/>
-              </svg>
-              <span class="skill-icon-lbl">KNIME</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="currentColor">
-                <circle cx="3" cy="6" r="1.8"/>
-                <circle cx="3" cy="14" r="1.8"/>
-                <circle cx="10" cy="3" r="1.8"/>
-                <circle cx="10" cy="10" r="1.8"/>
-                <circle cx="10" cy="17" r="1.8"/>
-                <circle cx="17" cy="10" r="1.8"/>
-                <line x1="4.7" y1="6.2" x2="8.3" y2="3.8" stroke="currentColor" stroke-width="1" fill="none"/>
-                <line x1="4.7" y1="6.8" x2="8.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/>
-                <line x1="4.7" y1="13.8" x2="8.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/>
-                <line x1="4.7" y1="14.2" x2="8.3" y2="16.2" stroke="currentColor" stroke-width="1" fill="none"/>
-                <line x1="11.8" y1="3.5" x2="15.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/>
-                <line x1="11.8" y1="10" x2="15.2" y2="10" stroke="currentColor" stroke-width="1" fill="none"/>
-                <line x1="11.8" y1="16.5" x2="15.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/>
-              </svg>
-              <span class="skill-icon-lbl">Gen AI</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2H5a1.5 1.5 0 0 0-1.5 1.5v13A1.5 1.5 0 0 0 5 18h10a1.5 1.5 0 0 0 1.5-1.5V7z"/>
-                <polyline points="12 2 12 7 16.5 7"/>
-                <line x1="6.5" y1="11" x2="13.5" y2="11"/>
-                <line x1="6.5" y1="14.5" x2="13.5" y2="14.5"/>
-              </svg>
-              <span class="skill-icon-lbl">Confluence</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                <rect x="2" y="2" width="5.5" height="9" rx="0.5"/>
-                <rect x="10.5" y="2" width="5.5" height="13" rx="0.5"/>
-                <rect x="2" y="14" width="5.5" height="4" rx="0.5"/>
-              </svg>
-              <span class="skill-icon-lbl">Jira</span>
-            </div>
-
-            <div class="skill-icon-card">
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 9.5a4 4 0 0 0-7.3-2.2A3 3 0 1 0 5.5 13H16a3 3 0 0 0 0-6z" stroke-linejoin="round"/>
-              </svg>
-              <span class="skill-icon-lbl">Salesforce</span>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="skills-block">
-          <div class="skills-cat"><span class="skills-cat-name">Strategic</span></div>
-          <div class="skills-list">
-            <span class="skill-tag">Cash Forecasting</span><span class="skill-tag">Stress Testing</span><span class="skill-tag">Process Automation</span><span class="skill-tag">Cross-Functional Leadership</span><span class="skill-tag">Regulatory Reporting</span><span class="skill-tag">Stakeholder Management</span>
           </div>
         </div>
 
@@ -856,91 +348,66 @@
     </section>
 
     <section id="experience">
-      <h2 class="sticky-header">Experience</h2>
       <div class="section-body">
-
+        
         <div class="exp-entry">
-          <div class="exp-dates"><span class="year-end">2025</span><br>Present</div>
+          <div class="exp-dates">2025 — Present</div>
           <div class="exp-content">
             <div class="exp-title">Portfolio Management</div>
             <div class="exp-company">
               KeyBank
               <div class="micro-anim anim-gauge">
-                <svg class="gauge-svg" viewBox="0 0 22 11">
-                  <path class="gauge-track danger" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path>
-                  <path class="gauge-track warn"   d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path>
-                  <path class="gauge-track safe"   d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path>
-                  <line x1="11" y1="11" x2="11" y2="2" class="gauge-needle"></line>
-                  <circle cx="11" cy="11" r="1.5" class="gauge-base"></circle>
-                </svg>
+                <svg class="gauge-svg" viewBox="0 0 22 11"><path class="gauge-track danger" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><path class="gauge-track warn" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><path class="gauge-track safe" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><line x1="11" y1="11" x2="11" y2="2" class="gauge-needle"></line><circle cx="11" cy="11" r="1.5" class="gauge-base"></circle></svg>
               </div>
             </div>
             <p class="exp-desc">Leading risk strategy and predictive modeling across the business banking portfolio. Built models that identify high-risk credit lines before customers hit max utilization, cutting millions in daily exposure.</p>
-            <div class="exp-tags"><span class="exp-tag">Risk Strategy</span><span class="exp-tag">Predictive Modeling</span><span class="exp-tag">Salesforce</span><span class="exp-tag">Portfolio Analytics</span></div>
+            <div class="exp-tags"><span class="exp-tag">Risk Strategy</span><span class="exp-tag">Predictive Modeling</span><span class="exp-tag">Salesforce</span></div>
           </div>
         </div>
 
         <div class="exp-entry">
-          <div class="exp-dates"><span class="year-end">2024</span></div>
+          <div class="exp-dates">2024</div>
           <div class="exp-content">
             <div class="exp-title">VP, Non-Trading Market Risk Solutions</div>
-            <div class="exp-company">
-              Citibank
-              <div class="micro-anim anim-org">
-                <div class="org-top"></div><div class="org-line"></div><div class="org-bot1"></div><div class="org-bot2"></div>
-              </div>
-            </div>
+            <div class="exp-company">Citibank</div>
             <p class="exp-desc">Served as Chief of Staff across Treasury, Finance, Risk, and Tech. Built the division's treasury knowledge base in Confluence and was among the first to operationalize generative AI in live banking workflows.</p>
-            <div class="exp-tags"><span class="exp-tag">Treasury</span><span class="exp-tag">GenAI</span><span class="exp-tag">CCAR</span><span class="exp-tag">Confluence</span><span class="exp-tag">Cross-Functional</span></div>
+            <div class="exp-tags"><span class="exp-tag">Treasury</span><span class="exp-tag">GenAI</span><span class="exp-tag">CCAR</span></div>
           </div>
         </div>
 
         <div class="exp-entry">
-          <div class="exp-dates"><span class="year-end">2021</span></div>
+          <div class="exp-dates">2021</div>
           <div class="exp-content">
             <div class="exp-title">VP, Liquidity Management</div>
             <div class="exp-company">
               Citibank
-              <div class="micro-anim anim-line-chart" title="Liquidity Trend">
-                <svg viewBox="0 0 24 16" width="24" height="16" style="overflow:visible;">
-                  <polyline class="lc-path" points="2,14 8,9 14,12 22,4"></polyline>
-                  <circle class="lc-dot" cx="22" cy="4" r="2"></circle>
-                </svg>
-              </div>
+              <div class="micro-anim anim-line-chart" title="Liquidity Trend"><svg viewBox="0 0 24 16" width="24" height="16" style="overflow:visible;"><polyline class="lc-path" points="2,14 8,9 14,12 22,4"></polyline><circle class="lc-dot" cx="22" cy="4" r="2"></circle></svg></div>
             </div>
             <p class="exp-desc">Led $10B in balance sheet optimization during the 2023 banking crisis. Improved regulatory ratios across targeted sub-entities under CCAR, LCR, and NSFR frameworks.</p>
-            <div class="exp-tags"><span class="exp-tag">LCR / NSFR</span><span class="exp-tag">Balance Sheet Optimization</span><span class="exp-tag">Tableau</span><span class="exp-tag">CCAR / 2052a</span></div>
+            <div class="exp-tags"><span class="exp-tag">LCR / NSFR</span><span class="exp-tag">Balance Sheet Optimization</span><span class="exp-tag">Tableau</span></div>
           </div>
         </div>
 
         <div class="exp-entry">
-          <div class="exp-dates"><span class="year-end">2019</span></div>
+          <div class="exp-dates">2019</div>
           <div class="exp-content">
             <div class="exp-title">AVP, Equity Derivatives Product Control</div>
-            <div class="exp-company">
-              Citibank
-              <div class="micro-anim anim-sector-bars" title="Sector P&L Heatmap">
-                <div class="sec-bar b1"></div><div class="sec-bar b2"></div><div class="sec-bar b3"></div><div class="sec-bar b4"></div>
-              </div>
-            </div>
-            <p class="exp-desc">Managed daily P&amp;L for index and sector derivative trades, leading a team of 6 through COVID-19 volatility. Built PowerBI and KNIME dashboards for proactive risk identification.</p>
-            <div class="exp-tags"><span class="exp-tag">P&amp;L</span><span class="exp-tag">Derivatives</span><span class="exp-tag">KNIME</span><span class="exp-tag">Power BI</span></div>
+            <div class="exp-company">Citibank</div>
+            <p class="exp-desc">Managed daily P&L for index and sector derivative trades, leading a team of 6 through COVID-19 volatility. Built PowerBI and KNIME dashboards for proactive risk identification.</p>
+            <div class="exp-tags"><span class="exp-tag">P&L</span><span class="exp-tag">Derivatives</span><span class="exp-tag">KNIME</span></div>
           </div>
         </div>
 
         <div class="exp-entry">
-          <div class="exp-dates"><span class="year-end">2012</span></div>
+          <div class="exp-dates">2012</div>
           <div class="exp-content">
             <div class="exp-title">AVP, Foreign Exchange Trade Processing</div>
             <div class="exp-company">
               Citibank
-              <div class="micro-anim anim-swift">
-                <div class="swift-lat"></div><div class="swift-lng"></div>
-                <div class="swift-node"></div><div class="swift-node2"></div>
-              </div>
+              <div class="micro-anim anim-swift"><div class="swift-lat"></div><div class="swift-lng"></div><div class="swift-node"></div><div class="swift-node2"></div></div>
             </div>
             <p class="exp-desc">Led a 25-person FX settlements team across Interbank and Corporate channels. Migrated a major client from Misys to direct SWIFT settlement, eliminating manual processing and delivering $29M in annual savings.</p>
-            <div class="exp-tags"><span class="exp-tag">FX</span><span class="exp-tag">CLS</span><span class="exp-tag">SWIFT</span><span class="exp-tag">Team Leadership</span></div>
+            <div class="exp-tags"><span class="exp-tag">FX</span><span class="exp-tag">SWIFT</span><span class="exp-tag">Team Leadership</span></div>
           </div>
         </div>
 
@@ -948,77 +415,35 @@
     </section>
 
     <section id="leadership">
-      <h2 class="sticky-header">Leadership &amp; Culture</h2>
       <div class="section-body">
         <div class="lead-grid">
-          <div class="lead-item"><div class="lead-badge badge-01">01</div><div class="lead-title">Citi Buffalo Pride</div><div class="lead-desc">Co-founded the employee resource group, now 300+ members strong.</div></div>
-          <div class="lead-item"><div class="lead-badge badge-02">02</div><div class="lead-title">AI Accelerator</div><div class="lead-desc">Early adopter and advocate for integrating generative AI into banking workflows.</div></div>
-          <div class="lead-item"><div class="lead-badge badge-03">03</div><div class="lead-title">25+ Workshops</div><div class="lead-desc">Facilitated cross-functional productivity workshops across Citi Buffalo operations.</div></div>
-          <div class="lead-item"><div class="lead-badge badge-04">04</div><div class="lead-title">Site Ambassador</div><div class="lead-desc">Represented Citi's Buffalo campus, bridging local teams with enterprise leadership.</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="whats-next">
-      <h2 class="sticky-header">What's Next</h2>
-      <div class="section-body">
-        <p class="wn-lead">I'm always looking to grow. Harder problems. Bigger systems. Teams that operate at the intersection of finance and technology.</p>
-
-        <div class="wn-items">
-          <div class="wn-item">
-            <div class="wn-item-label">AI in Finance</div>
-            <div class="wn-item-desc">Exploring how generative AI and predictive modeling can reshape how banks manage risk, communicate data, and make decisions in real time. This site runs a custom AI built on my background. You can talk to it below.</div>
-          </div>
-          <div class="wn-item">
-            <div class="wn-item-label">Broader Scope</div>
-            <div class="wn-item-desc">Looking to expand beyond credit risk into enterprise-level portfolio and balance sheet strategy. The connective tissue between treasury, markets, and operations is where I do my best work.</div>
-          </div>
-          <div class="wn-item">
-            <div class="wn-item-label">New Conversations</div>
-            <div class="wn-item-desc">Open to advisory roles, leadership positions, and conversations with teams building at the edge of finance and technology. If you need someone who can sit at the table with quants and executives alike, reach out.</div>
-          </div>
-        </div>
-
-        <div class="wn-robbot-callout">
-          <span class="wn-robbot-label">RobBot</span>
-          <span class="wn-robbot-desc">Ask my AI anything about my background, experience, or what I'm working on.</span>
-          <button onclick="toggleChat()" class="wn-robbot-btn">Open RobBot &rarr;</button>
+          <div class="lead-item"><div class="lead-title">Citi Buffalo Pride</div><div class="lead-desc">Co-founded the employee resource group, growing it to over 300 active members.</div></div>
+          <div class="lead-item"><div class="lead-title">AI Accelerator</div><div class="lead-desc">Early adopter and advocate for integrating generative AI into live banking workflows.</div></div>
+          <div class="lead-item"><div class="lead-title">Productivity Workshops</div><div class="lead-desc">Facilitated 25+ cross-functional workshops across Citi Buffalo operations.</div></div>
         </div>
       </div>
     </section>
 
     <section id="connect">
-      <h2 class="sticky-header">Connect</h2>
       <div class="section-body">
-        <div class="connect-inner">
-          <div class="connect-heading"><span id="type-text"></span><span class="cursor">_</span></div>
-          <p class="connect-sub">Open to new conversations and opportunities. I'd love to hear from you.</p>
-          <div class="connect-btns">
-            <a href="tel:5852056387" class="con-btn primary">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.75 19.79 19.79 0 01.07 2.18 2 2 0 012.07 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-              585.205.6387
-            </a>
-            <a href="mailto:robmorris9@gmail.com" class="con-btn">✉ &nbsp;Email</a>
-            <a href="https://www.linkedin.com/in/robert-p-morris/" target="_blank" class="con-btn">LinkedIn ↗</a>
-            <a href="Robert Perry Morris _ Resume.pdf" target="_blank" class="con-btn">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-              Resume PDF
-            </a>
-          </div>
-          <div style="margin-top:24px;">
-            <a href="sms:5852056387" style="font-family:var(--mono);font-size:12px;letter-spacing:1px;color:var(--teal);border-bottom:1px solid var(--teal);padding-bottom:2px;">or send me a text directly &rarr;</a>
-          </div>
+        <div class="connect-heading">What's Next?</div>
+        <p class="connect-sub">I'm always looking to connect on new opportunities, automation, and risk strategy. Check out the <strong>RobBot</strong> I built for this site, or feel free to reach out directly.</p>
+        <div class="connect-btns">
+          <a href="tel:5852056387" class="pl-btn primary">
+            585.205.6387 
+            <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+          <a href="Robert Perry Morris _ Resume.pdf" target="_blank" class="pl-btn">
+            View Resume 
+            <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
         </div>
       </div>
     </section>
 
-    <footer>
-      <div class="footer-mark">RPM</div>
-      <a href="Robert Perry Morris _ Resume.pdf" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--ink-lt);letter-spacing:1px;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:color 0.15s,border-color 0.15s;" onmouseover="this.style.color='var(--teal)';this.style.borderColor='var(--teal)';" onmouseout="this.style.color='var(--ink-lt)';this.style.borderColor='var(--rule)';">Print Resume &uarr;&rarr;</a>
-      <div class="footer-url">robmorris.me</div>
+    <footer class="site-footer">
+      made with love in kenmore, ny :-)
     </footer>
-
-    <div class="bottom-stripe"></div>
 
   </main>
 </div>
@@ -1045,41 +470,22 @@
   </div>
 </div>
 
-<button class="chat-mobile-trigger" onclick="toggleChat()">
-  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-  Ask RobBot
-</button>
-
-<button class="back-to-top" id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:3px;margin-top:-1px;"><polyline points="18 15 12 9 6 15"/></svg>Top
-</button>
-
 <script>
   // ═══════════════════════════════════════════════════
-  // ROBBOT CONFIG
-  // Add your Anthropic API key below to enable the chatbot.
-  // The key is visible in source — set a spend limit in
-  // your Anthropic dashboard to protect against abuse.
+  // ROBBOT CONFIG - GOOGLE GEMINI API
   // ═══════════════════════════════════════════════════
-  const ANTHROPIC_API_KEY = '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';
+  const GEMINI_API_KEY = 'AIzaSyABpMEqsWLn8fLdIUV4_bVh54UyTYVDZ80';
 
-  const ROBBOT_SYSTEM = `You are RobBot, a friendly and concise AI assistant representing Robert Perry Morris — a finance professional based in Buffalo, NY. Rob's style is direct, specific, and unpretentious. Answer questions about him accurately and in that spirit. Keep responses to 2–4 sentences unless more detail is genuinely useful. If you don't know something, say so and suggest contacting Rob directly, which his information is located in the resume site.
-
+  const ROBBOT_SYSTEM = `You are RobBot, a friendly and concise AI assistant representing Robert Perry Morris. Keep responses to 2–4 sentences. If you don't know something, suggest contacting Rob.
 Key facts:
-- Current role: Portfolio Management at KeyBank (2025–present). Managing risk strategy, automation, and predictive modeling across the business banking portfolio. Built models that proactively identify high-risk credit exposure before customers hit max utilization.
-- Prior: 13 years at Citibank (2012–2024), rising from analyst through AVP to VP.
-  · VP, Non-Trading Market Risk Solutions (2024): Chief of Staff role. Cross-functional coordination across Treasury, Finance, Risk, and Tech. Pioneered generative AI operationalization in live banking workflows.
-  · VP, Liquidity Management (2021): Led $10B balance sheet optimization during the 2023 banking crisis. Improved regulatory ratios across targeted sub-entities.
-  · AVP, Equity Derivatives Product Control (2019): Daily P&L for index/sector derivatives, team of 6, COVID-19 volatility. PowerBI and KNIME dashboards.
-  · AVP, FX Trade Processing (2012): Led 25-person FX settlements team. $29M annual savings via SWIFT migration eliminating manual Misys mapping.
+- Current role: Portfolio Management at KeyBank (2025–present). Managing risk strategy and predictive modeling.
+- Prior: 13 years at Citibank (2012–2024), rising to VP.
 - Key numbers: $29M FX settlement savings, $2.9M credit exposure mitigated, $10B liquidity optimized.
-- Skills: Risk strategy, liquidity management, portfolio analytics, FX, SWIFT, CLS, CCAR, 2052a, LCR/NSFR, ALCO, Power BI, Tableau, SQL, VBA, KNIME, Generative AI, Confluence, Jira, Salesforce.
-- Leadership: Co-founded Citi Buffalo Pride ERG (300+ members), AI Accelerator advocate, 25+ cross-functional workshops, Site Ambassador for Citi Buffalo campus.
-- Location: Buffalo, NY. Contact: robmorris9@gmail.com, linkedin.com/in/robert-p-morris, 585.205.6387.`;
+- Contact: robmorris9@gmail.com, linkedin.com/in/robert-p-morris, 585.205.6387.`;
 
   // ── CHATBOT STATE ──
   let chatOpen = false;
-  let chatHistory = [];
+  let chatHistory = []; 
   let chatBusy = false;
 
   function toggleChat() {
@@ -1095,7 +501,7 @@ Key facts:
     if (!text) return;
 
     appendMsg('user', text);
-    chatHistory.push({ role: 'user', content: text });
+    chatHistory.push({ role: 'user', parts: [{ text: text }] });
     input.value = '';
     input.style.height = 'auto';
 
@@ -1103,45 +509,29 @@ Key facts:
     chatBusy = true;
     document.getElementById('chat-send').disabled = true;
 
-    if (!ANTHROPIC_API_KEY || ANTHROPIC_API_KEY === 'YOUR_ANTHROPIC_API_KEY_HERE') {
-      await new Promise(r => setTimeout(r, 800));
-      typingEl.remove();
-      appendMsg('assistant', "RobBot isn't configured yet — Rob hasn't added his API key. Reach out to him directly at robmorris9@gmail.com or 585.205.6387.");
-      chatBusy = false;
-      document.getElementById('chat-send').disabled = false;
-      return;
-    }
-
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-api-key': ANTHROPIC_API_KEY,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'claude-haiku-4-5-20251001',
-          max_tokens: 512,
-          system: ROBBOT_SYSTEM,
-          messages: chatHistory
+          systemInstruction: { parts: [{ text: ROBBOT_SYSTEM }] },
+          contents: chatHistory
         })
       });
 
       const data = await res.json();
       typingEl.remove();
 
-      if (data.content && data.content[0]) {
-        const reply = data.content[0].text;
-        chatHistory.push({ role: 'assistant', content: reply });
+      if (data.candidates && data.candidates[0]) {
+        const reply = data.candidates[0].content.parts[0].text;
+        chatHistory.push({ role: 'model', parts: [{ text: reply }] });
         appendMsg('assistant', reply);
       } else {
         appendMsg('assistant', 'Something went wrong on my end. Try again or reach Rob directly.');
       }
     } catch (e) {
       typingEl.remove();
-      appendMsg('assistant', 'Network error. Check your connection or reach Rob directly at robmorris9@gmail.com.');
+      appendMsg('assistant', 'Network error. Check your connection or reach Rob directly.');
     }
 
     chatBusy = false;
@@ -1186,16 +576,11 @@ Key facts:
     const btn  = document.getElementById('theme-toggle');
     const label = document.getElementById('theme-label');
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const lock = sessionStorage.getItem('rpm-theme');
-    if (lock) html.setAttribute('data-theme', lock);
 
-    function isCurrentlyDark() {
-      return html.getAttribute('data-theme') === 'dark' ||
-             (!html.getAttribute('data-theme') && mq.matches);
-    }
+    function isCurrentlyDark() { return html.getAttribute('data-theme') === 'dark' || (!html.getAttribute('data-theme') && mq.matches); }
     function syncLabel() {
       const dark = isCurrentlyDark();
-      label.textContent = dark ? '◑ Light' : '◐ Dark';
+      label.textContent = dark ? '◑ Light Mode' : '◐ Dark Mode';
       html.classList.toggle('is-light-theme', !dark);
     }
     syncLabel();
@@ -1206,133 +591,36 @@ Key facts:
       sessionStorage.setItem('rpm-theme', next);
       syncLabel();
     });
-    mq.addEventListener('change', () => {
-      if (!sessionStorage.getItem('rpm-theme')) html.removeAttribute('data-theme');
-      syncLabel();
-    });
   })();
 
   // ── SCROLL SPY NAV ──
   const sectionsObj = document.querySelectorAll('main.panel-right section');
   const navLinksObj = document.querySelectorAll('.nav-link');
-
-  const spyOptions = {
-    root: null,
-    rootMargin: '-10% 0px -50% 0px', // Highlights when section hits the upper half of screen
-    threshold: 0
-  };
-
   const spyObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const currentId = entry.target.getAttribute('id');
         navLinksObj.forEach(link => {
           link.classList.remove('active');
-          if (link.getAttribute('href') === `#${currentId}`) {
-            link.classList.add('active');
-          }
+          if (link.getAttribute('href') === `#${currentId}`) link.classList.add('active');
         });
       }
     });
-  }, spyOptions);
-
+  }, { root: null, rootMargin: '-10% 0px -50% 0px', threshold: 0 });
   sectionsObj.forEach(sec => spyObserver.observe(sec));
 
-  // ── SCROLL REVEAL ──
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealEls = document.querySelectorAll('.exp-entry, .skills-block, .lead-item, .about-text, .wn-item');
-  revealEls.forEach((el, i) => {
-    el.classList.add('anim-ready');
-    if (el.classList.contains('exp-entry'))    el.style.transitionDelay = (i * 0.05) + 's';
-    if (el.classList.contains('skills-block')) el.style.transitionDelay = (i * 0.06) + 's';
-    if (el.classList.contains('lead-item'))    el.style.transitionDelay = (i * 0.07) + 's';
-    if (el.classList.contains('wn-item'))      el.style.transitionDelay = (i * 0.08) + 's';
-  });
-  if (!prefersReducedMotion) {
-    const revealObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => revealObs.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('is-visible'));
-  }
-
-  // ── MICRO ANIMATIONS ──
+  // ── MICRO ANIMATIONS OBSERVER ──
   const microObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      const el = e.target;
       if (e.isIntersecting) {
-        if (!el.dataset.timedOut) {
-          el.classList.add('is-playing');
-          if (!el.dataset.timerStarted) {
-            el.dataset.timerStarted = 'true';
-            setTimeout(() => { el.dataset.timedOut = 'true'; el.classList.remove('is-playing'); }, 25000);
-          }
-        }
-      } else { el.classList.remove('is-playing'); }
+        e.target.classList.add('is-playing');
+      } else { 
+        e.target.classList.remove('is-playing'); 
+      }
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.micro-anim').forEach(el => microObs.observe(el));
 
-  // Left panel KPI ($10B): start playing on load
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.panel-left .micro-anim').forEach(el => {
-      el.classList.add('is-playing');
-    });
-  });
-
-  // ── KPI COUNTERS ──
-  function animateKPI(el, start, end, decimals, duration, suffix) {
-    const range = end - start; let t0 = null;
-    function ease(t) { return 1 - Math.pow(1 - t, 3); }
-    function step(ts) {
-      if (!t0) t0 = ts;
-      const p = Math.min((ts - t0) / duration, 1);
-      el.textContent = '$' + (start + range * ease(p)).toFixed(decimals) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const kpiFx  = document.getElementById('kpi-fx');
-  const kpiKey = document.getElementById('kpi-key');
-  const kpiLiq = document.getElementById('kpi-liq');
-  if (kpiFx)  kpiFx.textContent  = '$29M';
-  if (kpiKey) kpiKey.textContent = '$2.9M';
-  if (!prefersReducedMotion) {
-    setTimeout(() => {
-      if (kpiLiq) animateKPI(kpiLiq, 5, 10, 0, 1800, 'B');
-    }, 600);
-  } else {
-    if (kpiLiq) kpiLiq.textContent = '$10B';
-  }
-
-  // ── TYPEWRITER ──
-  const typeTarget = document.getElementById('type-text');
-  const typeText = "Let's Talk";
-  let idx = 0, loops = 0, typing = true, running = false;
-  function typeWriter() {
-    if (prefersReducedMotion) return typeTarget.innerHTML = typeText;
-    if (loops >= 1 && idx === typeText.length) return;
-    if (typing) {
-      if (idx < typeText.length) { typeTarget.innerHTML = typeText.substring(0, ++idx); setTimeout(typeWriter, 120); }
-      else { typing = false; setTimeout(typeWriter, 1200); }
-    } else {
-      if (idx > 0) { typeTarget.innerHTML = typeText.substring(0, --idx); setTimeout(typeWriter, 55); }
-      else { typing = true; loops++; setTimeout(typeWriter, 400); }
-    }
-  }
-  if (typeTarget) {
-    const typeObs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !running) { running = true; setTimeout(typeWriter, 200); typeObs.disconnect(); }
-    }, { threshold: 0.5 });
-    typeObs.observe(document.getElementById('connect'));
-  }
-
-  // ── BACK TO TOP ──
-  const bttBtn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    bttBtn.classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
 </script>
 </body>
 </html>
