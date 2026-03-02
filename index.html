@@ -428,9 +428,8 @@
 
 <script>
   // ═══════════════════════════════════════════════════
-  // ROBBOT CONFIG - GOOGLE GEMINI API
+  // ROBBOT CONFIG 
   // ═══════════════════════════════════════════════════
-  const GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY_HERE';
 
   const ROBBOT_SYSTEM = `You are RobBot, a friendly and concise AI assistant representing Robert Perry Morris. Keep responses to 2–4 sentences. If you don't know something, suggest contacting Rob.
 Key facts:
@@ -477,7 +476,8 @@ Key facts:
     document.getElementById('chat-send').disabled = true;
 
     try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+      // Look here! It now cleanly points to your Vercel backend.
+      const res = await fetch(`/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
