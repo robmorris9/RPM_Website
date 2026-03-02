@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
@@ -28,10 +28,9 @@ export default async function handler(req, res) {
       })
     });
 
-    // If Google's API rejects it (e.g., out of quota), throw an error so the frontend fallback kicks in
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Gemini API Error:', errorData);
+      console.error('Gemini API Error:', JSON.stringify(errorData));
       throw new Error('Failed to fetch from Gemini');
     }
 
@@ -41,7 +40,6 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Chat Endpoint Error:', error);
-    // Returning a 500 error will trigger the funny progressive fallbacks in your HTML
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
