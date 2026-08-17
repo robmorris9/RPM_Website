@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{{PERSON_NAME}} | Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/resume.css">
+</head>
+<body>
+  <main class="resume-document">
+    <section class="page page-1" aria-label="Resume introduction">
+      <div class="spectrum-line" aria-hidden="true"></div>
+
+      <header class="document-header">
+        <div class="identity-lockup">
+          <span class="rpm-wordmark" aria-hidden="true">RPM</span>
+          <div>
+            <p class="identity-name">{{PERSON_NAME}}</p>
+            <p class="identity-label">{{RESUME_INTRO_LABEL}}</p>
+          </div>
+        </div>
+        <address class="contact-list" aria-label="Contact details">
+          <a href="tel:{{PHONE_HREF}}">{{PHONE_DISPLAY}}</a>
+          <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
+          <a href="{{LINKEDIN_URL}}">{{LINKEDIN_DISPLAY}}</a>
+          <span>{{LOCATION}}</span>
+        </address>
+      </header>
+
+      <section class="letter-opening" aria-labelledby="letter-headline">
+        <p class="eyebrow">{{RESUME_POSITIONING}}</p>
+        <h1 id="letter-headline">{{CAREER_LETTER_HEADLINE}}</h1>
+        <p class="letter-deck">{{CAREER_LETTER_DECK}}</p>
+      </section>
+
+      <div class="letter-body">
+        <div class="opening-copy">
+          {{CAREER_LETTER_INTRO}}
+        </div>
+
+        <p class="profile-thesis">{{CAREER_LETTER_THESIS}}</p>
+
+        <div class="letter-closing">
+          {{CAREER_LETTER_CLOSING}}
+        </div>
+
+        <div class="signoff" aria-label="Signed by Robert Perry Morris">
+          <p class="signoff-name">{{PERSON_NAME}}</p>
+          <p class="signoff-title">{{CURRENT_TITLE}}</p>
+          <p class="signoff-function">{{CURRENT_FUNCTION}}</p>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <span>{{RESUME_INTRO_LABEL}}</span>
+        <span class="footer-rule" aria-hidden="true"></span>
+        <span>01 / 02</span>
+      </footer>
+    </section>
+
+    <section class="page page-2" aria-label="Resume">
+      <div class="spectrum-line" aria-hidden="true"></div>
+
+      <header class="resume-header">
+        <div class="resume-identity">
+          <span class="rpm-wordmark small-wordmark" aria-hidden="true">RPM</span>
+          <div>
+            <h2 class="resume-name">{{PERSON_NAME}}</h2>
+            <p class="resume-title">{{CURRENT_TITLE}} &middot; {{CURRENT_EMPLOYER}}</p>
+            <p class="resume-function">{{CURRENT_FUNCTION}}</p>
+          </div>
+        </div>
+        <address class="resume-contact" aria-label="Contact details">
+          <a href="tel:{{PHONE_HREF}}">{{PHONE_DISPLAY}}</a>
+          <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
+          <a href="{{LINKEDIN_URL}}">LinkedIn</a>
+          <a href="https://robmorris.me/">robmorris.me</a>
+        </address>
+      </header>
+
+      <section class="resume-foundation" aria-labelledby="capabilities-title">
+        <div class="capabilities-section">
+          <h2 class="resume-section-title" id="capabilities-title">Capabilities</h2>
+          <div class="capability-list">
+            {{CAREER_LETTER_CAPABILITIES}}
+          </div>
+        </div>
+      </section>
+
+      <section class="experience-section" aria-labelledby="experience-title">
+        <h2 class="resume-section-title" id="experience-title">Experience</h2>
+        <div class="timeline-list">
+          {{CAREER_LETTER_RECORD}}
+        </div>
+      </section>
+
+      <section class="leadership-section" aria-labelledby="leadership-title">
+        <h2 class="resume-section-title" id="leadership-title">Leadership</h2>
+        <div class="leadership-list">
+          {{CAREER_LETTER_LEADERSHIP}}
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>Made thoughtfully in Kenmore, New York.</span>
+        <span class="footer-rule" aria-hidden="true"></span>
+        <span>02 / 02</span>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

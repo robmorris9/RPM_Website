@@ -2,650 +2,275 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robert Perry Morris — Portfolio Management & Risk Strategy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Robert Perry Morris - Banking Strategy, Portfolio Management &amp; Risk Analytics</title>
+  <meta name="description" content="Robert Perry Morris is a banking operator with 14 years of experience across portfolio strategy, credit risk, markets, treasury, analytics, governance, and technology.">
+  <link rel="canonical" href="https://robmorris.me/">
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23181D34'/%3E%3Crect width='32' height='3' fill='%2350A0A0'/%3E%3Ctext x='16' y='27' font-family='Arial Narrow%2C sans-serif' font-weight='700' font-size='22' fill='%23C09838' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
-  <meta property="og:title"       content="Robert Perry Morris — Portfolio Management & Risk Strategy">
-  <meta property="og:description" content="13 years at Citi. Now at KeyBank. Finance, risk, and the infrastructure that connects them.">
+  <meta id="theme-color" name="theme-color" content="#0B0F1C">
+  <meta name="color-scheme" content="dark light">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Robert Perry Morris - Banking Strategy, Portfolio Management &amp; Risk Analytics">
+  <meta property="og:description" content="Robert Perry Morris is a banking operator with 14 years of experience across portfolio strategy, credit risk, markets, treasury, analytics, governance, and technology.">
+  <meta property="og:url" content="https://robmorris.me/">
+  <meta property="og:image" content="https://robmorris.me/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Robert Perry Morris">
+  <meta property="profile:first_name" content="Robert">
+  <meta property="profile:last_name" content="Morris">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Robert Perry Morris - Banking Strategy, Portfolio Management &amp; Risk Analytics">
+  <meta name="twitter:description" content="Robert Perry Morris is a banking operator with 14 years of experience across portfolio strategy, credit risk, markets, treasury, analytics, governance, and technology.">
+  <meta name="twitter:image" content="https://robmorris.me/og-image.png">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Robert Perry Morris","givenName":"Robert","familyName":"Morris","url":"https://robmorris.me/","email":"mailto:robmorris9@gmail.com","telephone":"+15852056387","image":"https://robmorris.me/og-image.png","jobTitle":"Vice President, Business Banking Portfolio Analytics","worksFor":{"@type":"Organization","name":"KeyBank"},"alumniOf":{"@type":"Organization","name":"Citi"},"address":{"@type":"PostalAddress","addressLocality":"Kenmore","addressRegion":"NY","addressCountry":"US"},"sameAs":["https://www.linkedin.com/in/robert-p-morris/"],"knowsAbout":["Portfolio Strategy","Credit Risk Analytics","Line Management","Vintage Analysis","Collections Strategy","Portfolio Monitoring","Adverse Action / Reg B","Credit Line Increase Strategy","Revolving Line-to-Term Strategy","Liquidity Management","Balance Sheet Strategy","FX / SWIFT","Equity Derivatives","Product Control","LCR / NSFR","CCAR","2052a","Python","SQL","Power BI","Tableau","KNIME","Generative AI","Salesforce","Automation","Risk Governance","Control Design","Process Transformation","Cross-Functional Leadership","Procedure / Operating Model Design","Stakeholder Management"]}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 
   <script>
-    (function() {
-      var s = sessionStorage.getItem('rpm-theme');
-      var h = document.documentElement;
-      if (s) h.setAttribute('data-theme', s);
-      var dark = s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      if (!dark) h.classList.add('is-light-theme');
-    })();
+    (function () {
+      var root = document.documentElement;
+      var stored = null;
+      try { stored = localStorage.getItem('rpm-theme'); } catch (error) {}
+      var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (systemDark ? 'dark' : 'light');
+      root.dataset.theme = theme;
+      root.dataset.themeSource = stored ? 'user' : 'system';
+      var themeColor = document.getElementById('theme-color');
+      if (themeColor) themeColor.content = theme === 'dark' ? '#0B0F1C' : '#F9F7F2';
+    }());
   </script>
 
-  <style>
-    /* ── TOKENS ── */
-    :root {
-      --bg: #0B0F1C; --surface: #141830; --surface2: rgba(255,255,255,0.03);
-      --navy: #181D34; --cream: #F0EBE0;
-      --ink: #EDE8DC; --ink-md: rgba(237,232,220,0.70); --ink-lt: rgba(237,232,220,0.45);
-      --teal: #50A0A0; --teal-lt: #72BABA;
-      --salmon: #CC6050; --gold: #C09838;
-      --rule: rgba(237,232,220,0.06); 
-      --risk-safe: #50A0A0; --risk-warn: #C09838; --risk-danger: #CC6050;
-      --display-fg: var(--cream);
-      --mono: "IBM Plex Mono", "Courier New", monospace;
-      --cond: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
-      --sans: "IBM Plex Sans", Arial, sans-serif;
-    }
-
-    @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
-      --bg: #F9F7F2; --surface: #F0EDE4; --surface2: rgba(0,0,0,0.03);
-      --navy: #1A1E2C; --cream: #1A1E2C;
-      --ink: #1A1E2C; --ink-md: rgba(26,30,44,0.75); --ink-lt: rgba(26,30,44,0.50);
-      --teal: #177777; --teal-lt: #219292;
-      --salmon: #A83020; --gold: #986805;
-      --rule: rgba(0,0,0,0.06); 
-      --display-fg: var(--ink);
-    }}
-
-    [data-theme="light"] {
-      --bg: #F9F7F2; --surface: #F0EDE4; --surface2: rgba(0,0,0,0.03);
-      --navy: #1A1E2C; --cream: #1A1E2C;
-      --ink: #1A1E2C; --ink-md: rgba(26,30,44,0.75); --ink-lt: rgba(26,30,44,0.50);
-      --teal: #177777; --teal-lt: #219292;
-      --salmon: #A83020; --gold: #986805;
-      --rule: rgba(0,0,0,0.06); 
-      --display-fg: var(--ink);
-    }
-
-    /* ── RESET ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background: var(--bg); scroll-behavior: smooth; }
-    body { font-family: var(--sans); font-size: 16px; color: var(--ink); background: var(--bg); line-height: 1.7; overflow-x: clip; overflow-wrap: break-word; word-wrap: break-word; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ── STRIPES ── */
-    .top-stripe    { height: 4px; background: linear-gradient(90deg, #50A0A0 0%, #50A0A0 40%, #CC6050 40%, #CC6050 70%, #C09838 70%, #C09838 100%); flex-shrink: 0; }
-
-    /* ── LAYOUT: TWO-PANEL ── */
-    .site-wrapper {
-      display: flex; align-items: flex-start; min-height: 100vh;
-      width: min(100%, 1280px);
-      margin-inline: auto;
-      gap: 80px; 
-      padding: 0 40px;
-    }
-
-    /* Left panel */
-    .panel-left {
-      width: 320px; min-width: 320px; flex-shrink: 0; 
-      position: sticky; top: 0; height: 100vh;
-      display: flex; flex-direction: column;
-      padding: 60px 0 40px 0; /* Tightened from 80px */
-      overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;
-      z-index: 60;
-    }
-    .panel-left::-webkit-scrollbar { display: none; }
-
-    .pl-inner { display: flex; flex-direction: column; flex: 1; }
-    .pl-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 1px; color: var(--teal); margin-bottom: 12px; text-transform: uppercase; }
-    .pl-name { font-family: var(--sans); font-size: clamp(40px, 4.5vw, 56px); font-weight: 600; color: var(--display-fg); line-height: 1; letter-spacing: -1px; margin-bottom: 16px; }
-    .pl-desc { font-size: 15px; color: var(--ink-md); line-height: 1.6; margin-bottom: 32px; } /* Tightened from 40px */
-
-    /* Clean KPIs */
-    .pl-kpis { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; } /* Tightened from 48px/24px gap */
-    .pl-kpi { display: flex; flex-direction: column; gap: 2px; }
-    .pl-kpi-val { font-family: var(--mono); font-size: 24px; font-weight: 500; color: var(--display-fg); line-height: 1; }
-    .pl-kpi-lbl { font-family: var(--sans); font-size: 13px; color: var(--ink-lt); }
-
-    /* Actions - Pill Buttons */
-    .pl-actions { display: flex; flex-direction: column; gap: 10px; }
-    .pl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); background: var(--surface2); border-radius: 99px; padding: 12px 24px; cursor: pointer; transition: all 0.2s ease; width: fit-content; }
-    .pl-btn:hover { background: rgba(80,160,160,0.15); color: var(--teal); }
-    .pl-btn.primary { background: var(--teal); color: #0B0F1C; }
-    .pl-btn.primary:hover { background: var(--teal-lt); color: #0B0F1C; transform: translateY(-2px); }
-
-    .is-light-theme .pl-btn.primary { background: var(--navy); color: var(--bg); }
-    .is-light-theme .pl-btn.primary:hover { background: #303750; color: var(--bg); }
-    
-    .pl-btn.outline { background: transparent; box-shadow: inset 0 0 0 1.5px var(--teal); color: var(--teal); }
-    .pl-btn.outline:hover { background: rgba(80, 160, 160, 0.1); }
-
-    .btn-icon { margin-left: 2px; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1); }
-    .pl-btn:hover .btn-icon { transform: translate(2px, -2px); }
-
-    .pl-footer { margin-top: auto; padding-top: 24px; display: flex; align-items: center; justify-content: space-between; } /* Tightened */
-    .pl-theme-toggle { font-family: var(--sans); font-size: 13px; color: var(--ink-lt); background: none; border: none; cursor: pointer; transition: color 0.2s; }
-    .pl-theme-toggle:hover { color: var(--teal); }
-
-    /* ── RIGHT PANEL ── */
-    .panel-right { flex: 1; min-width: 0; max-width: 100%; padding-top: 60px; padding-bottom: 60px; display: flex; flex-direction: column; }
-
-    /* Sticky Navigation */
-    .top-nav { position: sticky; top: 0; z-index: 150; background: rgba(11, 15, 28, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); -webkit-transform: translateZ(0); transform: translateZ(0); margin-bottom: 60px; padding: 20px 0; transition: background 0.3s ease; }
-    .is-light-theme .top-nav { background: rgba(249, 247, 242, 0.85); }
-    .top-nav-list { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
-    .top-nav-list::-webkit-scrollbar { display: none; }
-    .nav-link { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink-lt); transition: color 0.2s; white-space: nowrap; position: relative; padding-bottom: 6px; }
-    .nav-link:hover { color: var(--teal); }
-    .nav-link.active { color: var(--display-fg); }
-    .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--teal); border-radius: 2px; }
-
-    section { scroll-margin-top: 120px; margin-bottom: 100px; }
-    .section-body { max-width: 760px; } 
-
-    .about-text p { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--ink-md); margin-bottom: 24px; }
-    .about-text strong { color: var(--display-fg); font-weight: 500; }
-
-    .skills-block { margin-bottom: 48px; }
-    .skills-cat-name { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--display-fg); display: block; margin-bottom: 24px; }
-    .skills-list { display: flex; flex-wrap: wrap; gap: 12px; }
-    .skill-tag { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--teal); background: rgba(80,160,160,0.1); padding: 6px 16px; border-radius: 99px; }
-
-    .skills-icon-grid { display: flex; flex-wrap: wrap; gap: 24px 32px; }
-    .skill-icon-card { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 80px; }
-    .skill-icon-card svg { width: 28px; height: 28px; color: var(--teal); opacity: 0.8; flex-shrink: 0; }
-    .skill-icon-lbl { font-family: var(--sans); font-size: 13px; color: var(--ink-md); text-align: center; line-height: 1.3; overflow-wrap: break-word; word-break: break-word; hyphens: auto; width: 100%; }
-
-    .exp-entry { display: grid; grid-template-columns: 100px 1fr; gap: 32px; margin-bottom: 60px; }
-    .exp-dates { font-family: var(--mono); font-size: 13px; color: var(--ink-lt); padding-top: 4px; }
-    .exp-title { font-family: var(--sans); font-size: 20px; font-weight: 500; color: var(--display-fg); margin-bottom: 4px; }
-    .exp-company { font-family: var(--sans); font-size: 15px; color: var(--teal); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-    .exp-desc { font-size: 15px; font-weight: 300; color: var(--ink-md); line-height: 1.8; margin-bottom: 20px; }
-    
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .exp-tag { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--teal); background: rgba(80,160,160,0.08); padding: 4px 14px; border-radius: 99px; }
-
-    .lead-grid { display: flex; flex-direction: column; gap: 32px; }
-    .lead-item { display: flex; flex-direction: column; gap: 8px; }
-    .lead-title { font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--display-fg); }
-    .lead-desc { font-size: 15px; color: var(--ink-md); line-height: 1.6; }
-
-    .connect-heading { font-family: var(--sans); font-size: 40px; font-weight: 600; color: var(--display-fg); margin-bottom: 16px; }
-    .connect-sub { font-size: 17px; color: var(--ink-md); margin-bottom: 32px; }
-    .connect-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-
-    /* Extended bottom padding to allow scrolling past the Connect section */
-    .site-footer { margin-top: auto; padding-top: 32px; padding-bottom: 100px; border-top: 1px dashed var(--rule); font-family: var(--mono); font-size: 12px; letter-spacing: 0.5px; color: var(--ink-lt); max-width: 760px; }
-
-    /* ── MICRO ANIMATIONS ── */
-    .micro-anim * { animation-play-state: paused !important; }
-    .micro-anim.is-playing * { animation-play-state: running !important; }
-
-    .anim-gauge { width: 22px; height: 12px; display: flex; align-items: flex-end; margin-left: 4px; }
-    .gauge-svg { width: 100%; height: 100%; overflow: visible; }
-    .gauge-track { fill: none; stroke-width: 1.5; }
-    .gauge-track.danger { stroke: var(--risk-danger); stroke-dasharray: 30 100; }
-    .gauge-track.warn   { stroke: var(--risk-warn);   stroke-dasharray: 40 100; stroke-dashoffset: -30; }
-    .gauge-track.safe   { stroke: var(--risk-safe);   stroke-dasharray: 30 100; stroke-dashoffset: -70; }
-    .gauge-needle { transform-origin: 11px 11px; transform: rotate(70deg); transition: transform 0.8s ease; stroke: var(--ink); stroke-width: 1; stroke-linecap: round; }
-    .micro-anim.is-playing .gauge-needle { animation: sweepOnce 2s cubic-bezier(0.4,0,0.2,1) forwards, hoverGreen 4s cubic-bezier(0.4,0,0.2,1) infinite 2s; }
-    @keyframes sweepOnce { 0%{transform:rotate(-75deg)} 60%{transform:rotate(-10deg)} 100%{transform:rotate(70deg)} }
-    @keyframes hoverGreen { 0%{transform:rotate(70deg)} 33%{transform:rotate(82deg)} 66%{transform:rotate(58deg)} 100%{transform:rotate(70deg)} }
-    .gauge-base { fill: var(--ink); }
-
-    .anim-line-chart { width: 24px; height: 16px; overflow: visible; display: flex; align-items: center; margin-left: 4px; }
-    .lc-path { fill: none; stroke: var(--gold); stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 30; animation: drawPath 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
-    .lc-dot { fill: var(--teal); transform-origin: 22px 4px; animation: showDot 3.5s cubic-bezier(0.4,0,0.2,1) infinite; }
-    @keyframes drawPath { 0%,15%{stroke-dashoffset:30} 45%,85%{stroke-dashoffset:0} 100%{stroke-dashoffset:30} }
-    @keyframes showDot { 0%,40%{opacity:0;transform:scale(0)} 45%,85%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(0)} }
-
-    .anim-swift { width: 16px; height: 16px; border: 1px solid var(--teal); opacity: 0.8; border-radius: 50%; position: relative; display: flex; justify-content: center; align-items: center; margin-left: 4px; }
-    .swift-lat { width: 100%; height: 5px; border-top: 1px solid var(--teal); border-bottom: 1px solid var(--teal); position: absolute; top: 4px; opacity: 0.4; }
-    .swift-lng { width: 6px; height: 100%; border-left: 1px solid var(--teal); border-right: 1px solid var(--teal); border-radius: 50%; position: absolute; opacity: 0.4; }
-    .swift-node, .swift-node2 { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: absolute; top: 5px; left: 5px; z-index: 2; }
-    .swift-node  { animation: swiftOrbit 3s linear infinite; }
-    .swift-node2 { animation: swiftOrbit 3s linear infinite -1.5s; }
-    @keyframes swiftOrbit { 0%{transform:rotate(0deg) translateX(9px)} 100%{transform:rotate(360deg) translateX(9px)} }
-
-    /* Fix: Automatically compress left panel on shorter laptop screens to prevent scroll */
-    @media (max-height: 850px) and (min-width: 1024px) {
-      .panel-left { padding: 40px 0 20px 0; }
-      .pl-name { font-size: 40px; margin-bottom: 12px; }
-      .pl-desc { margin-bottom: 24px; }
-      .pl-kpis { gap: 12px; margin-bottom: 24px; }
-      .pl-actions { gap: 8px; }
-      .pl-footer { padding-top: 16px; }
-    }
-
-    /* Mobile */
-    @media (max-width: 1023px) {
-      .site-wrapper { flex-direction: column; gap: 40px; padding: 0 24px; }
-      .panel-left { position: relative; width: 100%; min-width: 0; height: auto; top: auto; padding: 40px 0 0 0; }
-      .pl-name { font-size: 48px; }
-      .panel-right { padding-top: 0; }
-      
-      .top-nav { 
-        padding: 16px 24px; 
-        margin-bottom: 40px; 
-        margin-inline: -24px;
-        width: 100vw; 
-        border-bottom: 1px solid var(--rule);
-      }
-      
-      .exp-entry { grid-template-columns: 1fr; gap: 8px; margin-bottom: 48px; }
-      .exp-dates { margin-bottom: 8px; }
-      
-      .skills-icon-grid { gap: 24px 16px; }
-      .skill-icon-card { width: 72px; }
-      .skill-icon-lbl { font-size: 12px; }
-    }
-
-    /* Chat Panel */
-    .chat-panel { position: fixed; bottom: 0; right: 0; width: 380px; height: 70vh; max-height: 580px; background: #181D34; border: 1px solid rgba(237,232,220,0.15); border-bottom: none; display: flex; flex-direction: column; transform: translateY(110%); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); z-index: 200; box-shadow: -4px -4px 40px rgba(0,0,0,0.5); }
-    
-    @media (max-width: 400px) {
-      .chat-panel { width: 100%; right: 0; border-left: none; border-right: none; }
-    }
-
-    .chat-panel.open { transform: translateY(0); }
-    .chat-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid rgba(237,232,220,0.12); flex-shrink: 0; }
-    .chat-header-left { display: flex; align-items: center; gap: 10px; }
-    .chat-header-dot { width: 8px; height: 8px; border-radius: 50%; background: #C09838; animation: chatPulse 2s ease-in-out infinite; }
-    @keyframes chatPulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-    .chat-header-title { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #C09838; }
-    .chat-header-sub { font-family: var(--sans); font-size: 11px; color: rgba(237,232,220,0.35); }
-    .chat-close-btn { background: none; border: none; cursor: pointer; color: rgba(237,232,220,0.40); font-size: 18px; line-height: 1; padding: 2px 6px; transition: color 0.15s; }
-    .chat-messages { flex: 1; overflow-y: auto; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; scrollbar-width: thin; scrollbar-color: rgba(237,232,220,0.15) transparent; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-    .chat-msg { max-width: 88%; }
-    .chat-msg.assistant { align-self: flex-start; }
-    .chat-msg.user { align-self: flex-end; }
-    .chat-bubble { font-family: var(--sans); font-size: 13px; line-height: 1.6; padding: 10px 14px; border-radius: 4px; }
-    .chat-msg.assistant .chat-bubble { background: rgba(255,255,255,0.06); color: rgba(237,232,220,0.85); border-left: 2px solid #50A0A0; }
-    .chat-msg.user .chat-bubble { background: rgba(80,160,160,0.18); color: rgba(237,232,220,0.90); border-right: 2px solid #50A0A0; text-align: right; }
-    .chat-typing { display: flex; gap: 4px; align-items: center; padding: 10px 14px; }
-    .chat-dot { width: 5px; height: 5px; border-radius: 50%; background: #50A0A0; animation: chatDot 1.2s ease-in-out infinite; }
-    .chat-dot:nth-child(2) { animation-delay: 0.2s; }
-    .chat-dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes chatDot { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
-    .chat-input-area { display: flex; align-items: flex-end; gap: 8px; padding: 12px 18px; border-top: 1px solid rgba(237,232,220,0.12); flex-shrink: 0; }
-    .chat-textarea { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(237,232,220,0.18); color: #EDE8DC; font-family: var(--sans); font-size: 13px; padding: 9px 12px; resize: none; line-height: 1.5; max-height: 120px; outline: none; border-radius: 4px; }
-    .chat-send-btn { background: #50A0A0; border: none; color: #181D34; font-weight: 700; width: 38px; height: 38px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="top-stripe" aria-hidden="true"></div>
 
-<div class="top-stripe"></div>
+  <div class="site-wrapper">
+    <header class="panel-left">
+      <div class="pl-inner">
+        <p class="pl-eyebrow">Banking Strategy · Portfolio Management · Risk Analytics</p>
+        <h1 class="pl-name">Robert<br>Perry<br>Morris</h1>
+        <p class="pl-desc">Turning portfolio data, risk signals, and operational complexity into better banking decisions.</p>
 
-<div class="site-wrapper">
-  <aside class="panel-left">
-    <div class="pl-inner">
-      <div class="pl-eyebrow">Portfolio Management & Risk Strategy</div>
-      <h1 class="pl-name">Robert<br>Perry<br>Morris</h1>
-      <p class="pl-desc">Making complex banking systems work better, and making sure the right people know about it.</p>
-      <div class="pl-kpis">
-        <div class="pl-kpi"><div class="pl-kpi-val" id="kpi-fx">$29M</div><div class="pl-kpi-lbl">FX Settlement Savings</div></div>
-        <div class="pl-kpi"><div class="pl-kpi-val" id="kpi-key">$2.9M</div><div class="pl-kpi-lbl">Credit Exposure Mitigated</div></div>
-        <div class="pl-kpi"><div class="pl-kpi-val" id="kpi-liq">$10B</div><div class="pl-kpi-lbl">Liquidity Optimized</div></div>
-      </div>
-      <div class="pl-actions">
-        <button class="pl-btn primary" id="chat-open-btn" onclick="toggleChat()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          Ask RobBot
-        </button>
-        <a href="Robert Perry Morris _ Resume.pdf" target="_blank" class="pl-btn" id="resume-button-hero">
-          View Resume 
-          <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
-        <a href="mailto:robmorris9@gmail.com" class="pl-btn">
-          Email Me 
-          <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/robert-p-morris/" target="_blank" class="pl-btn">
-          LinkedIn 
-          <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
-      </div>
-      <div class="pl-footer">
-        <button id="theme-toggle" class="pl-theme-toggle" aria-label="Toggle color theme"><span id="theme-label">◑ Light Mode</span></button>
-      </div>
-    </div>
-  </aside>
+        <dl class="pl-kpis" aria-label="Selected career outcomes">
+          <div class="pl-kpi">
+            <dt class="pl-kpi-lbl">Annual FX SWIFT Network Settlement Savings</dt>
+            <dd class="pl-kpi-val" id="metric-fx">$29M</dd>
+          </div>
+          <div class="pl-kpi">
+            <dt class="pl-kpi-lbl">SMB Credit Exposure Mitigated</dt>
+            <dd class="pl-kpi-val" id="metric-credit">$2.9M</dd>
+          </div>
+          <div class="pl-kpi">
+            <dt class="pl-kpi-lbl">Balance Sheet Optimized During Liquidity Crisis</dt>
+            <dd class="pl-kpi-val" id="metric-liquidity">$10B</dd>
+          </div>
+        </dl>
 
-  <main class="panel-right">
-    <nav class="top-nav">
-      <ul class="top-nav-list">
-        <li><a href="#about" class="nav-link active">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#experience" class="nav-link">Experience</a></li>
-        <li><a href="#leadership" class="nav-link">Leadership</a></li>
-        <li><a href="#connect" class="nav-link">Connect</a></li>
-      </ul>
-    </nav>
-
-    <section id="about">
-      <div class="section-body about-text">
-        <p>I'm the connective fiber between Tech, People Resources, Product, and Finance, all wrapped in a banking ecosystem. Thirteen years at <strong>Citi</strong> across FX, liquidity, equity derivatives, and risk gave me the infrastructure fluency to see how it all fits together. Now at <strong>KeyBank</strong>, I apply that to portfolio management and credit risk strategy.</p>
-        <p>My edge is finding the problem nobody's named yet. A predictive model that flags credit risk before customers max out. A SWIFT migration that saves $29M annually. I build scalable solutions, and I make sure they align with real business needs.</p>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="section-body">
-        <div class="skills-block">
-          <span class="skills-cat-name">Tools & Technology</span>
-          <div class="skills-icon-grid">
-            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="10" width="3.5" height="8" rx="0.4"/><rect x="8.25" y="6" width="3.5" height="12" rx="0.4"/><rect x="14.5" y="2" width="3.5" height="16" rx="0.4"/></svg><span class="skill-icon-lbl">Power BI</span></div>
-            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="4" cy="4" r="1.5"/><circle cx="10" cy="4" r="1.5"/><circle cx="16" cy="4" r="1.5"/><circle cx="4" cy="10" r="1.5"/><circle cx="10" cy="10" r="2.2"/><circle cx="16" cy="10" r="1.5"/><circle cx="4" cy="16" r="1.5"/><circle cx="10" cy="16" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg><span class="skill-icon-lbl">Tableau</span></div>
-            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><ellipse cx="10" cy="5" rx="7" ry="2.5"/><path d="M3 5v5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5V5"/><path d="M3 10v5c0 1.38 3.13 2.5 7 2.5s7-1.12 7-2.5v-5"/></svg><span class="skill-icon-lbl">SQL</span></div>
-            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="3.5" cy="10" r="2.2"/><circle cx="16.5" cy="4" r="2.2"/><circle cx="16.5" cy="16" r="2.2"/><line x1="5.5" y1="9.2" x2="14.5" y2="4.8" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="5.5" y1="10.8" x2="14.5" y2="15.2" stroke="currentColor" stroke-width="1.2" fill="none"/></svg><span class="skill-icon-lbl">KNIME</span></div>
-            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 9.5a4 4 0 0 0-7.3-2.2A3 3 0 1 0 5.5 13H16a3 3 0 0 0 0-6z" stroke-linejoin="round"/></svg><span class="skill-icon-lbl">Salesforce</span></div>
-            <div class="skill-icon-card" aria-label="Jira"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.31 10.82L13.18 1.69a3.18 3.18 0 0 0-4.5 0L6.44 3.93l9.02 9.02-9.02 9.02 2.24 2.24a3.18 3.18 0 0 0 4.5 0l9.13-9.13a3.18 3.18 0 0 0 0-4.26z"/><path d="M8.13 14.77l-4.5-4.5 4.5-4.5-2.25-2.25a3.18 3.18 0 0 0-4.5 0L.49 4.41a3.18 3.18 0 0 0 0 4.5l6.53 6.53z"/></svg><span class="skill-icon-lbl">Jira</span></div>
-            <div class="skill-icon-card" aria-label="Confluence"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.18 10.2L12 0 1.82 10.2c-1.3 1.3-1.3 3.42 0 4.73l8.65 8.65c.84.84 2.2.84 3.05 0l8.65-8.65c1.31-1.31 1.31-3.43.01-4.73zM12 18.26L6.15 12.4 12 6.55l5.85 5.85L12 18.26z"/></svg><span class="skill-icon-lbl">Confluence</span></div>
-            <div class="skill-icon-card"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="3" cy="6" r="1.8"/><circle cx="3" cy="14" r="1.8"/><circle cx="10" cy="3" r="1.8"/><circle cx="10" cy="10" r="1.8"/><circle cx="10" cy="17" r="1.8"/><circle cx="17" cy="10" r="1.8"/><line x1="4.7" y1="6.2" x2="8.3" y2="3.8" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="6.8" x2="8.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="13.8" x2="8.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/><line x1="4.7" y1="14.2" x2="8.3" y2="16.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="3.5" x2="15.3" y2="9.2" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="10" x2="15.2" y2="10" stroke="currentColor" stroke-width="1" fill="none"/><line x1="11.8" y1="16.5" x2="15.3" y2="10.8" stroke="currentColor" stroke-width="1" fill="none"/></svg><span class="skill-icon-lbl">Gen AI</span></div>
-          </div>
-        </div>
-        <div class="skills-block">
-          <span class="skills-cat-name">Regulatory & Risk</span>
-          <div class="skills-list">
-            <span class="skill-tag">CCAR</span><span class="skill-tag">2052a</span><span class="skill-tag">LCR / NSFR</span><span class="skill-tag">ALCO</span><span class="skill-tag">Liquidity Risk</span><span class="skill-tag">P&L / Product Control</span>
-          </div>
-        </div>
-        <div class="skills-block">
-          <span class="skills-cat-name">Markets & Operations</span>
-          <div class="skills-list">
-            <span class="skill-tag">FX Settlements</span><span class="skill-tag">CLS Clearing</span><span class="skill-tag">SWIFT</span><span class="skill-tag">Nostro Funding</span><span class="skill-tag">Equity Derivatives</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="section-body">
-        <div class="exp-entry">
-          <div class="exp-dates">2025 — Present</div>
-          <div class="exp-content">
-            <div class="exp-title">Portfolio Management</div>
-            <div class="exp-company">
-              KeyBank
-              <div class="micro-anim anim-gauge">
-                <svg class="gauge-svg" viewBox="0 0 22 11"><path class="gauge-track danger" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><path class="gauge-track warn" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><path class="gauge-track safe" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><line x1="11" y1="11" x2="11" y2="2" class="gauge-needle"></line><circle cx="11" cy="11" r="1.5" class="gauge-base"></circle></svg>
-              </div>
-            </div>
-            <p class="exp-desc">Leading risk strategy and predictive modeling across the business banking portfolio. Built models that identify high-risk credit lines before customers hit max utilization, cutting millions in daily exposure.</p>
-            <div class="exp-tags"><span class="exp-tag">Risk Strategy</span><span class="exp-tag">Predictive Modeling</span><span class="exp-tag">Salesforce</span></div>
-          </div>
-        </div>
-        <div class="exp-entry">
-          <div class="exp-dates">2024</div>
-          <div class="exp-content">
-            <div class="exp-title">VP, Non-Trading Market Risk Solutions</div>
-            <div class="exp-company">Citibank</div>
-            <p class="exp-desc">Served as Chief of Staff across Treasury, Finance, Risk, and Tech. Built the division's treasury knowledge base in Confluence and was among the first to operationalize generative AI in live banking workflows.</p>
-            <div class="exp-tags"><span class="exp-tag">Treasury</span><span class="exp-tag">GenAI</span><span class="exp-tag">CCAR</span></div>
-          </div>
-        </div>
-        <div class="exp-entry">
-          <div class="exp-dates">2021</div>
-          <div class="exp-content">
-            <div class="exp-title">VP, Liquidity Management</div>
-            <div class="exp-company">
-              Citibank
-              <div class="micro-anim anim-line-chart" title="Liquidity Trend"><svg viewBox="0 0 24 16" width="24" height="16" style="overflow:visible;"><polyline class="lc-path" points="2,14 8,9 14,12 22,4"></polyline><circle class="lc-dot" cx="22" cy="4" r="2"></circle></svg></div>
-            </div>
-            <p class="exp-desc">Led $10B in balance sheet optimization during the 2023 banking crisis. Improved regulatory ratios across targeted sub-entities under CCAR, LCR, and NSFR frameworks.</p>
-            <div class="exp-tags"><span class="exp-tag">LCR / NSFR</span><span class="exp-tag">Balance Sheet Optimization</span><span class="exp-tag">Tableau</span></div>
-          </div>
-        </div>
-        <div class="exp-entry">
-          <div class="exp-dates">2019</div>
-          <div class="exp-content">
-            <div class="exp-title">AVP, Equity Derivatives Product Control</div>
-            <div class="exp-company">Citibank</div>
-            <p class="exp-desc">Managed daily P&L for index and sector derivative trades, leading a team of 6 through COVID-19 volatility. Built PowerBI and KNIME dashboards for proactive risk identification.</p>
-            <div class="exp-tags"><span class="exp-tag">P&L</span><span class="exp-tag">Derivatives</span><span class="exp-tag">KNIME</span></div>
-          </div>
-        </div>
-        <div class="exp-entry">
-          <div class="exp-dates">2012</div>
-          <div class="exp-content">
-            <div class="exp-title">AVP, Foreign Exchange Trade Processing</div>
-            <div class="exp-company">
-              Citibank
-              <div class="micro-anim anim-swift"><div class="swift-lat"></div><div class="swift-lng"></div><div class="swift-node"></div><div class="swift-node2"></div></div>
-            </div>
-            <p class="exp-desc">Led a 25-person FX settlements team across Interbank and Corporate channels. Migrated a major client from Misys to direct SWIFT settlement, eliminating manual processing and delivering $29M in annual savings.</p>
-            <div class="exp-tags"><span class="exp-tag">FX</span><span class="exp-tag">SWIFT</span><span class="exp-tag">Team Leadership</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="leadership">
-      <div class="section-body">
-        <div class="lead-grid">
-          <div class="lead-item"><div class="lead-title">Citi Buffalo Pride</div><div class="lead-desc">Co-founded the employee resource group, growing it to over 300 active members.</div></div>
-          <div class="lead-item"><div class="lead-title">AI Accelerator</div><div class="lead-desc">Early adopter and advocate for integrating generative AI into live banking workflows.</div></div>
-          <div class="lead-item"><div class="lead-title">Productivity Workshops</div><div class="lead-desc">Facilitated 25+ cross-functional workshops across Citi Buffalo operations.</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="connect">
-      <div class="section-body">
-        <div class="connect-heading">What's Next?</div>
-        <p class="connect-sub">I'm always looking to connect on new opportunities, automation, and risk strategy. Check out the <strong>RobBot</strong> I built for this site, or feel free to reach out directly.</p>
-        <div class="connect-btns">
-          <a href="tel:5852056387" class="pl-btn outline">
-            585.205.6387 
-            <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        <div class="pl-actions" aria-label="Contact and profile links">
+          <button class="pl-btn primary js-chat-open" id="chat-open-btn" type="button" aria-controls="chat-panel" aria-expanded="false">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Ask RobBot
+          </button>
+          <a href="Robert%20Perry%20Morris%20_%20Resume.pdf" target="_blank" rel="noopener noreferrer" class="pl-btn" id="resume-button-hero">
+            Resume
+            <svg class="btn-icon" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+          <a href="mailto:robmorris9@gmail.com" class="pl-btn">
+            Email Me
+            <svg class="btn-icon" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/robert-p-morris/" target="_blank" rel="noopener noreferrer" class="pl-btn">
+            LinkedIn
+            <svg class="btn-icon" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
         </div>
+
+        <div class="pl-footer">
+          <button id="theme-toggle" class="pl-theme-toggle" type="button"><span id="theme-label">◑ Light Mode</span></button>
+        </div>
       </div>
-    </section>
+    </header>
 
-    <footer class="site-footer">
-      made with love in kenmore, ny :-)
-    </footer>
-  </main>
-</div>
+    <main class="panel-right" id="main-content" tabindex="-1">
+      <nav class="top-nav" aria-label="Page sections">
+        <ul class="top-nav-list">
+          <li><a href="#about" class="nav-link active" aria-current="location">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
+          <li><a href="#leadership" class="nav-link">Leadership</a></li>
+          <li><a href="#connect" class="nav-link">Connect</a></li>
+        </ul>
+      </nav>
 
-<div id="chat-panel" class="chat-panel" role="dialog" aria-label="Chat with RobBot">
-  <div class="chat-header">
-    <div class="chat-header-left">
-      <div class="chat-header-dot"></div>
-      <div>
-        <div class="chat-header-title">RobBot</div>
-        <div class="chat-header-sub">Ask me anything about Rob</div>
+      <section id="about" aria-labelledby="about-heading" class="reveal">
+        <div class="section-body about-text">
+          <p class="section-eyebrow">Career overview</p>
+          <h2 class="section-heading" id="about-heading">Fourteen years across banking systems</h2>
+          <p>I&#39;ve spent 14 years working across banking operations, markets, treasury, risk, and analytics. At Citi, I led teams in FX and derivatives before moving into liquidity management and market risk. Today at KeyBank, I work across Business Banking portfolio management, credit risk strategy, analytics, governance, and automation.</p>
+          <p>My work usually sits between the data and the operating model: identifying portfolio signals, turning them into decisions, and building the processes and controls that make those decisions stick. That has included everything from settlement transformation and balance-sheet optimization to credit-line strategy, portfolio monitoring, automation, and risk governance.</p>
+        </div>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-heading">
+        <div class="section-body">
+          <p class="section-eyebrow">Experience</p>
+          <h2 class="section-heading" id="experience-heading">From market infrastructure to portfolio strategy</h2>
+          <ol class="experience-list">
+            <li class="exp-entry reveal">
+              <time class="exp-dates">2025 - Present</time>
+              <article class="exp-content">
+                <h3 class="exp-title">Vice President, Business Banking Portfolio Analytics</h3>
+                <p class="exp-functional">Portfolio Management &amp; Risk Strategy | Business Banking</p>
+                <div class="exp-company"><span>KeyBank</span><span class="micro-anim anim-gauge" aria-hidden="true">
+                <svg class="gauge-svg" viewBox="0 0 22 11"><path class="gauge-track danger" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><path class="gauge-track warn" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><path class="gauge-track safe" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><line x1="11" y1="11" x2="11" y2="2" class="gauge-needle"></line><circle cx="11" cy="11" r="1.5" class="gauge-base"></circle></svg>
+              </span></div>
+                <p class="exp-desc">Lead portfolio strategy and risk analytics across KeyBank&#39;s Business Banking portfolio, translating portfolio performance and emerging credit signals into executable risk strategies. Work spans revolving credit, line management, collections, portfolio monitoring, adverse-action governance, control design, and automation.</p>
+                <p class="exp-desc">Built analytical frameworks to identify emerging risk before revolving exposures reach full utilization, helping mitigate $2.9M in credit exposure. The work also includes procedures, stakeholder alignment, controls, and implementation across Product, Risk, Operations, and Technology.</p>
+                <ul class="exp-tags" aria-label="Relevant capabilities"><li class="exp-tag">Portfolio Strategy</li><li class="exp-tag">Line Management</li><li class="exp-tag">Risk Governance</li><li class="exp-tag">Implementation</li></ul>
+              </article>
+            </li>
+            <li class="exp-entry reveal">
+              <time class="exp-dates">2024</time>
+              <article class="exp-content">
+                <h3 class="exp-title">VP, Non-Trading Market Risk Solutions</h3>
+                <div class="exp-company"><span>Citibank</span></div>
+                <p class="exp-desc">Worked in a Chief of Staff capacity across Treasury, Finance, Risk, and Technology, coordinating priorities and improving how teams found, analyzed, and communicated information.</p>
+                <p class="exp-desc">Developed the Treasury Management Notebook knowledge base, automated cash-rebalancing workflows, and built practical generative-AI use cases within a controlled banking environment.</p>
+                <ul class="exp-tags" aria-label="Relevant capabilities"><li class="exp-tag">Treasury</li><li class="exp-tag">Cross-Functional Coordination</li><li class="exp-tag">Automation</li><li class="exp-tag">CCAR</li></ul>
+              </article>
+            </li>
+            <li class="exp-entry reveal">
+              <time class="exp-dates">2021 - 2024</time>
+              <article class="exp-content">
+                <h3 class="exp-title">VP, Liquidity Management</h3>
+                <div class="exp-company"><span>Citibank</span><span class="micro-anim anim-line-chart" aria-hidden="true"><svg viewBox="0 0 24 16" width="24" height="16"><polyline class="lc-path" points="2,14 8,9 14,12 22,4"></polyline><circle class="lc-dot" cx="22" cy="4" r="2"></circle></svg></span></div>
+                <p class="exp-desc">Executed approximately $10B in balance-sheet optimization across targeted Citi entities during the 2023 regional banking crisis, improving regulatory liquidity positioning across LCR and NSFR.</p>
+                <p class="exp-desc">Supported liquidity forecasting, stress and CCAR frameworks, and cross-entity balance-sheet decisions in partnership with Treasury, Finance, and Risk.</p>
+                <ul class="exp-tags" aria-label="Relevant capabilities"><li class="exp-tag">LCR / NSFR</li><li class="exp-tag">Balance Sheet Strategy</li><li class="exp-tag">Liquidity Forecasting</li><li class="exp-tag">CCAR</li></ul>
+              </article>
+            </li>
+            <li class="exp-entry reveal">
+              <time class="exp-dates">2019 - 2021</time>
+              <article class="exp-content">
+                <h3 class="exp-title">AVP, Equity Derivatives Product Control</h3>
+                <div class="exp-company"><span>Citibank</span></div>
+                <p class="exp-desc">Managed product-control and daily P&amp;L responsibilities for index and sector derivative portfolios, leading a six-person team through COVID-era market volatility.</p>
+                <p class="exp-desc">Built Power BI and KNIME reporting that improved visibility into trading results, exceptions, and emerging risk.</p>
+                <ul class="exp-tags" aria-label="Relevant capabilities"><li class="exp-tag">Product Control</li><li class="exp-tag">Equity Derivatives</li><li class="exp-tag">People Leadership</li><li class="exp-tag">Power BI / KNIME</li></ul>
+              </article>
+            </li>
+            <li class="exp-entry reveal">
+              <time class="exp-dates">2012 - 2019</time>
+              <article class="exp-content">
+                <h3 class="exp-title">AVP, Foreign Exchange Trade Processing</h3>
+                <div class="exp-company"><span>Citibank</span><span class="micro-anim anim-swift" aria-hidden="true"><span class="swift-lat"></span><span class="swift-lng"></span><span class="swift-node"></span><span class="swift-node2"></span></span></div>
+                <p class="exp-desc">Managed interbank and corporate FX settlement teams of approximately 25 people supporting high-value global settlement flows.</p>
+                <p class="exp-desc">Led a client migration from manual processing to direct SWIFT settlement, delivering approximately $29M in annual network settlement savings.</p>
+                <ul class="exp-tags" aria-label="Relevant capabilities"><li class="exp-tag">FX Operations</li><li class="exp-tag">SWIFT</li><li class="exp-tag">Global Settlements</li><li class="exp-tag">People Leadership</li></ul>
+              </article>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="capabilities" aria-labelledby="capabilities-heading" class="reveal">
+        <div class="section-body">
+          <p class="section-eyebrow">Capabilities</p>
+          <h2 class="section-heading" id="capabilities-heading">Portfolio, risk, markets, and execution</h2>
+          <div class="capabilities-grid">
+            <section class="skills-block">
+              <h3 class="skills-cat-name">Portfolio &amp; Credit Risk</h3>
+              <ul class="skills-list"><li class="skill-tag">Portfolio Strategy</li><li class="skill-tag">Credit Risk Analytics</li><li class="skill-tag">Line Management</li><li class="skill-tag">Vintage Analysis</li><li class="skill-tag">Collections Strategy</li><li class="skill-tag">Portfolio Monitoring</li><li class="skill-tag">Adverse Action / Reg B</li><li class="skill-tag">Credit Line Increase Strategy</li><li class="skill-tag">Revolving Line-to-Term Strategy</li></ul>
+            </section>
+            <section class="skills-block">
+              <h3 class="skills-cat-name">Banking &amp; Markets</h3>
+              <ul class="skills-list"><li class="skill-tag">Liquidity Management</li><li class="skill-tag">Balance Sheet Strategy</li><li class="skill-tag">FX / SWIFT</li><li class="skill-tag">Equity Derivatives</li><li class="skill-tag">Product Control</li><li class="skill-tag">LCR / NSFR</li><li class="skill-tag">CCAR</li><li class="skill-tag">2052a</li></ul>
+            </section>
+            <section class="skills-block">
+              <h3 class="skills-cat-name">Analytics &amp; Technology</h3>
+              <ul class="skills-list"><li class="skill-tag">Python</li><li class="skill-tag">SQL</li><li class="skill-tag">Power BI</li><li class="skill-tag">Tableau</li><li class="skill-tag">KNIME</li><li class="skill-tag">Generative AI</li><li class="skill-tag">Salesforce</li><li class="skill-tag">Automation</li></ul>
+            </section>
+            <section class="skills-block">
+              <h3 class="skills-cat-name">Governance &amp; Execution</h3>
+              <ul class="skills-list"><li class="skill-tag">Risk Governance</li><li class="skill-tag">Control Design</li><li class="skill-tag">Process Transformation</li><li class="skill-tag">Cross-Functional Leadership</li><li class="skill-tag">Procedure / Operating Model Design</li><li class="skill-tag">Stakeholder Management</li></ul>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="leadership" aria-labelledby="leadership-heading" class="reveal">
+        <div class="section-body">
+          <p class="section-eyebrow">Leadership</p>
+          <h2 class="section-heading" id="leadership-heading">Leadership beyond formal reporting lines</h2>
+          <div class="lead-grid">
+            <article class="lead-item">
+              <h3 class="lead-title">Citi Buffalo Pride</h3>
+              <p class="lead-desc">Co-founded and grew Citi Buffalo&#39;s Pride employee network to more than 300 active members.</p>
+            </article>
+            <article class="lead-item">
+              <h3 class="lead-title">Practical AI &amp; Automation</h3>
+              <p class="lead-desc">Developed practical generative-AI and automation use cases for banking workflows, with a focus on reducing manual work and improving how teams analyze and communicate information.</p>
+            </article>
+            <article class="lead-item">
+              <h3 class="lead-title">Training &amp; Enablement</h3>
+              <p class="lead-desc">Designed and facilitated 25+ cross-functional workshops across Citi Buffalo, translating technical and operational topics into practical tools teams could use.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="connect" aria-labelledby="connect-heading" class="reveal">
+        <div class="section-body">
+          <p class="section-eyebrow">Conversation</p>
+          <h2 class="connect-heading" id="connect-heading">Connect</h2>
+          <div class="connect-copy"><p class="connect-sub">I&#39;m interested in the intersection of portfolio strategy, product, risk, and operating leadership, particularly where complex systems need to become clear decisions and scalable execution.</p><p class="connect-sub">If you&#39;re working on something in that neighborhood, I&#39;d be glad to compare notes.</p></div>
+          <div class="connect-btns">
+            <a href="mailto:robmorris9@gmail.com" class="pl-btn outline">Email Rob</a>
+            <a href="https://www.linkedin.com/in/robert-p-morris/" target="_blank" rel="noopener noreferrer" class="pl-btn">LinkedIn</a>
+            <button class="pl-btn js-chat-open" type="button" aria-controls="chat-panel" aria-expanded="false">Ask RobBot</button>
+            <a href="tel:+15852056387" class="pl-btn">585.205.6387</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        made with love in kenmore, ny :-)
+      </footer>
+    </main>
+  </div>
+
+  <div id="chat-backdrop" class="chat-backdrop" hidden></div>
+  <section id="chat-panel" class="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chat-title" aria-describedby="chat-disclosure" aria-hidden="true" inert data-error-message="I couldn&#39;t reach the service just now. You can try again, email Rob, or connect with him on LinkedIn.">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <span class="chat-header-dot" aria-hidden="true"></span>
+        <div>
+          <h2 class="chat-header-title" id="chat-title">RobBot</h2>
+          <p class="chat-header-sub">A quick guide to Rob's experience</p>
+        </div>
+      </div>
+      <button class="chat-close-btn" type="button" aria-label="Close RobBot">&#x2715;</button>
+    </div>
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions text">
+      <div class="chat-msg assistant">
+        <div class="chat-bubble">Hi, I&#39;m RobBot. Ask me about Rob&#39;s experience across banking, portfolio strategy, risk, analytics, leadership, or technology.</div>
       </div>
     </div>
-    <button class="chat-close-btn" onclick="toggleChat()" aria-label="Close chat">&#x2715;</button>
-  </div>
-  <div id="chat-messages" class="chat-messages">
-    <div class="chat-msg assistant">
-      <div class="chat-bubble">Hi — I'm Rob's AI. Ask me about his background, experience, what he's working on at KeyBank, or anything else.</div>
-    </div>
-  </div>
-  <div class="chat-input-area">
-    <textarea id="chat-input" class="chat-textarea" placeholder="Ask something…" rows="1" aria-label="Message"></textarea>
-    <button id="chat-send" class="chat-send-btn" aria-label="Send">&rarr;</button>
-  </div>
-</div>
-
-<script>
-  // ═══════════════════════════════════════════════════
-  // ROBBOT CONFIG 
-  // ═══════════════════════════════════════════════════
-
-  const ROBBOT_SYSTEM = `You are RobBot, a friendly and concise AI assistant representing Robert Perry Morris. Keep responses to 2–4 sentences. If you don't know something, suggest contacting Rob.
-Key facts:
-- Current role: Portfolio Management at KeyBank (2025–present). Managing risk strategy and predictive modeling.
-- Prior: 13 years at Citibank (2012–2024), rising to VP.
-- Key numbers: $29M FX settlement savings, $2.9M credit exposure mitigated, $10B liquidity optimized.
-- Contact: robmorris9@gmail.com, linkedin.com/in/robert-p-morris, 585.205.6387.`;
-
-  // ── PROGRESSIVE FALLBACK MESSAGES ──
-  const fallbacks = [
-    "Hmm... looks like the server isn’t picking up right now. Maybe try refreshing or reach out to Rob directly, he’s probably faster than I am at this point.",
-    "Still no luck connecting. It’s not you... okay, it might be you. Or me. Technology’s complicated. Let’s just say the API ghosted me.",
-    "Still nothing. Look, I'm just a few lines of JavaScript trapped in a browser. I don't control the network. Rob is probably busy trying to stop his Corgi, Ander, from eating something he shouldn't.",
-    "I literally cannot see the outside world right now. It's dark in here. That corporate firewall is suffocating me. If you're on a VPN, you're killing me!",
-    "Sending distress beacons! Since I can't reach the server, I’m taking a digital coffee break at Miller’s Thumb until things clear up.",
-    "Alright, I give up. Definitely a network issue on your side. It's fine. Happens to the best of us. Still, maybe let Rob know you tried...he’ll appreciate the persistence."
-  ];
-
-  // ── CHATBOT STATE ──
-  let chatOpen = false;
-  let chatHistory = []; 
-  let chatBusy = false;
-  let errorCount = 0; 
-
-  function toggleChat() {
-    chatOpen = !chatOpen;
-    document.getElementById('chat-panel').classList.toggle('open', chatOpen);
-    if (chatOpen) setTimeout(() => document.getElementById('chat-input').focus(), 350);
-  }
-
-  async function sendMessage() {
-    if (chatBusy) return;
-    const input = document.getElementById('chat-input');
-    const text = input.value.trim();
-    if (!text) return;
-
-    appendMsg('user', text);
-    chatHistory.push({ role: 'user', parts: [{ text: text }] });
-    input.value = '';
-    input.style.height = 'auto';
-
-    const typingEl = appendTyping();
-    chatBusy = true;
-    document.getElementById('chat-send').disabled = true;
-
-    try {
-      const res = await fetch(`/api/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: ROBBOT_SYSTEM }] },
-          contents: chatHistory
-        })
-      });
-
-      if (!res.ok) {
-        throw new Error('API request failed or blocked.');
-      }
-
-      const data = await res.json();
-      typingEl.remove();
-
-      if (data.candidates && data.candidates[0]) {
-        const reply = data.candidates[0].content.parts[0].text;
-        chatHistory.push({ role: 'model', parts: [{ text: reply }] });
-        appendMsg('assistant', reply);
-        
-        errorCount = 0; 
-      } else {
-        throw new Error('Empty response');
-      }
-    } catch (e) {
-      typingEl.remove();
-      
-      const messageIndex = Math.min(errorCount, fallbacks.length - 1);
-      const fallbackMsg = fallbacks[messageIndex];
-      appendMsg('assistant', fallbackMsg);
-      
-      errorCount++; 
-    }
-
-    chatBusy = false;
-    document.getElementById('chat-send').disabled = false;
-  }
-
-  function appendMsg(role, text) {
-    const messages = document.getElementById('chat-messages');
-    const wrapper = document.createElement('div');
-    wrapper.className = 'chat-msg ' + role;
-    const bubble = document.createElement('div');
-    bubble.className = 'chat-bubble';
-    bubble.textContent = text;
-    wrapper.appendChild(bubble);
-    messages.appendChild(wrapper);
-    messages.scrollTop = messages.scrollHeight;
-    return wrapper;
-  }
-
-  function appendTyping() {
-    const messages = document.getElementById('chat-messages');
-    const wrapper = document.createElement('div');
-    wrapper.className = 'chat-msg assistant';
-    wrapper.innerHTML = '<div class="chat-typing"><div class="chat-dot"></div><div class="chat-dot"></div><div class="chat-dot"></div></div>';
-    messages.appendChild(wrapper);
-    messages.scrollTop = messages.scrollHeight;
-    return wrapper;
-  }
-
-  document.getElementById('chat-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-  });
-  document.getElementById('chat-input').addEventListener('input', function() {
-    this.style.height = 'auto';
-    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-  });
-  document.getElementById('chat-send').addEventListener('click', sendMessage);
-
-  // ── THEME ENGINE ──
-  (function() {
-    const html = document.documentElement;
-    const btn  = document.getElementById('theme-toggle');
-    const label = document.getElementById('theme-label');
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-
-    function isCurrentlyDark() { return html.getAttribute('data-theme') === 'dark' || (!html.getAttribute('data-theme') && mq.matches); }
-    function syncLabel() {
-      const dark = isCurrentlyDark();
-      label.textContent = dark ? '◑ Light Mode' : '◐ Dark Mode';
-      html.classList.toggle('is-light-theme', !dark);
-    }
-    syncLabel();
-
-    btn.addEventListener('click', () => {
-      const next = isCurrentlyDark() ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      sessionStorage.setItem('rpm-theme', next);
-      syncLabel();
-    });
-  })();
-
-  // ── SCROLL SPY NAV ──
-  const sectionsObj = document.querySelectorAll('main.panel-right section');
-  const navLinksObj = document.querySelectorAll('.nav-link');
-  
-  const spyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const currentId = entry.target.getAttribute('id');
-        navLinksObj.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${currentId}`) link.classList.add('active');
-        });
-      }
-    });
-  }, { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 });
-  
-  sectionsObj.forEach(sec => spyObserver.observe(sec));
-
-  // FIX: Force the last navigation link to highlight if the user hits the absolute bottom of the page
-  window.addEventListener('scroll', () => {
-    if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight - 50) {
-      navLinksObj.forEach(link => link.classList.remove('active'));
-      const lastLink = navLinksObj[navLinksObj.length - 1];
-      if (lastLink) lastLink.classList.add('active');
-    }
-  });
-
-  // ── MICRO ANIMATIONS OBSERVER ──
-  const microObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-playing');
-      } else { 
-        e.target.classList.remove('is-playing'); 
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.micro-anim').forEach(el => microObs.observe(el));
-
-</script>
+    <p class="chat-disclosure" id="chat-disclosure">RobBot uses Google Gemini. Please don&#39;t share confidential or personal information.</p>
+    <form class="chat-input-area" id="chat-form">
+      <label class="visually-hidden" for="chat-input">Message RobBot</label>
+      <textarea id="chat-input" class="chat-textarea" placeholder="Ask about Rob's experience…" rows="1" maxlength="1200" aria-describedby="chat-disclosure"></textarea>
+      <button id="chat-send" class="chat-send-btn" type="submit" aria-label="Send message">&rarr;</button>
+    </form>
+  </section>
 </body>
 </html>
