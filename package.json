@@ -10,7 +10,8 @@
     "check:resume": "python3 scripts/check_resume_pdf.py",
     "test": "node --test tests/*.test.cjs",
     "verify": "npm run build && npm run check && npm test",
-    "verify:resume": "npm run resume:pdf && npm run check:resume"
+    "verify:resume": "npm run resume:pdf && npm run check:resume",
+    "verify:all": "npm run verify && npm run verify:resume"
   },
   "engines": {
     "node": ">=20"

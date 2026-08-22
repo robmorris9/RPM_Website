@@ -18,13 +18,14 @@
   <meta property="og:image" content="{{OG_IMAGE_URL}}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Robert Perry Morris">
+  <meta property="og:image:alt" content="{{OG_IMAGE_ALT}}">
   <meta property="profile:first_name" content="{{GIVEN_NAME}}">
   <meta property="profile:last_name" content="{{FAMILY_NAME}}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{SITE_TITLE}}">
   <meta name="twitter:description" content="{{SITE_DESCRIPTION}}">
   <meta name="twitter:image" content="{{OG_IMAGE_URL}}">
+  <meta name="twitter:image:alt" content="{{OG_IMAGE_ALT}}">
 
   <script type="application/ld+json">{{PERSON_JSON_LD}}</script>
 
@@ -59,6 +60,7 @@
         <p class="pl-eyebrow">{{HERO_EYEBROW}}</p>
         <h1 class="pl-name">{{PERSON_NAME_LINES}}</h1>
         <p class="pl-desc">{{HERO_STATEMENT}}</p>
+        <p class="pl-support">{{HERO_SUPPORT}}</p>
 
         <dl class="pl-kpis" aria-label="Selected career outcomes">
           {{METRICS}}
@@ -93,6 +95,7 @@
       <nav class="top-nav" aria-label="Page sections">
         <ul class="top-nav-list">
           <li><a href="#about" class="nav-link active" aria-current="location">About</a></li>
+          <li><a href="#case-studies" class="nav-link">Case studies</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#capabilities" class="nav-link">Capabilities</a></li>
           <li><a href="#leadership" class="nav-link">Leadership</a></li>
@@ -101,17 +104,43 @@
       </nav>
 
       <section id="about" aria-labelledby="about-heading" class="reveal">
-        <div class="section-body about-text">
-          <p class="section-eyebrow">Career overview</p>
-          <h2 class="section-heading" id="about-heading">Fourteen years across banking systems</h2>
-          {{ABOUT}}
+        <div class="section-body">
+          <p class="section-eyebrow">Operating thesis</p>
+          <h2 class="section-heading" id="about-heading">Finding structure in ambiguous business problems</h2>
+          <div class="about-text">
+            {{ABOUT}}
+          </div>
+
+          <section class="operating-block" id="how-i-operate" aria-labelledby="operating-heading">
+            <p class="section-eyebrow">How I operate</p>
+            <h3 class="subsection-heading" id="operating-heading">Build the decision and the system around it</h3>
+            <p class="operating-thesis">{{OPERATING_THESIS}}</p>
+            <ol class="operating-list">
+              {{OPERATING_PRINCIPLES}}
+            </ol>
+          </section>
+
+          <section class="director-next" aria-labelledby="director-next-heading">
+            <h3 class="director-heading" id="director-next-heading">{{DIRECTOR_NEXT_HEADING}}</h3>
+            <p class="director-copy">{{DIRECTOR_NEXT_COPY}}</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="case-studies" aria-labelledby="case-studies-heading">
+        <div class="section-body">
+          <p class="section-eyebrow">Case studies</p>
+          <h2 class="section-heading" id="case-studies-heading">From messy problem to repeatable system</h2>
+          <div class="case-study-list">
+            {{CASE_STUDIES}}
+          </div>
         </div>
       </section>
 
       <section id="experience" aria-labelledby="experience-heading">
         <div class="section-body">
           <p class="section-eyebrow">Experience</p>
-          <h2 class="section-heading" id="experience-heading">From market infrastructure to portfolio strategy</h2>
+          <h2 class="section-heading" id="experience-heading">A progression across people, process, markets, and risk</h2>
           <ol class="experience-list">
             {{EXPERIENCE}}
           </ol>
@@ -121,7 +150,7 @@
       <section id="capabilities" aria-labelledby="capabilities-heading" class="reveal">
         <div class="section-body">
           <p class="section-eyebrow">Capabilities</p>
-          <h2 class="section-heading" id="capabilities-heading">Portfolio, risk, markets, and execution</h2>
+          <h2 class="section-heading" id="capabilities-heading">Tools for clearer decisions and reliable execution</h2>
           <div class="capabilities-grid">
             {{CAPABILITIES}}
           </div>
@@ -131,7 +160,7 @@
       <section id="leadership" aria-labelledby="leadership-heading" class="reveal">
         <div class="section-body">
           <p class="section-eyebrow">Leadership</p>
-          <h2 class="section-heading" id="leadership-heading">Leadership beyond formal reporting lines</h2>
+          <h2 class="section-heading" id="leadership-heading">Leadership across teams, systems, and communities</h2>
           <div class="lead-grid">
             {{LEADERSHIP}}
           </div>

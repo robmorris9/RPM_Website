@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the two-page resume's format, technical positioning, and timeline."""
+"""Verify the two-page resume's format, canonical positioning, and timeline."""
 
 from __future__ import annotations
 
@@ -20,11 +20,32 @@ PDF_PATH = (
 )
 
 EXPECTED_TITLE = "Vice President, Business Banking Portfolio Analytics"
-EXPECTED_SUBTITLE = "CLOUD AUTOMATION · DATA INFRASTRUCTURE · TECHNICAL MANAGEMENT"
-EXPECTED_KEYBANK_BULLETS = (
-    "Engineered a Python-based automated data commentary pipeline utilizing Vertex notebooks and BigQuery to streamline month-over-month and quarter-over-quarter risk metric reporting.",
-    "Optimized data engineering frameworks by managing a 402 GB SQL query footprint to scan 36 consecutive months of historical balance ledger data across a large portfolio.",
-    "Executed a systems-level process transformation to resolve a corporate backlog of delayed Regulation B adverse action notices for frozen revolving lines of credit.",
+EXPECTED_SUBJECT = (
+    "Business operations, decision systems, governance, and cross-functional "
+    "execution resume"
+)
+EXPECTED_KEYWORDS = (
+    "business operations, decision systems, operating model design, governance, "
+    "process automation, portfolio management, strategy, cross-functional leadership"
+)
+EXPECTED_CASE_STUDY_IDS = (
+    "risk-scoring-dashboard",
+    "credit-line-risk-ratings",
+    "regulation-b-automation",
+    "swift-settlement-migration",
+    "liquidity-crisis-response",
+)
+CASE_STUDY_FIELDS = (
+    "id",
+    "company",
+    "status",
+    "title",
+    "problem",
+    "myRole",
+    "thinking",
+    "actionSystem",
+    "result",
+    "whyItMatters",
 )
 OLD_PAGE_TWO_TITLE = "Experience, capabilities & leadership"
 
@@ -68,49 +89,56 @@ def career_note_paragraphs() -> list[str]:
     )
 
 
-def positioning_values() -> tuple[str, str]:
-    letter_copy = PROFILE["careerLetter"]
-    person = PROFILE["person"]
-    positioning = letter_copy.get("positioning") or {}
-    if isinstance(positioning, str):
-        title = ""
-        subtitle = positioning.strip()
-    else:
-        title = str(
-            positioning.get("title")
-            or positioning.get("targetTitle")
-            or positioning.get("heading")
-            or ""
-        ).strip()
-        subtitle = str(
-            positioning.get("subtitle")
-            or positioning.get("technicalSubtitle")
-            or positioning.get("eyebrow")
-            or ""
-        ).strip()
-    title = title or str(
-        letter_copy.get("resumeTitle")
-        or person.get("currentTitle")
-        or letter_copy.get("page2Heading")
-        or ""
-    ).strip()
-    subtitle = subtitle or str(
-        letter_copy.get("technicalSubtitle") or person.get("eyebrow") or ""
-    ).strip()
-    return title, subtitle
+def positioning_values() -> tuple[str, str, str]:
+    positioning = PROFILE.get("positioning")
+    if not isinstance(positioning, dict):
+        fail("Profile requires a top-level positioning object.")
+    label = str(positioning.get("label") or "").strip()
+    statement = str(positioning.get("statement") or "").strip()
+    support = str(positioning.get("support") or "").strip()
+    if not label or not statement or not support:
+        fail("Profile positioning requires non-empty label, statement, and support.")
+    return label, statement, support
 
 
-positioning_title, technical_subtitle = positioning_values()
-if positioning_title != EXPECTED_TITLE:
+def require_terms(value: str, terms: tuple[str, ...], context: str) -> None:
+    normalized = normalize(value)
+    for term in terms:
+        if normalize(term) not in normalized:
+            fail(f"{context} is missing required language: {term!r}.")
+
+
+positioning_label, positioning_statement, positioning_support = positioning_values()
+if PROFILE["person"].get("currentTitle") != EXPECTED_TITLE:
     fail(
-        "Profile positioning title is missing or stale: "
-        f"expected {EXPECTED_TITLE!r}, found {positioning_title!r}."
+        "Profile current title is missing or stale: "
+        f"expected {EXPECTED_TITLE!r}, found {PROFILE['person'].get('currentTitle')!r}."
     )
-if technical_subtitle != EXPECTED_SUBTITLE:
-    fail(
-        "Profile technical subtitle is missing or stale: "
-        f"expected {EXPECTED_SUBTITLE!r}, found {technical_subtitle!r}."
-    )
+
+case_studies = PROFILE.get("caseStudies")
+if not isinstance(case_studies, list) or len(case_studies) != 5:
+    fail("Profile must define exactly five case studies.")
+if any(not isinstance(case_study, dict) for case_study in case_studies):
+    fail("Every case study must be an object.")
+case_study_ids = [case.get("id") for case in case_studies]
+if tuple(case_study_ids) != EXPECTED_CASE_STUDY_IDS:
+    fail("Profile case studies are missing, duplicated, or out of canonical order.")
+for case_study in case_studies:
+    for field in CASE_STUDY_FIELDS:
+        value = case_study.get(field)
+        if not isinstance(value, str) or not value.strip():
+            fail(
+                f"Case study {case_study.get('id')!r} requires non-empty {field!r}."
+            )
+
+capability_names = [group["name"] for group in PROFILE.get("capabilities") or []]
+capability_order = PROFILE["careerLetter"].get("capabilityOrder")
+if (
+    not isinstance(capability_order, list)
+    or len(capability_order) != len(set(capability_order))
+    or set(capability_order) != set(capability_names)
+):
+    fail("careerLetter.capabilityOrder must list every capability group exactly once.")
 
 keybank = next(
     (role for role in PROFILE["experience"] if role.get("id") == "keybank"), None
@@ -122,8 +150,45 @@ if not isinstance(resume_bullets, list) or len(resume_bullets) != 3:
     fail("KeyBank must define exactly three resumeBullets.")
 if len(set(resume_bullets)) != 3:
     fail("KeyBank resumeBullets must be distinct.")
-if tuple(resume_bullets) != EXPECTED_KEYBANK_BULLETS:
-    fail("KeyBank resumeBullets are missing or do not match the coordinated facts.")
+
+profile_text = json.dumps(PROFILE, ensure_ascii=False)
+keybank_text = json.dumps(keybank, ensure_ascii=False)
+require_terms(
+    keybank_text,
+    (
+        "risk-scoring dashboard",
+        "UAT",
+        "relationship-manager compensation decisions",
+        "freezing or downgrading risk ratings",
+        "manual",
+        "Excel-based",
+        "Regulation B",
+        "hundreds of applications a day",
+        "fully automated",
+        "risk partners",
+        "operate an existing exposure model",
+        "$55M",
+        "$3M",
+        "recovered",
+    ),
+    "Canonical KeyBank record",
+)
+require_terms(
+    profile_text,
+    ("2-4 hours", "7 minutes"),
+    "Canonical efficiency evidence",
+)
+
+case_studies_by_id = {case_study["id"]: case_study for case_study in case_studies}
+if normalize(case_studies_by_id["risk-scoring-dashboard"]["status"]) != "in uat":
+    fail("Risk-scoring dashboard case study must remain explicitly in UAT.")
+if normalize(case_studies_by_id["regulation-b-automation"]["status"]) != "completed":
+    fail("Regulation B case study must remain explicitly completed.")
+require_terms(
+    json.dumps(case_studies_by_id["liquidity-crisis-response"], ensure_ascii=False),
+    ("core, hands-on contributor", "not the sole owner", "$10B", "$5B"),
+    "Liquidity case-study ownership framing",
+)
 
 reader = PdfReader(PDF_PATH)
 if len(reader.pages) != 2:
@@ -140,30 +205,30 @@ normalized_pages = [normalize(value) for value in page_text]
 normalized = " ".join(normalized_pages)
 page_one, page_two = normalized_pages
 
-if normalize(EXPECTED_SUBTITLE) not in page_one:
-    fail("Page 1 is missing the coordinated technical subtitle.")
+if normalize(positioning_label) not in page_one:
+    fail("Page 1 is missing the canonical short positioning label.")
+if normalize(positioning_statement) not in page_one:
+    fail("Page 1 is missing the canonical positioning statement.")
 for paragraph in career_note_paragraphs():
     if normalize(paragraph) not in page_one:
         fail(f"Page 1 is missing career-note content: {paragraph}")
 if "where this work travels" in page_one:
     fail("Page 1 retains the staged 'Where this work travels' treatment.")
 if normalize(EXPECTED_TITLE) not in page_two:
-    fail("Page 2 is missing the coordinated positioning title.")
+    fail("Page 2 is missing the official current title.")
 if normalize(OLD_PAGE_TWO_TITLE) in normalized:
     fail(f"Resume retains the old page 2 title: {OLD_PAGE_TWO_TITLE!r}.")
 
-for fact in EXPECTED_KEYBANK_BULLETS:
+for fact in resume_bullets:
     if normalize(fact) not in page_two:
-        fail(f"Page 2 is missing a KeyBank technical fact: {fact}")
+        fail(f"Page 2 is missing a canonical KeyBank resume bullet: {fact}")
 
 required_global = [
     PROFILE["person"]["name"],
     PROFILE["person"]["currentTitle"],
     PROFILE["person"]["currentFunction"],
     PROFILE["person"]["email"],
-    PROFILE["careerLetter"].get("headline")
-    or PROFILE["person"].get("heroStatement")
-    or "Career profile",
+    positioning_statement,
 ]
 for value in required_global:
     if normalize(value) not in normalized:
@@ -211,9 +276,13 @@ for group in PROFILE["capabilities"]:
         )
     except ValueError:
         capability_positions[group["name"]] = -1
-analytics_position = capability_positions.get("Analytics & Technology", -1)
-if analytics_position < 0 or analytics_position != min(capability_positions.values()):
-    fail("Analytics & Technology must be the first capability group on page 2.")
+ordered_capability_positions = [
+    capability_positions.get(name, -1) for name in capability_order
+]
+if any(position < 0 for position in ordered_capability_positions):
+    fail("Page 2 is missing one or more ordered capability groups.")
+if ordered_capability_positions != sorted(ordered_capability_positions):
+    fail("Page 2 capability groups do not follow careerLetter.capabilityOrder.")
 if any(
     not section_positions["capabilities"] < position < section_positions["experience"]
     for position in capability_positions.values()
@@ -269,14 +338,33 @@ outdated = [
     "massive",
     "cementing",
     "13 years",
+    "senior business analytics associate",
+    "served as chief of staff",
+    "banking strategy · portfolio management · risk analytics",
+    "turning portfolio data, risk signals",
+    "cloud automation · data infrastructure · technical management",
+    "vertex notebooks",
+    "bigquery",
+    "402 gb",
+    "data commentary pipeline",
+    "$2.9m",
+    "credit exposure mitigated",
+    "built analytical frameworks",
+    "backlog",
+    "executed approximately $10b",
 ]
+normalized_profile = normalize(profile_text)
 for phrase in outdated:
-    if phrase in normalized:
-        fail(f'Resume retains outdated positioning: "{phrase}".')
+    if phrase in normalized or phrase in normalized_profile:
+        fail(f'Resume or canonical profile retains stale language: "{phrase}".')
 
 metadata = reader.metadata or {}
 expected_metadata_title = f"{PROFILE['person']['name']} - Resume"
 if metadata.get("/Title") != expected_metadata_title:
     fail("Resume title metadata is missing or stale.")
+if metadata.get("/Subject") != EXPECTED_SUBJECT:
+    fail("Resume subject metadata is missing or stale.")
+if metadata.get("/Keywords") != EXPECTED_KEYWORDS:
+    fail("Resume keyword metadata is missing or stale.")
 
 print("Resume PDF checks passed.")

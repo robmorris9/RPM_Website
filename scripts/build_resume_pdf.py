@@ -51,39 +51,19 @@ def register_fonts() -> None:
         pdfmetrics.registerFont(TTFont(family, str(path)))
 
 
-def resume_positioning(profile: dict) -> tuple[str, str]:
-    """Resolve the targeted title and technical subtitle with legacy fallbacks."""
-    letter_copy = profile["careerLetter"]
-    person = profile["person"]
-    positioning = letter_copy.get("positioning") or {}
+def positioning_values(profile: dict) -> tuple[str, str]:
+    """Return the canonical positioning statement and its short visual label."""
+    positioning = profile.get("positioning")
+    if not isinstance(positioning, dict):
+        raise RuntimeError("Profile requires a top-level positioning object.")
 
-    if isinstance(positioning, str):
-        title = ""
-        subtitle = positioning.strip()
-    else:
-        title = str(
-            positioning.get("title")
-            or positioning.get("targetTitle")
-            or positioning.get("heading")
-            or ""
-        ).strip()
-        subtitle = str(
-            positioning.get("subtitle")
-            or positioning.get("technicalSubtitle")
-            or positioning.get("eyebrow")
-            or ""
-        ).strip()
-
-    title = title or str(
-        letter_copy.get("resumeTitle")
-        or person.get("currentTitle")
-        or letter_copy.get("page2Heading")
-        or ""
-    ).strip()
-    subtitle = subtitle or str(
-        letter_copy.get("technicalSubtitle") or person.get("eyebrow") or ""
-    ).strip()
-    return title, subtitle
+    statement = str(positioning.get("statement") or "").strip()
+    label = str(positioning.get("label") or "").strip()
+    if not statement or not label:
+        raise RuntimeError(
+            "Profile positioning requires non-empty statement and label values."
+        )
+    return statement, label
 
 
 def paragraph_list(value: object) -> list[str]:
@@ -117,8 +97,8 @@ def career_note_paragraphs(letter_copy: dict) -> list[str]:
 
 
 def role_resume_bullets(role: dict) -> list[str]:
-    """Return explicit technical bullets, deriving a conservative legacy fallback."""
-    explicit = role.get("resumeBullets") or role.get("technicalBullets") or []
+    """Return explicit resume bullets, deriving a conservative legacy fallback."""
+    explicit = role.get("resumeBullets") or []
     if isinstance(explicit, list):
         bullets = [str(item).strip() for item in explicit if str(item).strip()]
         if bullets:
@@ -271,14 +251,12 @@ def draw_footer(pdf: canvas.Canvas, person: dict, page: int) -> None:
 def draw_page_one(pdf: canvas.Canvas, profile: dict) -> None:
     person = profile["person"]
     letter_copy = profile["careerLetter"]
-    _, technical_subtitle = resume_positioning(profile)
+    positioning_statement, positioning_label = positioning_values(profile)
     pdf.setFillColor(PAPER)
     pdf.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
     draw_header(pdf, person, letter_copy.get("label") or "Professional profile")
 
-    headline = str(
-        letter_copy.get("headline") or person.get("heroStatement") or "Career profile"
-    ).strip()
+    headline = positioning_statement
     deck = str(
         letter_copy.get("deck") or person.get("resumeSummary") or ""
     ).strip()
@@ -286,7 +264,9 @@ def draw_page_one(pdf: canvas.Canvas, profile: dict) -> None:
     if not paragraphs:
         raise RuntimeError("Resume cover page requires career-note paragraphs.")
 
-    draw_small_label(pdf, technical_subtitle, 54, 646)
+    # The short label stays on one line; the canonical statement is the wrapped
+    # headline immediately below it.
+    draw_small_label(pdf, positioning_label, 54, 646)
     headline_y = draw_wrapped(
         pdf,
         headline,
@@ -476,7 +456,9 @@ def draw_compact_leadership(
 
 def draw_page_two(pdf: canvas.Canvas, profile: dict) -> None:
     person = profile["person"]
-    positioning_title, _ = resume_positioning(profile)
+    positioning_title = str(person.get("currentTitle") or "").strip()
+    if not positioning_title:
+        raise RuntimeError("Profile requires person.currentTitle for resume page 2.")
     letter_copy = profile["careerLetter"]
     pdf.setFillColor(PAPER)
     pdf.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
@@ -505,12 +487,14 @@ def draw_page_two(pdf: canvas.Canvas, profile: dict) -> None:
         color=INK_MEDIUM,
     )
 
-    # Put the compact foundation first so Analytics & Technology is part of the
-    # initial scan, then let experience carry the page's primary narrative.
+    # Put the compact foundation first, then let experience carry the page's
+    # primary narrative.
     capabilities_label_y = deck_bottom - 18
     draw_small_label(pdf, "Capabilities", 54, capabilities_label_y)
 
-    requested_order = letter_copy.get("capabilityOrder") or ["Analytics & Technology"]
+    requested_order = letter_copy.get("capabilityOrder") or [
+        group["name"] for group in profile.get("capabilities") or []
+    ]
     capability_order = {
         name: index for index, name in enumerate(requested_order)
     }
@@ -607,10 +591,12 @@ def build(output: Path) -> None:
     person = profile["person"]
     pdf.setTitle(f"{person['name']} - Resume")
     pdf.setAuthor(person["name"])
-    pdf.setSubject("Cloud automation, data infrastructure, technical management, and banking analytics resume")
+    pdf.setSubject(
+        "Business operations, decision systems, governance, and cross-functional execution resume"
+    )
     pdf.setKeywords(
-        "cloud automation, data infrastructure, technical management, Python, BigQuery, "
-        "SQL, portfolio analytics, risk, treasury, markets, governance"
+        "business operations, decision systems, operating model design, governance, "
+        "process automation, portfolio management, strategy, cross-functional leadership"
     )
     pdf.setCreator("RPM Website resume generator")
 

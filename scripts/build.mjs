@@ -55,12 +55,6 @@ function renderMicroVisual(type) {
 }
 
 function renderExperience(role) {
-  const descriptions = role.description
-    .map((paragraph) => `<p class="exp-desc">${escapeHtml(paragraph)}</p>`)
-    .join('\n                ');
-  const tags = role.tags
-    .map((tag) => `<li class="exp-tag">${escapeHtml(tag)}</li>`)
-    .join('');
   const functionalTitle = role.functionalTitle
     ? `\n                <p class="exp-functional">${escapeHtml(role.functionalTitle)}</p>`
     : '';
@@ -70,10 +64,52 @@ function renderExperience(role) {
               <article class="exp-content">
                 <h3 class="exp-title">${escapeHtml(role.title)}</h3>${functionalTitle}
                 <div class="exp-company"><span>${escapeHtml(role.company)}</span>${renderMicroVisual(role.visual)}</div>
-                ${descriptions}
-                <ul class="exp-tags" aria-label="Relevant capabilities">${tags}</ul>
+                <p class="exp-desc">${escapeHtml(role.timelineSummary)}</p>
               </article>
             </li>`;
+}
+
+function renderOperatingPrinciple(item, index) {
+  return `<li class="operate-item">
+              <span class="operate-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <h4 class="operate-title">${escapeHtml(item.title)}</h4>
+                <p class="operate-copy">${escapeHtml(item.paragraph)}</p>
+              </div>
+            </li>`;
+}
+
+function renderCaseStudyPart(label, value, className = '') {
+  const modifier = className ? ` ${className}` : '';
+  return `<div class="case-study-part${modifier}">
+                  <dt class="case-study-label">${escapeHtml(label)}</dt>
+                  <dd class="case-study-copy">${escapeHtml(value)}</dd>
+                </div>`;
+}
+
+function renderCaseStudy(study, index) {
+  const caseId = `case-${escapeHtml(study.id)}`;
+  const parts = [
+    renderCaseStudyPart('Problem', study.problem),
+    renderCaseStudyPart('My role', study.myRole),
+    renderCaseStudyPart('Thinking', study.thinking),
+    renderCaseStudyPart('Action / system', study.actionSystem, 'is-action'),
+    renderCaseStudyPart('Result', study.result, 'is-result'),
+    renderCaseStudyPart('Why it matters', study.whyItMatters)
+  ].join('\n                ');
+
+  return `<article class="case-study reveal" id="${caseId}" aria-labelledby="${caseId}-title">
+              <header class="case-study-header">
+                <span class="case-study-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <p class="case-study-meta">${escapeHtml(study.company)} <span aria-hidden="true">·</span> ${escapeHtml(study.status)}</p>
+                  <h3 class="case-study-title" id="${caseId}-title">${escapeHtml(study.title)}</h3>
+                </div>
+              </header>
+              <dl class="case-study-parts">
+                ${parts}
+              </dl>
+            </article>`;
 }
 
 function renderCapability(group) {
@@ -182,11 +218,18 @@ const indexHtml = renderTemplate(indexTemplate, {
   SITE_DESCRIPTION: escapeHtml(profile.site.description),
   SITE_URL: escapeHtml(profile.site.url),
   OG_IMAGE_URL: escapeHtml(new URL('og-image.png', profile.site.url).href),
+  OG_IMAGE_ALT: escapeHtml(`${profile.person.name} — ${profile.positioning.statement}`),
   PERSON_JSON_LD: JSON.stringify(personJsonLd).replaceAll('<', '\\u003c'),
-  HERO_EYEBROW: escapeHtml(profile.person.eyebrow),
-  HERO_STATEMENT: escapeHtml(profile.person.heroStatement),
+  HERO_EYEBROW: escapeHtml(profile.positioning.label),
+  HERO_STATEMENT: escapeHtml(profile.positioning.statement),
+  HERO_SUPPORT: escapeHtml(profile.positioning.support),
   METRICS: profile.metrics.map(renderMetric).join('\n          '),
   ABOUT: profile.about.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('\n          '),
+  OPERATING_THESIS: escapeHtml(profile.careerLetter.operatingThesis),
+  OPERATING_PRINCIPLES: profile.careerLetter.operatingPrinciples.map(renderOperatingPrinciple).join('\n              '),
+  DIRECTOR_NEXT_HEADING: escapeHtml(profile.directorNext.heading),
+  DIRECTOR_NEXT_COPY: escapeHtml(profile.directorNext.paragraph),
+  CASE_STUDIES: profile.caseStudies.map(renderCaseStudy).join('\n            '),
   EXPERIENCE: profile.experience.map(renderExperience).join('\n            '),
   CAPABILITIES: profile.capabilities.map(renderCapability).join('\n            '),
   LEADERSHIP: profile.leadership.map(renderLeadership).join('\n            '),
@@ -201,8 +244,8 @@ const resumeTemplate = await readFile(path.join(sourceDirectory, 'resume.templat
 const resumeHtml = renderTemplate(resumeTemplate, {
   ...commonValues,
   RESUME_INTRO_LABEL: escapeHtml(profile.careerLetter.label),
-  CAREER_LETTER_HEADLINE: escapeHtml(profile.careerLetter.headline),
-  RESUME_POSITIONING: escapeHtml(profile.careerLetter.positioning),
+  CAREER_LETTER_HEADLINE: escapeHtml(profile.positioning.statement),
+  RESUME_POSITIONING: escapeHtml(profile.positioning.label),
   CAREER_LETTER_DECK: escapeHtml(profile.careerLetter.deck),
   CAREER_LETTER_INTRO: profile.careerLetter.openingParagraphs
     .map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`)
