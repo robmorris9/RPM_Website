@@ -249,19 +249,23 @@ test('keeps system instructions server-side and exposes only coordinated public 
 
   const publicProfile = JSON.parse(publicProfileMatch[1]);
   const publicProfileText = JSON.stringify(publicProfile);
-  const dashboard = publicProfile.caseStudies.find(
-    ({ id }) => id === 'risk-scoring-dashboard',
+  const creditFreeze = publicProfile.caseStudies.find(
+    ({ id }) => id === 'credit-risk-rating-freeze',
   );
-  const regulationB = publicProfile.caseStudies.find(
-    ({ id }) => id === 'regulation-b-automation',
+  const swift = publicProfile.caseStudies.find(
+    ({ id }) => id === 'swift-settlement-migration',
   );
   const liquidity = publicProfile.caseStudies.find(
     ({ id }) => id === 'liquidity-crisis-response',
   );
+  const enhancements = publicProfile.caseStudies.find(
+    ({ id }) => id === 'other-enhancements',
+  );
 
-  assert.ok(dashboard, 'Public profile is missing the risk-scoring dashboard case study.');
-  assert.ok(regulationB, 'Public profile is missing the Regulation B case study.');
+  assert.ok(creditFreeze, 'Public profile is missing the credit-freeze case study.');
+  assert.ok(swift, 'Public profile is missing the SWIFT case study.');
   assert.ok(liquidity, 'Public profile is missing the liquidity-crisis case study.');
+  assert.ok(enhancements, 'Public profile is missing the other-enhancements case study.');
   assert.equal(
     publicProfile.positioning.statement,
     'An operator who turns ambiguous, under-governed business problems into clear decisions and repeatable systems.',
@@ -270,18 +274,56 @@ test('keeps system instructions server-side and exposes only coordinated public 
     publicProfile.person.currentTitle,
     'Vice President, Business Banking Portfolio Analytics',
   );
-  assert.equal(publicProfile.caseStudies.length, 5);
-  assert.equal(publicProfile.operatingPrinciples.length, 3);
-  assert.equal(publicProfile.directorNext.heading, 'Why Director next');
-  assert.match(dashboard.status, /UAT/);
-  assert.match(dashboard.result, /designed to inform compensation decisions/i);
-  assert.match(regulationB.problem, /manual, Excel-based Regulation B/i);
-  assert.match(regulationB.problem, /hundreds of applications a day/i);
-  assert.match(regulationB.result, /outputs monitored by risk partners/i);
-  assert.match(liquidity.myRole, /not the sole owner of the \$10B result/i);
-  assert.match(liquidity.result, /roughly \$5B to remain within Citi's US entities/i);
-  assert.match(publicProfileText, /roughly \$55M in exposure, with roughly \$3M recovered/i);
-  assert.match(publicProfileText, /existing exposure model/i);
+  assert.deepEqual(
+    publicProfile.caseStudies.map(({ id }) => id),
+    [
+      'credit-risk-rating-freeze',
+      'swift-settlement-migration',
+      'liquidity-crisis-response',
+      'other-enhancements',
+    ],
+  );
+  assert.match(creditFreeze.narrative, /rating downgrades and line-freeze decisions/i);
+  assert.match(creditFreeze.narrative, /ownership, exceptions, procedures, and monitoring/i);
+  assert.match(creditFreeze.role, /designing the automation, decision rules, and governance/i);
+  assert.match(creditFreeze.role, /no final outcome metric/i);
+  assert.match(swift.narrative, /product-processor review/i);
+  assert.match(swift.role, /identified the opportunity and drove the client migration/i);
+  assert.match(swift.result, /\$29M/i);
+  assert.match(liquidity.role, /core, hands-on contributor/i);
+  assert.match(liquidity.role, /not sole owner/i);
+  assert.match(liquidity.result, /roughly \$10B optimized/i);
+  assert.match(liquidity.result, /roughly \$5B able to remain within Citi's US entities/i);
+  assert.deepEqual(enhancements.highlights, [
+    'Spreadsheet enhancements',
+    'Commentary automation for repetitive P&L pushes',
+    'Daily and manual upload automation',
+    'Verification and QC automation',
+  ]);
+  assert.match(enhancements.result, /saved hundreds of hours/i);
+  assert.match(enhancements.result, /more consistent and easier to verify/i);
+  assert.match(enhancements.role, /time saved is cumulative, not a single-project claim/i);
+  const keyBankSiteExperience = publicProfile.siteExperience.find(({ id }) => id === 'keybank');
+  assert.ok(keyBankSiteExperience, 'Public profile is missing KeyBank website experience.');
+  assert.equal(keyBankSiteExperience.takeawayLabel, 'What I bring');
+  assert.match(JSON.stringify(keyBankSiteExperience), /roughly \$55M in exposure, with roughly \$3M recovered/i);
+  assert.match(JSON.stringify(keyBankSiteExperience), /existing exposure model/i);
+  assert.match(JSON.stringify(keyBankSiteExperience), /manual, Excel-based Regulation B/i);
+  assert.match(JSON.stringify(keyBankSiteExperience), /hundreds of applications a day/i);
+  assert.match(JSON.stringify(keyBankSiteExperience), /output monitored by risk partners/i);
+  const citiSiteExperience = publicProfile.siteExperience.find(({ id }) => id === 'citi');
+  assert.ok(citiSiteExperience, 'Public profile is missing Citi website experience.');
+  assert.equal(citiSiteExperience.takeawayLabel, 'What I learned');
+  assert.equal(citiSiteExperience.dates, '2010–2024');
+  assert.equal(publicProfile.experience, undefined);
+  assert.equal(publicProfile.directorNext, undefined);
+  assert.deepEqual(publicProfile.connect, {
+    heading: "Let's compare notes",
+    paragraphs: [
+      "I'm interested in work where problems need new solutions and a fresh set of eyes—especially when the answer has to reflect how operations flow, how risk is managed, and how disciplined execution can scale.",
+      "If you're working through something like that, I'd be glad to compare notes.",
+    ],
+  });
 
   for (const staleClaim of [
     /\$2\.9M/,
@@ -289,6 +331,10 @@ test('keeps system instructions server-side and exposes only coordinated public 
     /BigQuery/i,
     /402 GB/i,
     /\bbacklog\b/i,
+    /risk-scoring dashboard/i,
+    /\bUAT\b/i,
+    /2[–-]4 hours/i,
+    /7 minutes/i,
   ]) {
     assert.doesNotMatch(publicProfileText, staleClaim);
   }

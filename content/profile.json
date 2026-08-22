@@ -6,8 +6,7 @@
   },
   "positioning": {
     "label": "Business operations · Decision systems · Execution",
-    "statement": "An operator who turns ambiguous, under-governed business problems into clear decisions and repeatable systems.",
-    "support": "Data, process design, and automation are tools I use, not the identity of the work."
+    "statement": "An operator who turns ambiguous, under-governed business problems into clear decisions and repeatable systems."
   },
   "person": {
     "name": "Robert Perry Morris",
@@ -25,91 +24,92 @@
     "currentFunction": "Portfolio Management & Risk Strategy | Business Banking",
     "currentEmployer": "KeyBank"
   },
-  "metrics": [
-    {
-      "id": "efficiency",
-      "value": "~7 min",
-      "label": "From 2-4 hours of weekly work through Python automation",
-      "resumeLabel": "Weekly process reduced from 2-4 hours to about 7 minutes"
-    },
-    {
-      "id": "fx",
-      "value": "$29M",
-      "label": "Approximate annual savings from a SWIFT migration I identified and drove",
-      "resumeLabel": "Approximate annual FX SWIFT network settlement savings"
-    },
-    {
-      "id": "credit",
-      "value": "~$55M / ~$3M",
-      "label": "Exposure identified / recovered by operating an existing model",
-      "resumeLabel": "Roughly $55M identified / $3M recovered using an existing model I operate"
-    }
-  ],
+  "metrics": [],
   "about": [
     "I'm an operator who looks for structure in ambiguous problems. Across 14 years at Citi and KeyBank, I have led teams close to the transaction, worked on markets and balance-sheet decisions, and built portfolio processes where data, judgment, controls, and execution have to stay connected.",
     "The common thread is not a bank function or a particular tool. I learn how an organization works, find where a decision needs more structure, and build a clearer way to make and carry it out. Analytics, process design, and automation matter when they make that system faster, more reliable, or easier to govern.",
-    "At KeyBank, that currently includes a risk-scoring dashboard in UAT, credit-line risk-rating automation and governance, and early-stage revolving-line-to-term work with Product and Fair Lending. Banking is where I built this operating pattern; it is not the ceiling on where I can apply it."
+    "At KeyBank, that currently includes credit risk-rating and line-freeze automation, exposure management, a completed Regulation B process automation, and early-stage revolving-line-to-term work with Product and Fair Lending. Banking is where I built this operating pattern; it is not the ceiling on where I can apply it."
   ],
   "caseStudies": [
     {
-      "id": "risk-scoring-dashboard",
-      "company": "KeyBank",
-      "status": "In UAT",
-      "title": "A risk-scoring system tied to compensation decisions",
-      "problem": "A portfolio risk score can influence relationship-manager compensation, including bonuses. That makes consistency, review, and governance as important as the analysis itself.",
-      "myRole": "I built the dashboard from scratch and am carrying it through UAT, including the operating process around how its output will be reviewed and used.",
-      "thinking": "If a score affects people, it cannot be treated as a dashboard-only deliverable. Decision rights, controls, exceptions, and monitoring have to be designed with it.",
-      "actionSystem": "Built the risk-scoring dashboard and worked across stakeholders to define its review and governance path.",
-      "result": "The dashboard is in UAT and is designed to inform compensation decisions; production impact is not yet claimed.",
-      "whyItMatters": "It shows how I connect analytics to a decision system when the organizational stakes are real."
-    },
-    {
-      "id": "credit-line-risk-ratings",
+      "id": "credit-risk-rating-freeze",
       "company": "KeyBank",
       "status": "Active initiative",
-      "title": "Credit-line risk-rating automation and governance",
-      "problem": "Risk ratings on credit cards and revolving lines need to change as customer relationships evolve. The action has to be timely and consistent without weakening control.",
-      "myRole": "I am designing the automation and governance for freezing or downgrading those ratings and helping turn it into an ongoing operating process.",
-      "thinking": "The decision and the control are one system: logic, ownership, exceptions, procedures, and monitoring all matter.",
-      "actionSystem": "Working through the decision rules, ownership, exception handling, procedures, and monitoring needed to move the work from analysis into operation.",
-      "result": "The initiative is creating a repeatable mechanism for managing rating changes over the life of a relationship; no final outcome metric is claimed yet.",
-      "whyItMatters": "It demonstrates governed automation: more consistent action without losing accountability."
-    },
-    {
-      "id": "regulation-b-automation",
-      "company": "KeyBank",
-      "status": "Completed",
-      "title": "Regulation B adverse-action automation",
-      "problem": "A manual, Excel-based Regulation B adverse-action process was handling hundreds of applications a day. The risk was structural: a high-volume regulated process depended on repeated manual steps.",
-      "myRole": "I identified the process risk and fully automated it end to end.",
-      "thinking": "At this volume, the answer was not more manual effort. It was to remove repetitive handling while preserving monitoring.",
-      "actionSystem": "Replaced the Excel workflow with an automated process and retained risk-partner monitoring as the control layer.",
-      "result": "The process now runs automatically at current volume, with outputs monitored by risk partners.",
-      "whyItMatters": "It is a practical example of using automation to strengthen both efficiency and control."
+      "title": "Credit risk-rating and freeze automation",
+      "narrative": "Risk actions on credit cards and revolving lines need to keep pace as relationships change. The work is turning rating downgrades and line-freeze decisions into a repeatable process with clear rules, ownership, exceptions, procedures, and monitoring.",
+      "result": "A governed, repeatable workflow for consistent risk action—currently in development.",
+      "role": "Designing the automation, decision rules, and governance; the initiative has no final outcome metric yet."
     },
     {
       "id": "swift-settlement-migration",
       "company": "Citi",
       "status": "Completed",
-      "title": "Direct SWIFT settlement migration",
-      "problem": "A client's settlement setup relied on a third party, creating avoidable network costs that were not obvious at the headline-process level.",
-      "myRole": "I flagged the opportunity through a product-processor-level review, then drove the sustained work of moving the client to direct SWIFT settlement.",
-      "thinking": "The opportunity appeared only when I looked below the aggregate process and traced how that client's product was actually being processed.",
-      "actionSystem": "Worked through the client and operational migration required to remove the third party and establish direct SWIFT settlement.",
+      "title": "SWIFT savings through direct settlement",
+      "narrative": "A client's settlement setup relied on a third party, creating network costs that were easy to miss at the headline-process level. A product-processor review surfaced the opportunity, followed by the sustained client and operational work required to establish direct SWIFT settlement.",
       "result": "Approximately $29M in annual network settlement savings.",
-      "whyItMatters": "It shows a pattern I still use: find the overlooked structural detail, then stay with the work through implementation."
+      "role": "I identified the opportunity and drove the client migration through implementation."
     },
     {
       "id": "liquidity-crisis-response",
       "company": "Citi",
       "status": "Completed team effort",
       "title": "Balance-sheet response during the 2023 crisis",
-      "problem": "During the 2023 regional-banking crisis, Citi Treasury needed entity-by-entity action to improve liquidity positioning and keep more funding within US entities despite Citi's limited standalone US presence.",
-      "myRole": "I was a core, hands-on contributor, not the sole owner of the $10B result, working with international Treasury teams including Dubai and Hong Kong.",
-      "thinking": "The answer could not be a single aggregate move. Deposits and HQLA had to be repositioned within each entity's constraints and the cross-border structure.",
-      "actionSystem": "Worked entity by entity to analyze and execute the required deposit and HQLA repositioning.",
-      "result": "The team optimized roughly $10B of the balance sheet, enabling roughly $5B to remain within Citi's US entities.",
-      "whyItMatters": "It shows how I contribute in a high-stakes system: across boundaries, under time pressure, without losing precision."
+      "narrative": "During the 2023 regional-banking crisis, deposits and HQLA had to be repositioned entity by entity to strengthen liquidity and keep more funding within Citi's US entities. The work required close coordination with international Treasury teams, including Dubai and Hong Kong.",
+      "result": "Roughly $10B optimized; roughly $5B able to remain within Citi's US entities.",
+      "role": "Core, hands-on contributor to the team effort—not sole owner of the result."
+    },
+    {
+      "id": "other-enhancements",
+      "company": "Across Citi and KeyBank",
+      "status": "Cross-career portfolio",
+      "title": "Other enhancements",
+      "narrative": "Across roles, I have looked for recurring work that could be made cleaner and more reliable. The individual changes were often small, but built around the people who had to run and trust the process.",
+      "highlights": [
+        "Spreadsheet enhancements",
+        "Commentary automation for repetitive P&L pushes",
+        "Daily and manual upload automation",
+        "Verification and QC automation"
+      ],
+      "result": "Cumulatively, these improvements saved hundreds of hours while making recurring outputs more consistent and easier to verify.",
+      "role": "Work I built or directly improved across multiple roles; the time saved is cumulative, not a single-project claim."
+    }
+  ],
+  "siteExperience": [
+    {
+      "id": "keybank",
+      "company": "KeyBank",
+      "dates": "2025–Present",
+      "heading": "Current focus: risk decisions that work in practice",
+      "takeawayLabel": "What I bring",
+      "currentFocus": [
+        "Designing credit risk-rating and line-freeze automation with the governance required to operate it.",
+        "Operating an existing exposure model and acting on its signals; it has identified roughly $55M in exposure, with roughly $3M recovered.",
+        "Fully automated a manual, Excel-based Regulation B adverse-action process handling hundreds of applications a day, with output monitored by risk partners.",
+        "Working with Product and Fair Lending on an early-stage revolving-line-to-term initiative."
+      ],
+      "enables": "The role brings portfolio analytics, process design, risk governance, and cross-functional implementation together."
+    },
+    {
+      "id": "citi",
+      "company": "Citi",
+      "dates": "2010–2024",
+      "heading": "A progression from the transaction to the balance sheet",
+      "takeawayLabel": "What I learned",
+      "progression": [
+        {
+          "dates": "2010–2019",
+          "title": "FX operations and settlement—led global processing teams close to the transaction."
+        },
+        {
+          "dates": "2019–2021",
+          "title": "Equity derivatives product control—led daily P&L control and a six-person team."
+        },
+        {
+          "dates": "2021–2024",
+          "title": "Liquidity management and market risk—moved into balance-sheet, stress, and cross-functional operating work."
+        }
+      ],
+      "enables": "That progression taught me to see a problem from the workflow, the numbers, and the control environment at the same time—and to move between frontline detail and senior cross-functional decisions."
     }
   ],
   "experience": [
@@ -231,10 +231,6 @@
       "description": "Designed and facilitated 25+ cross-functional workshops across Citi Buffalo, translating technical and operational topics into practical tools teams could use."
     }
   ],
-  "directorNext": {
-    "heading": "Why Director next",
-    "paragraph": "I have already been doing core pieces of Director-scope work: coordinating across functions without relying on formal authority, designing decisions and controls together, and turning ambiguity into an executable, governed process. The next step is broader ownership of the systems, priorities, and teams around that work."
-  },
   "careerLetter": {
     "label": "Professional Profile",
     "deck": "Fourteen years across operations, markets, treasury, risk, and portfolio management, using analytics, process design, governance, and automation to make complex work clearer and more executable.",
@@ -274,8 +270,8 @@
   "connect": {
     "heading": "Let's compare notes",
     "paragraphs": [
-      "I'm interested in Director-level work where ambiguous, cross-functional problems need to become clear decisions and durable operating systems. Banking is where I built the pattern; it is not the limit of where I can apply it.",
-      "If you're working on something in that neighborhood, I'd be glad to compare notes."
+      "I'm interested in work where problems need new solutions and a fresh set of eyes—especially when the answer has to reflect how operations flow, how risk is managed, and how disciplined execution can scale.",
+      "If you're working through something like that, I'd be glad to compare notes."
     ]
   },
   "robbot": {

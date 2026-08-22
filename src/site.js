@@ -121,19 +121,6 @@
     revealItems.forEach(function (item) { revealObserver.observe(item); });
   }
 
-  var microAnimations = Array.prototype.slice.call(document.querySelectorAll('.micro-anim'));
-  if (!reducedMotionQuery.matches && 'IntersectionObserver' in window) {
-    var microObserver = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-playing');
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.2 });
-
-    microAnimations.forEach(function (item) { microObserver.observe(item); });
-  }
-
   var chatPanel = document.getElementById('chat-panel');
   var chatBackdrop = document.getElementById('chat-backdrop');
   var chatLaunchers = Array.prototype.slice.call(document.querySelectorAll('.js-chat-open'));

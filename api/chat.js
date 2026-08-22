@@ -25,14 +25,12 @@ const PUBLIC_PROFILE_CONTEXT = {
   site: profile.site,
   positioning: profile.positioning,
   person: profile.person,
-  metrics: profile.metrics,
   about: profile.about,
   caseStudies: profile.caseStudies,
-  experience: profile.experience,
+  siteExperience: profile.siteExperience,
   capabilities: profile.capabilities,
   operatingPrinciples: profile.careerLetter.operatingPrinciples,
   leadership: profile.leadership,
-  directorNext: profile.directorNext,
   connect: profile.connect,
 };
 

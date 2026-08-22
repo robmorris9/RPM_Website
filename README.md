@@ -15,7 +15,7 @@ The generated root files remain committed so the site can be served as plain sta
 
 ### Case-study content model
 
-The `caseStudies` array in `content/profile.json` keeps each story evidence-based and explicit about Rob's scope. Every entry defines `id`, `company`, `status`, `title`, `problem`, `myRole`, `thinking`, `actionSystem`, `result`, and `whyItMatters`. The site renderer and RobBot both consume this canonical array; do not duplicate case-study copy in generated HTML or the chat function.
+The `caseStudies` array in `content/profile.json` keeps each story evidence-based and explicit about Rob's scope. Every entry defines `id`, `company`, `status`, `title`, `narrative`, `result`, and `role`, with optional `highlights` for compact supporting examples. The site renderer and RobBot both consume this canonical array; do not duplicate case-study copy in generated HTML or the chat function.
 
 ## Local workflow
 

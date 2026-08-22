@@ -29,86 +29,65 @@ function renderTemplate(template, replacements) {
   return output;
 }
 
-function renderMetric(metric) {
-  return `<div class="pl-kpi">
-            <dt class="pl-kpi-lbl">${escapeHtml(metric.label)}</dt>
-            <dd class="pl-kpi-val" id="metric-${escapeHtml(metric.id)}">${escapeHtml(metric.value)}</dd>
-          </div>`;
-}
-
-function renderMicroVisual(type) {
-  if (type === 'gauge') {
-    return `<span class="micro-anim anim-gauge" aria-hidden="true">
-                <svg class="gauge-svg" viewBox="0 0 22 11"><path class="gauge-track danger" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><path class="gauge-track warn" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><path class="gauge-track safe" d="M 1 11 A 10 10 0 0 1 21 11" pathLength="100"></path><line x1="11" y1="11" x2="11" y2="2" class="gauge-needle"></line><circle cx="11" cy="11" r="1.5" class="gauge-base"></circle></svg>
-              </span>`;
-  }
-
-  if (type === 'line') {
-    return `<span class="micro-anim anim-line-chart" aria-hidden="true"><svg viewBox="0 0 24 16" width="24" height="16"><polyline class="lc-path" points="2,14 8,9 14,12 22,4"></polyline><circle class="lc-dot" cx="22" cy="4" r="2"></circle></svg></span>`;
-  }
-
-  if (type === 'swift') {
-    return `<span class="micro-anim anim-swift" aria-hidden="true"><span class="swift-lat"></span><span class="swift-lng"></span><span class="swift-node"></span><span class="swift-node2"></span></span>`;
-  }
-
-  return '';
-}
-
-function renderExperience(role) {
-  const functionalTitle = role.functionalTitle
-    ? `\n                <p class="exp-functional">${escapeHtml(role.functionalTitle)}</p>`
+function renderOrganizationExperience(item) {
+  const currentFocus = Array.isArray(item.currentFocus) && item.currentFocus.length
+    ? `<ul class="organization-focus-list" aria-label="${escapeHtml(item.company)} current focus">${item.currentFocus
+        .map((focus) => `<li>${escapeHtml(focus)}</li>`)
+        .join('')}</ul>`
     : '';
+  const progression = Array.isArray(item.progression) && item.progression.length
+    ? `<ol class="organization-timeline" aria-label="${escapeHtml(item.company)} role progression">${item.progression
+        .map((role) => `<li class="organization-role">
+                    <span class="organization-role-dates">${escapeHtml(role.dates)}</span>
+                    <span class="organization-role-title">${escapeHtml(role.title)}</span>
+                  </li>`)
+        .join('')}</ol>`
+    : '';
+  const enables = item.enables
+    ? `<div class="organization-takeaway">
+                <p class="organization-takeaway-label">${escapeHtml(item.takeawayLabel || 'Takeaway')}</p>
+                <p class="organization-takeaway-copy">${escapeHtml(item.enables)}</p>
+              </div>`
+    : '';
+  const currentClass = item.id === 'keybank' ? ' is-current' : '';
+  const currentTitle = item.id === 'keybank'
+    ? `\n                  <p class="organization-current-title">${escapeHtml(profile.person.currentTitle)}</p>`
+    : '';
+  const organizationId = `experience-${escapeHtml(item.id)}`;
 
-  return `<li class="exp-entry reveal">
-              <time class="exp-dates">${escapeHtml(role.dates)}</time>
-              <article class="exp-content">
-                <h3 class="exp-title">${escapeHtml(role.title)}</h3>${functionalTitle}
-                <div class="exp-company"><span>${escapeHtml(role.company)}</span>${renderMicroVisual(role.visual)}</div>
-                <p class="exp-desc">${escapeHtml(role.timelineSummary)}</p>
-              </article>
-            </li>`;
-}
-
-function renderOperatingPrinciple(item, index) {
-  return `<li class="operate-item">
-              <span class="operate-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
-              <div>
-                <h4 class="operate-title">${escapeHtml(item.title)}</h4>
-                <p class="operate-copy">${escapeHtml(item.paragraph)}</p>
-              </div>
-            </li>`;
-}
-
-function renderCaseStudyPart(label, value, className = '') {
-  const modifier = className ? ` ${className}` : '';
-  return `<div class="case-study-part${modifier}">
-                  <dt class="case-study-label">${escapeHtml(label)}</dt>
-                  <dd class="case-study-copy">${escapeHtml(value)}</dd>
-                </div>`;
+  return `<article class="organization-block${currentClass}" id="${organizationId}" aria-labelledby="${organizationId}-title">
+              <header class="organization-header">
+                <div>
+                  <h3 class="organization-company" id="${organizationId}-title">${escapeHtml(item.company)}</h3>${currentTitle}
+                  <p class="organization-heading">${escapeHtml(item.heading)}</p>
+                </div>
+                <p class="organization-dates">${escapeHtml(item.dates)}</p>
+              </header>
+              ${currentFocus}${progression}${enables}
+            </article>`;
 }
 
 function renderCaseStudy(study, index) {
   const caseId = `case-${escapeHtml(study.id)}`;
-  const parts = [
-    renderCaseStudyPart('Problem', study.problem),
-    renderCaseStudyPart('My role', study.myRole),
-    renderCaseStudyPart('Thinking', study.thinking),
-    renderCaseStudyPart('Action / system', study.actionSystem, 'is-action'),
-    renderCaseStudyPart('Result', study.result, 'is-result'),
-    renderCaseStudyPart('Why it matters', study.whyItMatters)
-  ].join('\n                ');
+  const highlights = Array.isArray(study.highlights) && study.highlights.length
+    ? `<ul class="case-study-highlights" aria-label="Selected examples">${study.highlights
+        .map((highlight) => `<li>${escapeHtml(highlight)}</li>`)
+        .join('')}</ul>`
+    : '';
 
-  return `<article class="case-study reveal" id="${caseId}" aria-labelledby="${caseId}-title">
-              <header class="case-study-header">
-                <span class="case-study-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
-                <div>
-                  <p class="case-study-meta">${escapeHtml(study.company)} <span aria-hidden="true">·</span> ${escapeHtml(study.status)}</p>
-                  <h3 class="case-study-title" id="${caseId}-title">${escapeHtml(study.title)}</h3>
-                </div>
+  return `<article class="case-study-row reveal" id="${caseId}" aria-labelledby="${caseId}-title">
+              <header class="case-study-row-header">
+                <p class="case-study-meta"><span class="case-study-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><span>${escapeHtml(study.company)}</span><span aria-hidden="true">·</span><span>${escapeHtml(study.status)}</span></p>
+                <h3 class="case-study-title" id="${caseId}-title">${escapeHtml(study.title)}</h3>
               </header>
-              <dl class="case-study-parts">
-                ${parts}
-              </dl>
+              <div class="case-study-row-body">
+                <p class="case-study-narrative">${escapeHtml(study.narrative)}</p>${highlights}
+                <div class="case-study-result">
+                  <p class="case-study-result-label">Result</p>
+                  <p class="case-study-result-copy">${escapeHtml(study.result)}</p>
+                </div>
+                <p class="case-study-role"><span>Role</span>${escapeHtml(study.role)}</p>
+              </div>
             </article>`;
 }
 
@@ -222,15 +201,9 @@ const indexHtml = renderTemplate(indexTemplate, {
   PERSON_JSON_LD: JSON.stringify(personJsonLd).replaceAll('<', '\\u003c'),
   HERO_EYEBROW: escapeHtml(profile.positioning.label),
   HERO_STATEMENT: escapeHtml(profile.positioning.statement),
-  HERO_SUPPORT: escapeHtml(profile.positioning.support),
-  METRICS: profile.metrics.map(renderMetric).join('\n          '),
   ABOUT: profile.about.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join('\n          '),
-  OPERATING_THESIS: escapeHtml(profile.careerLetter.operatingThesis),
-  OPERATING_PRINCIPLES: profile.careerLetter.operatingPrinciples.map(renderOperatingPrinciple).join('\n              '),
-  DIRECTOR_NEXT_HEADING: escapeHtml(profile.directorNext.heading),
-  DIRECTOR_NEXT_COPY: escapeHtml(profile.directorNext.paragraph),
+  EXPERIENCE: profile.siteExperience.map(renderOrganizationExperience).join('\n            '),
   CASE_STUDIES: profile.caseStudies.map(renderCaseStudy).join('\n            '),
-  EXPERIENCE: profile.experience.map(renderExperience).join('\n            '),
   CAPABILITIES: profile.capabilities.map(renderCapability).join('\n            '),
   LEADERSHIP: profile.leadership.map(renderLeadership).join('\n            '),
   CONNECT_HEADING: escapeHtml(profile.connect.heading),

@@ -28,25 +28,6 @@ EXPECTED_KEYWORDS = (
     "business operations, decision systems, operating model design, governance, "
     "process automation, portfolio management, strategy, cross-functional leadership"
 )
-EXPECTED_CASE_STUDY_IDS = (
-    "risk-scoring-dashboard",
-    "credit-line-risk-ratings",
-    "regulation-b-automation",
-    "swift-settlement-migration",
-    "liquidity-crisis-response",
-)
-CASE_STUDY_FIELDS = (
-    "id",
-    "company",
-    "status",
-    "title",
-    "problem",
-    "myRole",
-    "thinking",
-    "actionSystem",
-    "result",
-    "whyItMatters",
-)
 OLD_PAGE_TWO_TITLE = "Experience, capabilities & leadership"
 
 
@@ -89,16 +70,15 @@ def career_note_paragraphs() -> list[str]:
     )
 
 
-def positioning_values() -> tuple[str, str, str]:
+def positioning_values() -> tuple[str, str]:
     positioning = PROFILE.get("positioning")
     if not isinstance(positioning, dict):
         fail("Profile requires a top-level positioning object.")
     label = str(positioning.get("label") or "").strip()
     statement = str(positioning.get("statement") or "").strip()
-    support = str(positioning.get("support") or "").strip()
-    if not label or not statement or not support:
-        fail("Profile positioning requires non-empty label, statement, and support.")
-    return label, statement, support
+    if not label or not statement:
+        fail("Profile positioning requires non-empty label and statement values.")
+    return label, statement
 
 
 def require_terms(value: str, terms: tuple[str, ...], context: str) -> None:
@@ -108,28 +88,12 @@ def require_terms(value: str, terms: tuple[str, ...], context: str) -> None:
             fail(f"{context} is missing required language: {term!r}.")
 
 
-positioning_label, positioning_statement, positioning_support = positioning_values()
+positioning_label, positioning_statement = positioning_values()
 if PROFILE["person"].get("currentTitle") != EXPECTED_TITLE:
     fail(
         "Profile current title is missing or stale: "
         f"expected {EXPECTED_TITLE!r}, found {PROFILE['person'].get('currentTitle')!r}."
     )
-
-case_studies = PROFILE.get("caseStudies")
-if not isinstance(case_studies, list) or len(case_studies) != 5:
-    fail("Profile must define exactly five case studies.")
-if any(not isinstance(case_study, dict) for case_study in case_studies):
-    fail("Every case study must be an object.")
-case_study_ids = [case.get("id") for case in case_studies]
-if tuple(case_study_ids) != EXPECTED_CASE_STUDY_IDS:
-    fail("Profile case studies are missing, duplicated, or out of canonical order.")
-for case_study in case_studies:
-    for field in CASE_STUDY_FIELDS:
-        value = case_study.get(field)
-        if not isinstance(value, str) or not value.strip():
-            fail(
-                f"Case study {case_study.get('id')!r} requires non-empty {field!r}."
-            )
 
 capability_names = [group["name"] for group in PROFILE.get("capabilities") or []]
 capability_order = PROFILE["careerLetter"].get("capabilityOrder")
@@ -173,23 +137,6 @@ require_terms(
     ),
     "Canonical KeyBank record",
 )
-require_terms(
-    profile_text,
-    ("2-4 hours", "7 minutes"),
-    "Canonical efficiency evidence",
-)
-
-case_studies_by_id = {case_study["id"]: case_study for case_study in case_studies}
-if normalize(case_studies_by_id["risk-scoring-dashboard"]["status"]) != "in uat":
-    fail("Risk-scoring dashboard case study must remain explicitly in UAT.")
-if normalize(case_studies_by_id["regulation-b-automation"]["status"]) != "completed":
-    fail("Regulation B case study must remain explicitly completed.")
-require_terms(
-    json.dumps(case_studies_by_id["liquidity-crisis-response"], ensure_ascii=False),
-    ("core, hands-on contributor", "not the sole owner", "$10B", "$5B"),
-    "Liquidity case-study ownership framing",
-)
-
 reader = PdfReader(PDF_PATH)
 if len(reader.pages) != 2:
     fail(f"Resume must be exactly two pages; found {len(reader.pages)}.")
