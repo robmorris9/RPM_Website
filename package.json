@@ -5,13 +5,10 @@
   "description": "Robert Perry Morris's personal career website",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "lint": "node scripts/check.mjs",
     "check": "node scripts/check.mjs",
-    "resume:pdf": "python3 scripts/build_resume_pdf.py",
-    "check:resume": "python3 scripts/check_resume_pdf.py",
     "test": "node --test tests/*.test.cjs",
-    "verify": "npm run build && npm run check && npm test",
-    "verify:resume": "npm run resume:pdf && npm run check:resume",
-    "verify:all": "npm run verify && npm run verify:resume"
+    "verify": "npm run build && npm run lint && npm test"
   },
   "engines": {
     "node": ">=20"

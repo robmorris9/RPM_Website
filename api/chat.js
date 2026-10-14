@@ -21,18 +21,7 @@ const MAX_RATE_LIMIT_ENTRIES = 1_000;
 
 const rateLimitStore = new Map();
 
-const PUBLIC_PROFILE_CONTEXT = {
-  site: profile.site,
-  positioning: profile.positioning,
-  person: profile.person,
-  about: profile.about,
-  caseStudies: profile.caseStudies,
-  siteExperience: profile.siteExperience,
-  capabilities: profile.capabilities,
-  operatingPrinciples: profile.careerLetter.operatingPrinciples,
-  leadership: profile.leadership,
-  connect: profile.connect,
-};
+const PUBLIC_PROFILE_CONTEXT = profile;
 
 const SYSTEM_INSTRUCTION = [
   'You are RobBot, a concise assistant for Robert Perry Morris\'s personal career website.',

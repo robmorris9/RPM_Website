@@ -1,282 +1,147 @@
 {
-  "site": {
-    "url": "https://robmorris.me/",
-    "title": "Robert Perry Morris - Business Operator | Strategy, Systems & Execution",
-    "description": "Robert Perry Morris is a business operator who uses analytics, process design, and automation to turn ambiguous problems into clear decisions and repeatable systems."
+  "name": "Robert Morris",
+  "email": "robmorris9@gmail.com",
+  "linkedinUrl": "https://www.linkedin.com/in/robert-p-morris/",
+  "url": "https://robmorris.me/",
+  "headline": "Data & Business Analytics · Automation · Product Enablement · Risk Management",
+  "summary": "Analytics and automation leader with 14+ years across banking risk, treasury, and operations. Builds data products, risk models, and automated workflows that turn complex portfolio information into better business decisions.",
+  "resumeFile": "Robert Perry Morris _ Resume.pdf",
+  "metrics": {
+    "exposure": "approximately $40M",
+    "losses": "approximately $6M",
+    "salespeople": "approximately 300",
+    "adverseBefore": "approximately 80 hours",
+    "adverseAfter": "approximately 2 hours",
+    "regBefore": "approximately 5 hours",
+    "regAfter": "approximately 20 minutes",
+    "optimization": "approximately $10B",
+    "retained": "approximately $5B",
+    "fxStaff": "10+",
+    "clients": "1,000+",
+    "settlements": "approximately $1B",
+    "savings": "$29M"
   },
-  "positioning": {
-    "label": "Business operations · Decision systems · Execution",
-    "statement": "An operator who turns ambiguous, under-governed business problems into clear decisions and repeatable systems."
-  },
-  "person": {
-    "name": "Robert Perry Morris",
-    "givenName": "Robert",
-    "familyName": "Morris",
-    "location": "Kenmore, New York",
-    "email": "robmorris9@gmail.com",
-    "phoneDisplay": "585.205.6387",
-    "phoneHref": "+15852056387",
-    "linkedinUrl": "https://www.linkedin.com/in/robert-p-morris/",
-    "linkedinDisplay": "linkedin.com/in/robert-p-morris",
-    "resumeSummary": "Business operator with 14 years of experience turning ambiguous problems into clear decisions and repeatable systems across operations, markets, treasury, risk, and portfolio management. Uses analytics, process design, governance, and automation to make complex work more reliable and executable.",
-    "yearsExperience": 14,
-    "currentTitle": "Vice President, Business Banking Portfolio Analytics",
-    "currentFunction": "Portfolio Management & Risk Strategy | Business Banking",
-    "currentEmployer": "KeyBank"
-  },
-  "metrics": [],
-  "about": [
-    "I'm an operator who looks for structure in ambiguous problems. Across 14 years at Citi and KeyBank, I have led teams close to the transaction, worked on markets and balance-sheet decisions, and built portfolio processes where data, judgment, controls, and execution have to stay connected.",
-    "The common thread is not a bank function or a particular tool. I learn how an organization works, find where a decision needs more structure, and build a clearer way to make and carry it out. Analytics, process design, and automation matter when they make that system faster, more reliable, or easier to govern.",
-    "At KeyBank, that currently includes credit risk-rating and line-freeze automation, exposure management, a completed Regulation B process automation, and early-stage revolving-line-to-term work with Product and Fair Lending. Banking is where I built this operating pattern; it is not the ceiling on where I can apply it."
-  ],
-  "caseStudies": [
-    {
-      "id": "credit-risk-rating-freeze",
-      "company": "KeyBank",
-      "status": "Active initiative",
-      "title": "Credit risk-rating and freeze automation",
-      "narrative": "Risk actions on credit cards and revolving lines need to keep pace as relationships change. The work is turning rating downgrades and line-freeze decisions into a repeatable process with clear rules, ownership, exceptions, procedures, and monitoring.",
-      "result": "A governed, repeatable workflow for consistent risk action—currently in development.",
-      "role": "Designing the automation, decision rules, and governance; the initiative has no final outcome metric yet."
-    },
-    {
-      "id": "swift-settlement-migration",
-      "company": "Citi",
-      "status": "Completed",
-      "title": "SWIFT savings through direct settlement",
-      "narrative": "A client's settlement setup relied on a third party, creating network costs that were easy to miss at the headline-process level. A product-processor review surfaced the opportunity, followed by the sustained client and operational work required to establish direct SWIFT settlement.",
-      "result": "Approximately $29M in annual network settlement savings.",
-      "role": "I identified the opportunity and drove the client migration through implementation."
-    },
-    {
-      "id": "liquidity-crisis-response",
-      "company": "Citi",
-      "status": "Completed team effort",
-      "title": "Balance-sheet response during the 2023 crisis",
-      "narrative": "During the 2023 regional-banking crisis, deposits and HQLA had to be repositioned entity by entity to strengthen liquidity and keep more funding within Citi's US entities. The work required close coordination with international Treasury teams, including Dubai and Hong Kong.",
-      "result": "Roughly $10B optimized; roughly $5B able to remain within Citi's US entities.",
-      "role": "Core, hands-on contributor to the team effort—not sole owner of the result."
-    },
-    {
-      "id": "other-enhancements",
-      "company": "Across Citi and KeyBank",
-      "status": "Cross-career portfolio",
-      "title": "Other enhancements",
-      "narrative": "Across roles, I have looked for recurring work that could be made cleaner and more reliable. The individual changes were often small, but built around the people who had to run and trust the process.",
-      "highlights": [
-        "Spreadsheet enhancements",
-        "Commentary automation for repetitive P&L pushes",
-        "Daily and manual upload automation",
-        "Verification and QC automation"
-      ],
-      "result": "Cumulatively, these improvements saved hundreds of hours while making recurring outputs more consistent and easier to verify.",
-      "role": "Work I built or directly improved across multiple roles; the time saved is cumulative, not a single-project claim."
-    }
-  ],
-  "siteExperience": [
-    {
-      "id": "keybank",
-      "company": "KeyBank",
-      "dates": "2025–Present",
-      "heading": "Current focus: risk decisions that work in practice",
-      "takeawayLabel": "What I bring",
-      "currentFocus": [
-        "Designing credit risk-rating and line-freeze automation with the governance required to operate it.",
-        "Operating an existing exposure model and acting on its signals; it has identified roughly $55M in exposure, with roughly $3M recovered.",
-        "Fully automated a manual, Excel-based Regulation B adverse-action process handling hundreds of applications a day, with output monitored by risk partners.",
-        "Working with Product and Fair Lending on an early-stage revolving-line-to-term initiative."
-      ],
-      "enables": "The role brings portfolio analytics, process design, risk governance, and cross-functional implementation together."
-    },
-    {
-      "id": "citi",
-      "company": "Citi",
-      "dates": "2010–2024",
-      "heading": "A progression from the transaction to the balance sheet",
-      "takeawayLabel": "What I learned",
-      "progression": [
-        {
-          "dates": "2010–2019",
-          "title": "FX operations and settlement—led global processing teams close to the transaction."
-        },
-        {
-          "dates": "2019–2021",
-          "title": "Equity derivatives product control—led daily P&L control and a six-person team."
-        },
-        {
-          "dates": "2021–2024",
-          "title": "Liquidity management and market risk—moved into balance-sheet, stress, and cross-functional operating work."
-        }
-      ],
-      "enables": "That progression taught me to see a problem from the workflow, the numbers, and the control environment at the same time—and to move between frontline detail and senior cross-functional decisions."
-    }
-  ],
   "experience": [
     {
       "id": "keybank",
-      "dates": "2025 - Present",
-      "title": "Vice President, Business Banking Portfolio Analytics",
-      "functionalTitle": "Portfolio Management & Risk Strategy | Business Banking",
       "company": "KeyBank",
-      "visual": "gauge",
-      "timelineSummary": "Portfolio analytics, operating-model design, risk governance, and automation across Business Banking.",
-      "description": [
-        "Current work includes a risk-scoring dashboard now in UAT, credit-line risk-rating automation and governance, and an early-stage revolving-line-to-term initiative with Product and Fair Lending.",
-        "I fully automated a manual, Excel-based Regulation B adverse-action process handling hundreds of applications a day, with outputs monitored by risk partners. I also operate an existing exposure model and act on its signals; it has identified roughly $55M in exposure, with roughly $3M recovered."
-      ],
-      "resumeDescription": "Lead portfolio analytics, operating-model design, governance, and automation across Business Banking. Current work spans a risk-scoring dashboard in UAT, credit-line risk-rating governance, and early-stage revolving-line-to-term work. Fully automated a manual Regulation B process and operate an existing exposure model that has identified roughly $55M, with roughly $3M recovered.",
-      "careerLetterSummary": "Lead portfolio analytics, operating-model design, governance, and automation across Business Banking.",
-      "resumeBullets": [
-        "Built a portfolio risk-scoring dashboard, now in UAT, designed to inform relationship-manager compensation decisions within a governed review process.",
-        "Designed automation and governance for freezing or downgrading risk ratings on credit cards and revolving lines as relationships evolve.",
-        "Fully automated a manual, Excel-based Regulation B adverse-action process handling hundreds of applications a day; risk partners monitor the output."
-      ],
-      "tags": ["Decision Systems", "Risk Governance", "Process Automation"]
+      "area": "Business Banking Analytics",
+      "title": "Vice President",
+      "dates": "2025–Present",
+      "bullets": [
+        "Own and enhance a behavioral risk model that triggers credit line freezes and downgrades, identifying {exposure} in exposure and mitigating {losses} in expected losses before full drawdown.",
+        "Designed a credit-risk scoring methodology and Tableau dashboard used by {salespeople} salespeople.",
+        "Led the end-to-end product lifecycle for the behavioral risk model and dashboard, including development, UAT, launch, feedback, and roadmap development.",
+        "Automated monthly adverse-action notifications, reducing processing time from {adverseBefore} to {adverseAfter} and resolving audit findings through process redesign.",
+        "Redesigned monthly asset-quality reporting using Python and a Google Cloud data mart, replacing multi-day manual preparation with scheduled reporting and direct delivery to leadership.",
+        "Built Python-based Reg B monitoring workflows, reducing weekly analyst effort from {regBefore} to {regAfter} and surfacing exceptions daily."
+      ]
     },
     {
-      "id": "market-risk",
-      "dates": "2024",
-      "title": "VP, Non-Trading Market Risk Solutions",
-      "functionalTitle": "",
+      "id": "citi",
       "company": "Citibank",
-      "visual": "",
-      "timelineSummary": "Worked in a Chief of Staff capacity across Treasury, Finance, Risk, and Technology.",
-      "description": [
-        "Worked in a Chief of Staff capacity across Treasury, Finance, Risk, and Technology, coordinating priorities and improving how teams found, analyzed, and communicated information.",
-        "Developed the Treasury Management Notebook knowledge base, automated cash-rebalancing workflows, and built practical generative-AI use cases within a controlled banking environment."
-      ],
-      "resumeDescription": "Worked in a Chief of Staff capacity across Treasury, Finance, Risk, and Technology. Developed a treasury knowledge base, automated cash-rebalancing workflows, and built practical generative-AI use cases inside a controlled banking environment.",
-      "careerLetterSummary": "Worked in a Chief of Staff capacity across Treasury, Finance, Risk, and Technology. Developed the Treasury Management Notebook and automated cash-rebalancing workflows.",
-      "tags": ["Cross-Functional Coordination", "Automation", "CCAR"]
-    },
-    {
-      "id": "liquidity",
-      "dates": "2021 - 2024",
-      "title": "VP, Liquidity Management",
-      "functionalTitle": "",
-      "company": "Citibank",
-      "visual": "line",
-      "timelineSummary": "Core contributor to cross-border liquidity and balance-sheet decisions through the 2023 regional-banking crisis.",
-      "description": [
-        "Served as a core, hands-on contributor to a team that optimized roughly $10B of the balance sheet during the 2023 regional-banking crisis, working entity by entity with international Treasury teams.",
-        "The work repositioned deposits and HQLA so roughly $5B could remain within Citi's US entities, while supporting liquidity forecasting, stress, CCAR, LCR, and NSFR frameworks."
-      ],
-      "resumeDescription": "Core, hands-on contributor to a team that optimized roughly $10B of the balance sheet during the 2023 regional-banking crisis, helping reposition deposits and HQLA so roughly $5B could remain within Citi's US entities.",
-      "careerLetterSummary": "Core contributor to a team that optimized roughly $10B during the 2023 regional-banking crisis, enabling roughly $5B to remain within Citi's US entities.",
-      "tags": ["Balance Sheet Strategy", "Liquidity", "Cross-Border Execution"]
-    },
-    {
-      "id": "derivatives",
-      "dates": "2019 - 2021",
-      "title": "AVP, Equity Derivatives Product Control",
-      "functionalTitle": "",
-      "company": "Citibank",
-      "visual": "",
-      "timelineSummary": "Led a six-person product-control team through COVID-era market volatility.",
-      "description": [
-        "Managed product-control and daily P&L responsibilities for index and sector derivative portfolios, leading a six-person team through COVID-era market volatility.",
-        "Built Power BI and KNIME reporting that improved visibility into trading results, exceptions, and emerging risk."
-      ],
-      "resumeDescription": "Managed product-control and daily P&L responsibilities for index and sector derivative portfolios, leading a six-person team through COVID-era volatility. Built Power BI and KNIME reporting for trading results, exceptions, and emerging risk.",
-      "careerLetterSummary": "Held daily P&L and product-control responsibility for index and sector derivatives, led a six-person team, and built Power BI and KNIME reporting.",
-      "tags": ["Product Control", "People Leadership", "Decision Reporting"]
-    },
-    {
-      "id": "fx",
-      "dates": "2012 - 2019",
-      "title": "AVP, Foreign Exchange Trade Processing",
-      "functionalTitle": "",
-      "company": "Citibank",
-      "visual": "swift",
-      "timelineSummary": "Led approximately 25 people across global FX settlement and drove a direct SWIFT migration.",
-      "description": [
-        "Managed interbank and corporate FX settlement teams of approximately 25 people supporting high-value global settlement flows.",
-        "Identified a client opportunity through a product-processor-level review and drove the migration to direct SWIFT settlement, delivering approximately $29M in annual network savings."
-      ],
-      "resumeDescription": "Managed interbank and corporate FX settlement teams of approximately 25 people. Identified a client opportunity through a product-processor-level review and drove a direct SWIFT migration that delivered approximately $29M in annual savings.",
-      "careerLetterSummary": "Led approximately 25 staff across global FX settlement and drove a direct SWIFT migration that delivered approximately $29M in annual savings.",
-      "tags": ["FX Operations", "SWIFT", "People Leadership"]
+      "area": "Treasury, Product Control, and Foreign Exchange",
+      "title": "Vice President",
+      "dates": "2012–2025",
+      "roles": [
+        {
+          "title": "Treasury Risk Solutions, VP",
+          "dates": "2024–2025",
+          "bullets": [
+            "Served as Chief of Staff while automating broker-dealer and international-entity CCAR forecasting.",
+            "Trained employees on agent-based workflows."
+          ]
+        },
+        {
+          "title": "Liquidity Forecasting, VP",
+          "dates": "2021–2024",
+          "bullets": [
+            "Owned Citigroup’s weekly LCR forecasting model across planning, CCAR, and outlook cycles.",
+            "Supported optimization of {optimization} in balance-sheet resources and retention of {retained} in U.S. entities during the 2023 regional banking crisis."
+          ]
+        },
+        {
+          "title": "Equity Derivatives Product Control, AVP",
+          "dates": "2019–2021",
+          "bullets": [
+            "Led a six-person team responsible for daily P&L reporting and financial controls.",
+            "Built reporting solutions in Power BI, KNIME, and MicroStrategy."
+          ]
+        },
+        {
+          "title": "Foreign Exchange Trade Processing, Analyst to AVP",
+          "dates": "2012–2019",
+          "bullets": [
+            "Managed {fxStaff} staff supporting {clients} clients and {settlements} in daily settlements.",
+            "Delivered {savings} in annual savings through migration to direct SWIFT messaging."
+          ]
+        }
+      ]
     }
   ],
   "capabilities": [
     {
-      "name": "Decision Systems",
-      "items": ["Decision Framing", "Portfolio & Risk Analytics", "Performance Signals", "Scenario Analysis"]
+      "name": "Data & Technology",
+      "items": [
+        "Python",
+        "SQL",
+        "Google Cloud",
+        "BigQuery",
+        "Jupyter",
+        "Tableau",
+        "Power BI",
+        "Salesforce",
+        "Generative AI"
+      ]
     },
     {
-      "name": "Governance & Execution",
-      "items": ["Operating Model Design", "Control Design", "Procedures & Monitoring", "Cross-Functional Implementation"]
+      "name": "Banking & Risk",
+      "items": [
+        "Portfolio Analytics",
+        "Credit Risk",
+        "Liquidity Risk",
+        "CCAR",
+        "LCR",
+        "Reg B",
+        "Asset Quality",
+        "Financial Controls"
+      ]
     },
     {
-      "name": "Process & Automation",
-      "items": ["Workflow Redesign", "Python & SQL Automation", "BI & Reporting Systems", "Regulated Process Execution"]
+      "name": "Product & Automation",
+      "items": [
+        "Product Roadmaps",
+        "UAT",
+        "Process Automation",
+        "Workflow Redesign",
+        "Product Delivery",
+        "Data Products"
+      ]
     },
     {
-      "name": "Leadership & Translation",
-      "items": ["Lean-Team Leadership", "Stakeholder Alignment", "Knowledge Transfer", "Executive Communication"]
+      "name": "Leadership",
+      "items": [
+        "Team Leadership",
+        "Cross-Functional Delivery",
+        "Executive Communication",
+        "Stakeholder Management",
+        "Training & Enablement"
+      ]
     }
   ],
+  "education": {
+    "degree": "B.S. in Marketing",
+    "school": "Niagara University",
+    "honors": "Cum laude"
+  },
   "leadership": [
     {
-      "title": "Lean Technical Modernization",
-      "description": "Developing a long-tenured direct report with deep institutional data knowledge as they work on a legacy-system migration to GCP and legacy-product automation, pairing modernization with durable knowledge transfer in a small, high-leverage team."
-    },
-    {
-      "title": "Citi Buffalo Pride",
-      "description": "Co-founded and grew Citi Buffalo's Pride employee network to more than 300 active members."
+      "title": "Citi Buffalo Development Network",
+      "description": "Co-founded the network, growing membership to 300+."
     },
     {
       "title": "Training & Enablement",
-      "description": "Designed and facilitated 25+ cross-functional workshops across Citi Buffalo, translating technical and operational topics into practical tools teams could use."
+      "description": "Led 25+ workshops on productivity and technical skills."
     }
-  ],
-  "careerLetter": {
-    "label": "Professional Profile",
-    "deck": "Fourteen years across operations, markets, treasury, risk, and portfolio management, using analytics, process design, governance, and automation to make complex work clearer and more executable.",
-    "capabilityOrder": ["Decision Systems", "Governance & Execution", "Process & Automation", "Leadership & Translation"],
-    "openingParagraphs": [
-      "I have worked across banking operations, markets, treasury, risk, and portfolio management for 14 years. I started in FX settlement, where I managed approximately 25 staff, and later led a six-person equity-derivatives product-control team before moving into liquidity, market risk, and Business Banking portfolio analytics.",
-      "At KeyBank, my current work includes a risk-scoring dashboard in UAT, credit-line risk-rating automation and governance, and early-stage revolving-line-to-term work. I fully automated a manual, Excel-based Regulation B process handling hundreds of applications a day, and I operate an existing exposure model whose signals have identified roughly $55M, with roughly $3M recovered.",
-      "At Citi, I identified and drove a SWIFT migration that delivered approximately $29M in annual savings. During the 2023 regional-banking crisis, I was a core contributor to a team that optimized roughly $10B of the balance sheet so roughly $5B could remain within Citi's US entities."
-    ],
-    "operatingThesis": "I tend to work on problems that need both analysis and implementation. I clarify the business decision, understand how the work and data move, and help define the procedures, controls, ownership, and monitoring around the answer.",
-    "page2Deck": "Fourteen years of progression from people leadership close to the transaction through markets and treasury to portfolio strategy, governance, and cross-functional implementation.",
-    "operatingPrinciples": [
-      {
-        "title": "Read the system, not just the metric",
-        "paragraph": "I look at how work moves, where decisions sit, which constraints matter, and how the data was produced before deciding what a number means."
-      },
-      {
-        "title": "Design the decision and control together",
-        "paragraph": "A recommendation is incomplete until ownership, exceptions, procedures, monitoring, and escalation are clear."
-      },
-      {
-        "title": "Use technology to remove friction",
-        "paragraph": "I use automation when it shortens a decision cycle, improves the information, or removes repetitive work. The goal is better judgment and reliable execution."
-      }
-    ],
-    "selectedRecordIntro": "The selected record shows a progression from people leadership close to the transaction, through markets, treasury, and risk, to portfolio strategy and cross-functional implementation.",
-    "closingParagraphs": [
-      "I have already been doing core pieces of Director-scope work: coordinating across functions without relying on formal authority, designing decisions and controls together, and turning ambiguity into an executable, governed process.",
-      "I am interested in Director-level roles across business analytics, strategy, business operations, portfolio management, transformation, Chief of Staff work, and product or commercial leadership. Banking is where I built this pattern; the skill set travels wherever complex organizations need clearer decisions and repeatable systems."
-    ],
-    "signoff": {
-      "name": "Robert Perry Morris",
-      "title": "Vice President, Business Banking Portfolio Analytics",
-      "function": "Portfolio Management & Risk Strategy | Business Banking"
-    }
-  },
-  "connect": {
-    "heading": "Let's compare notes",
-    "paragraphs": [
-      "I'm interested in work where problems need new solutions and a fresh set of eyes—especially when the answer has to reflect how operations flow, how risk is managed, and how disciplined execution can scale.",
-      "If you're working through something like that, I'd be glad to compare notes."
-    ]
-  },
-  "robbot": {
-    "greeting": "Hi, I'm RobBot. Ask me how Rob turns ambiguous business problems into clear decisions and repeatable systems.",
-    "disclosure": "RobBot uses Google Gemini. Please don't share confidential or personal information.",
-    "error": "I couldn't reach the service just now. You can try again, email Rob, or connect with him on LinkedIn."
-  }
+  ]
 }

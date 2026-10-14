@@ -1,55 +1,39 @@
-# RPM Website
+# Robert Morris | robmorris.me
 
-Robert Perry Morris's static career website, deployed at [robmorris.me](https://robmorris.me/).
+A resume-first static website with IBM Plex Sans, a soft charcoal palette with warm off-white headings and muted sage accents, and no browser JavaScript. The homepage presents experience, capabilities, education and leadership, and contact links in one vertical flow.
 
-## Architecture
+## Update content
 
-- `content/profile.json` is the canonical source for positioning, career facts, metrics, case studies, operating principles, capabilities, leadership, contact details, resume summaries, and RobBot's public context.
-- `src/index.template.html`, `src/styles.css`, and `src/site.js` contain the site presentation and browser behavior.
-- `src/resume.template.html` and `src/resume.css` contain the two-page narrative-resume presentation.
-- `scripts/build.mjs` generates the root `index.html`, `resume.html`, and `assets/` files served in production.
-- `scripts/build_resume_pdf.py` generates the linked two-page PDF from the same profile data and bundled IBM Plex fonts.
-- `api/chat.js` is a zero-dependency Vercel function. Its system instructions stay on the server and its facts come from `content/profile.json`.
+Edit `content/profile.json`. Career bullets, roles, capabilities, and contact details live here. Repeated numeric claims live in `metrics`; bullets reference them with `{metricName}`. Preserve qualifiers and distinctions between ownership and support.
 
-The generated root files remain committed so the site can be served as plain static files. Edit source files, run the build, then commit both source and generated outputs.
+The source for this revision is the supplied **Robert Morris Resume(3).pdf**, October 2026. The exact supplied PDF is served at the existing `Robert Perry Morris _ Resume.pdf` path to preserve old links. Replace that file with an approved resume when updating it. It is intentionally not regenerated from the website.
 
-### Case-study content model
+## Build and verify
 
-The `caseStudies` array in `content/profile.json` keeps each story evidence-based and explicit about Rob's scope. Every entry defines `id`, `company`, `status`, `title`, `narrative`, `result`, and `role`, with optional `highlights` for compact supporting examples. The site renderer and RobBot both consume this canonical array; do not duplicate case-study copy in generated HTML or the chat function.
-
-## Local workflow
-
-Requires Node.js 20 or newer.
+Node.js 20 or newer; no package installation required.
 
 ```sh
 npm run build
-npm run check
+npm run lint
 npm test
+# or all three:
+npm run verify
 ```
 
-`npm run verify` runs that complete site sequence. After installing the PDF dependencies below, `npm run verify:all` runs the site build and checks, API tests, deterministic resume build, and resume PDF checks together. The existing `npm run verify:resume` command remains available for resume-only work.
+- `src/index.template.html`: semantic page structure.
+- `src/styles.css`: typography, spacing, palette, responsive and print rules.
+- `scripts/build.mjs`: escaped static HTML rendering from centralized data.
+- `index.html`, `resume.html`, `assets/styles.css`: committed build outputs. `/resume.html` uses the same current content, replacing the old narrative resume.
+- `assets/fonts`: self-hosted IBM Plex Sans regular and medium, with license.
+- `scripts/check.mjs`: dependency-free static lint, local links/assets, metadata, content invariants and contrast checks.
+- `tests/api-chat.test.cjs`: retained experimental endpoint security/error tests.
 
-Serve the repository root with any static server to review the site. RobBot requires the Vercel function environment; the rest of the site works without it.
-
-The downloadable resume is a separate, deterministic build. Its first page is a concise professional profile; its second page combines an experience timeline with compact capabilities and leadership sections. It requires Python 3 and the pinned packages in `requirements-pdf.txt`:
-
-```sh
-python3 -m pip install -r requirements-pdf.txt
-npm run verify:resume
-```
-
-The PDF check confirms its two-page Letter format, metadata, canonical narrative, role and capability content, and removal of stale positioning. Visually review both rendered pages after material content changes.
+Run the build after source edits and commit the outputs. All career content and links work with JavaScript disabled. Keyboard focus is visible, contact targets are at least 44px high, and reduced motion disables link transitions. Mobile uses a single column with dates below role headings. Capability groups become a single column on narrow phones.
 
 ## Deployment
 
-Vercel is the authoritative runtime because `/api/chat` depends on a serverless function. Configure these environment variables in Vercel:
+Existing Vercel configuration and CNAME are preserved. This change does not switch hosting providers. The homepage makes no requests to the experimental `/api/chat` endpoint. That endpoint remains server-only with its existing protections and now reads the current resume data. Its environment variables remain `GEMINI_API_KEY`, optional `GEMINI_MODEL`, and optional `ROBBOT_ALLOWED_ORIGINS`.
 
-- `GEMINI_API_KEY` (required)
-- `GEMINI_MODEL` (optional; defaults to `gemini-2.5-flash-lite`)
-- `ROBBOT_ALLOWED_ORIGINS` (optional; comma-separated additional trusted origins)
+## Verification limit
 
-Never place credentials in HTML, source files, client-side environment variables, or Git history. Any key previously committed to public history must be revoked and replaced; removing it from the current tree is not sufficient.
-
-The repository also has legacy GitHub Pages configuration through `CNAME`. If GitHub Pages remains enabled, verify that DNS still points to Vercel so the RobBot endpoint is not bypassed.
-
-DNS was verified on 2026-08-22: the apex A record resolves to `76.76.21.21`, `www` aliases to `cname.vercel-dns.com`, and both HTTPS responses identify Vercel as the server. Keep `CNAME` for the legacy configuration unless GitHub Pages is intentionally disabled; the Pages setting itself was not available through the connected GitHub integration.
+Automated build, static lint, and API tests can run without a browser. Visual inspection in desktop browsers and mobile Safari is still required before merging this redesign; this implementation session did not have the supported browser preview capability.
