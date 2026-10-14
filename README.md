@@ -26,17 +26,20 @@ npm run verify
 - `index.html`, `resume.html`, `assets/styles.css`: committed build outputs. `/resume.html` uses the same current content, replacing the old narrative resume.
 - `assets/fonts`: self-hosted IBM Plex Sans regular and medium, with license.
 - `scripts/check.mjs`: dependency-free static lint, local links/assets, metadata, content invariants and contrast checks.
-- `tests/api-chat.test.cjs`: retained experimental endpoint security/error tests.
+- `tests/site.test.cjs`: static deployment and social-preview regression checks.
+- `og-image.png`: 1200 × 630 social-preview card. `scripts/build_social_preview.py` regenerates it from the profile, CSS palette, and bundled fonts (requires Python and Pillow).
 
 Run the build after source edits and commit the outputs. All career content and links work with JavaScript disabled. Keyboard focus is visible, contact targets are at least 44px high, and reduced motion disables link transitions. Mobile uses a single column with dates below role headings. Capability groups become a single column on narrow phones.
 
 ## Deployment
 
-Existing Vercel configuration and CNAME are preserved. This change does not switch hosting providers. The homepage makes no requests to the experimental `/api/chat` endpoint. That endpoint remains server-only with its existing protections and now reads the current resume data. Its environment variables remain `GEMINI_API_KEY`, optional `GEMINI_MODEL`, and optional `ROBBOT_ALLOWED_ORIGINS`.
+Vercel deploys the `main` branch to https://robmorris.me/. Generated HTML and assets are committed, so the site can be served as plain static files. Existing security headers and CNAME are preserved.
 
-## Verification limit
+RobBot and its serverless endpoint have been removed. The site requires no API credentials or runtime environment variables. Previously configured Gemini variables in Vercel are unused and may be removed there.
 
-Automated build, static lint, and API tests can run without a browser. Visual inspection in desktop browsers and mobile Safari is still required before merging this redesign; this implementation session did not have the supported browser preview capability.
+## Validation
+
+Run `npm run verify` before publishing. It builds the pages, checks static markup and links, verifies text contrast, and runs deployment and social-preview tests. After a deployment, confirm the new version at robmorris.me, then review desktop and mobile Safari, keyboard focus, contact links, and the resume download. Automated browser visual testing was unavailable during this redesign.
 
 ## Company marks
 

@@ -1,12 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFile, access } from 'node:fs/promises';
-import vm from 'node:vm';
 const root = new URL('../', import.meta.url);
 const read = file => readFile(new URL(file, root), 'utf8');
-const [html, resume, css, sourceCss, api, raw] = await Promise.all(['index.html','resume.html','assets/styles.css','src/styles.css','api/chat.js','content/profile.json'].map(read));
+const [html, resume, css, sourceCss, raw] = await Promise.all(['index.html','resume.html','assets/styles.css','src/styles.css','content/profile.json'].map(read));
 const profile = JSON.parse(raw);
 assert.equal(css, sourceCss, 'Generated CSS must match source');
-new vm.Script(api);
 assert(!/{{[A-Z_]+}}/.test(html + resume), 'Unresolved template');
 assert.equal((html.match(/<h1\b/g) || []).length, 1);
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
