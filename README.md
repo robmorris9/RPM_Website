@@ -37,3 +37,7 @@ Existing Vercel configuration and CNAME are preserved. This change does not swit
 ## Verification limit
 
 Automated build, static lint, and API tests can run without a browser. Visual inspection in desktop browsers and mobile Safari is still required before merging this redesign; this implementation session did not have the supported browser preview capability.
+
+## Company marks
+
+`src/logos/` contains inline, path-based SVG marks rendered in the heading color (`currentColor`). They are decorative beside accessible company names. KeyBank’s key symbol is extracted from https://www.logo.wine/a/logo/KeyBank/KeyBank-Logo.wine.svg; Citi’s mark is from https://commons.wikimedia.org/wiki/File:Citi_logo_March_2023.svg. Original trademark shapes are retained with a monochrome presentation.
