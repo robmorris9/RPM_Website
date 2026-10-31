@@ -4,7 +4,8 @@
   "linkedinUrl": "https://www.linkedin.com/in/robert-p-morris/",
   "url": "https://robmorris.me/",
   "headline": "Data & Business Analytics · Automation · Product Enablement · Risk Management",
-  "summary": "Analytics and automation leader with 14+ years across banking risk, treasury, and operations. Builds data products, risk models, and automated workflows that turn complex portfolio information into better business decisions.",
+  "summary": "I build better ways to get work done in banking. I redesign banking workflows for the agent era, combining local models, cloud machine learning, and 14+ years operating inside banks.",
+  "capabilityHighlight": "Trained employees on agent-based workflows at Citi — Treasury Risk Solutions, 2024–2025.",
   "resumeFile": "Robert Perry Morris _ Resume.pdf",
   "metrics": {
     "exposure": "approximately $40M",
@@ -91,7 +92,10 @@
         "Tableau",
         "Power BI",
         "Salesforce",
-        "Generative AI"
+        "Generative AI",
+        "Agentic AI",
+        "Local LLM Deployment",
+        "ML on Google Cloud"
       ]
     },
     {
@@ -110,10 +114,10 @@
     {
       "name": "Product & Automation",
       "items": [
+        "Workflow Redesign",
         "Product Roadmaps",
         "UAT",
         "Process Automation",
-        "Workflow Redesign",
         "Product Delivery",
         "Data Products"
       ]
